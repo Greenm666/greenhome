@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>关于我们 - 食品营养搜索引擎</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  .legal-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .legal-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    padding: 40px;
+  }
+  .legal-card h1 {
+    font-size: 1.8rem;
+    color: var(--primary-dark);
+    margin-bottom: 8px;
+    padding-bottom: 16px;
+    border-bottom: 3px solid var(--primary);
+  }
+  .legal-card h2 {
+    font-size: 1.2rem;
+    color: var(--primary);
+    margin: 28px 0 12px;
+    font-weight: 700;
+  }
+  .legal-card p {
+    color: var(--text);
+    line-height: 1.8;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+  }
+  .legal-card ul {
+    padding-left: 24px;
+    margin-bottom: 12px;
+  }
+  .legal-card ul li {
+    color: var(--text);
+    line-height: 1.8;
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+  }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 20px;
+    transition: color 0.2s;
+  }
+  .back-link:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+  }
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .feature-item {
+    background: var(--bg);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+  .feature-icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+  }
+  .feature-item h3 {
+    font-size: 1rem;
+    color: var(--primary-dark);
+    margin-bottom: 6px;
+  }
+  .feature-item p {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin: 0;
+    line-height: 1.6;
+  }
+  .footer-links {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+  .footer-links a {
+    color: var(--primary);
+    text-decoration: none;
+    margin: 0 10px;
+  }
+  .footer-links a:hover {
+    text-decoration: underline;
+  }
+  @media (max-width: 768px) {
+    .legal-card {
+      padding: 24px;
+    }
+    .legal-card h1 {
+      font-size: 1.4rem;
+    }
+    .legal-card h2 {
+      font-size: 1.1rem;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="legal-container">
+  <a href="index.html" class="back-link">&#8592; 返回首页</a>
+  <div class="legal-card">
+    <h1>关于我们</h1>
+
+    <h2>一、网站简介</h2>
+    <p>食品营养搜索引擎是一个致力于帮助用户科学饮食、健康生活的在线工具。我们收集并整理了常见食品的营养成分数据，让用户能够快速查询、对比不同食品的营养价值，从而做出更健康的饮食选择。</p>
+
+    <h2>二、我们的使命</h2>
+    <p>我们相信，健康的生活方式始于科学的饮食。我们的使命是通过直观易用的工具，让每一个人都能轻松获取食品营养信息，了解所吃食物的真实成分，从而更好地管理自己和家人的健康。</p>
+
+    <h2>三、主要功能</h2>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <div class="feature-icon">🔍</div>
+        <h3>智能搜索</h3>
+        <p>支持食品名称及别名的模糊搜索，快速定位目标食品</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">📊</div>
+        <h3>营养详情</h3>
+        <p>全面展示热量、蛋白质、脂肪、碳水、维生素、矿物质等信息</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🏷️</div>
+        <h3>分类筛选</h3>
+        <p>按水果、蔬菜、肉类、蛋奶等11个分类快速浏览食品</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">💡</div>
+        <h3>健康提示</h3>
+        <p>根据营养特点提供个性化饮食建议和健康小贴士</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">📈</div>
+        <h3>每日参考值</h3>
+        <p>直观显示营养素占每日推荐摄入量的百分比</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">📱</div>
+        <h3>响应式设计</h3>
+        <p>支持电脑、平板、手机等多种设备流畅使用</p>
+      </div>
+    </div>
+
+    <h2>四、数据说明</h2>
+    <p>本网站所展示的营养成分数据基于权威营养学资料整理，数据仅供参考。实际营养成分可能因品牌、产地、品种、烹饪方式等因素而有所差异。我们建议用户在关注特殊健康需求（如慢性病、过敏等）时，咨询专业的营养师或医生。</p>
+
+    <h2>五、联系我们</h2>
+    <p>如果您对本网站有任何疑问、建议或反馈，欢迎通过以下方式联系我们：</p>
+    <ul>
+      <li>邮箱：support@foodnutrition-search.com</li>
+      <li>我们非常感谢每一位用户的反馈，这将帮助我们不断改进服务</li>
+    </ul>
+
+    <h2>六、隐私承诺</h2>
+    <p>我们尊重并保护所有使用本网站用户的个人隐私。我们仅收集必要的技术数据用于网站维护和安全保障，不会收集任何可识别您身份的个人信息。如需了解更多详情，请查阅我们的<a href="privacy.html" style="color: var(--primary); font-weight: 600;">隐私政策</a>。</p>
+
+    <div class="footer-links">
+      <a href="index.html">返回首页</a>
+      ·
+      <a href="privacy.html">隐私政策</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>
