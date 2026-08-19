@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食品分类汇总 - 按类别浏览各类食品营养成分</title>
+<meta name="description" content="按水果、蔬菜、肉类、水产、蛋奶、谷物、豆类、坚果、饮料、零食等分类浏览食品营养成分信息。">
+<meta name="keywords" content="食品分类,水果营养,蔬菜营养,肉类营养,谷物营养,豆类营养">
+<link rel="canonical" href="https://greenm666.github.io/greenhome/categories.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="食品分类汇总">
+<meta property="og:description" content="按类别浏览各类食品营养成分信息">
+<meta property="og:url" content="https://greenm666.github.io/greenhome/categories.html">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "食品分类汇总",
+  "description": "按类别浏览各类食品营养成分信息",
+  "url": "https://greenm666.github.io/greenhome/categories.html",
+  "inLanguage": "zh-CN"
+}
+</script>
+
+<link rel="stylesheet" href="styles.css">
+<style>
+  .content-page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .categories-header {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 30px 40px;
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+  }
+  .categories-header h1 {
+    font-size: 2rem;
+    color: var(--primary-dark);
+    margin-bottom: 12px;
+  }
+  .categories-header p {
+    color: var(--text-light);
+    font-size: 1rem;
+  }
+  .category-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .category-nav a {
+    padding: 8px 20px;
+    background: #e8f5e9;
+    color: var(--primary);
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+  }
+  .category-nav a:hover {
+    background: var(--primary);
+    color: white;
+  }
+  .category-section {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+  }
+  .category-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--bg);
+  }
+  .category-icon {
+    font-size: 2rem;
+  }
+  .category-title h2 {
+    font-size: 1.4rem;
+    color: var(--primary-dark);
+  }
+  .category-title .count {
+    margin-left: auto;
+    background: var(--primary);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+  }
+  .food-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  .food-item {
+    background: var(--bg);
+    border-radius: 12px;
+    padding: 16px;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .food-item:hover {
+    background: #e8f5e9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  .food-item-name {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+  .food-item-cal {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  .food-item-unit {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+  .food-item-macros {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    font-size: 0.8rem;
+    color: var(--text-light);
+  }
+  @media (max-width: 768px) {
+    .categories-header, .category-section {
+      padding: 20px;
+    }
+    .categories-header h1 {
+      font-size: 1.5rem;
+    }
+    .food-grid {
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    }
+  }
+</style>
+</head>
+<body>
+<div class="content-page">
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">🥗</span>
+        <span>食品营养搜索</span>
+      </a>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">首页</a></li>
+        <li><a href="categories.html" class="nav-link active">食品分类</a></li>
+        <li><a href="health.html" class="nav-link">健康饮食</a></li>
+        <li><a href="nutrition-guide.html" class="nav-link">营养指南</a></li>
+        <li><a href="about.html" class="nav-link">关于我们</a></li>
+        <li><a href="privacy.html" class="nav-link">隐私政策</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Ad Slot -->
+  <div class="ad-slot ad-banner ad-top">
+    <span class="ad-label">广告 AD</span>
+    <p>广告位</p>
+  </div>
+
+  <!-- Header -->
+  <div class="categories-header">
+    <h1>食品分类汇总</h1>
+    <p>浏览各类食品的营养成分，科学选择食物，打造健康饮食。</p>
+    <div class="category-nav" id="categoryNav"></div>
+  </div>
+
+  <!-- Categories Container -->
+  <div id="categoriesContainer"></div>
+
+  <!-- Ad Slot Middle -->
+  <div class="ad-slot ad-banner" style="margin: 30px 0;">
+    <span class="ad-label">广告 AD</span>
+    <p>内容中间广告位</p>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-bottom">
+      <p>&copy; 2024 食品营养搜索引擎 | <a href="index.html">首页</a> | <a href="about.html">关于我们</a> | <a href="privacy.html">隐私政策</a></p>
+    </div>
+  </footer>
+</div>
+
+<script src="data.js"></script>
+<script>
+  const categoryConfig = {
+    "水果": { icon: "🍎", description: "富含维生素、矿物质和膳食纤维" },
+    "蔬菜": { icon: "🥬", description: "低热量高营养，维生素和矿物质的重要来源" },
+    "肉类": { icon: "🥩", description: "优质蛋白质、铁和B族维生素的良好来源" },
+    "水产": { icon: "🐟", description: "富含Omega-3脂肪酸和优质蛋白质" },
+    "蛋奶": { icon: "🥚", description: "钙、蛋白质和多种营养素的重要来源" },
+    "谷物": { icon: "🍚", description: "碳水化合物的主要来源，提供能量" },
+    "豆类": { icon: "🫘", description: "植物蛋白之王，富含膳食纤维" },
+    "坚果": { icon: "🥜", description: "健康脂肪、维生素E和矿物质的来源" },
+    "饮料": { icon: "🥤", description: "注意选择低糖分、高营养的饮品" },
+    "零食": { icon: "🍪", description: "高热量食品，建议适量食用" }
+  };
+
+  const navContainer = document.getElementById('categoryNav');
+  Object.keys(categoryConfig).forEach(cat => {
+    const link = document.createElement('a');
+    link.href = '#' + cat;
+    link.textContent = categoryConfig[cat].icon + ' ' + cat;
+    navContainer.appendChild(link);
+  });
+
+  const categoriesMap = {};
+  foodDatabase.forEach(food => {
+    if (!categoriesMap[food.category]) {
+      categoriesMap[food.category] = [];
+    }
+    categoriesMap[food.category].push(food);
+  });
+
+  const container = document.getElementById('categoriesContainer');
+  Object.keys(categoryConfig).forEach(category => {
+    const foods = categoriesMap[category] || [];
+    const config = categoryConfig[category];
+    
+    const section = document.createElement('section');
+    section.className = 'category-section';
+    section.id = category;
+    
+    section.innerHTML = `
+      <div class="category-title">
+        <span class="category-icon">${config.icon}</span>
+        <h2>${category}</h2>
+        <span class="count">${foods.length} 种食品</span>
+      </div>
+      <p style="color: var(--text-light); margin-bottom: 20px;">${config.description}</p>
+      <div class="food-grid">
+        ${foods.map(food => `
+          <div class="food-item" onclick="window.location.href='index.html?search=${encodeURIComponent(food.name)}'">
+            <div class="food-item-name">${food.name}</div>
+            <div>
+              <span class="food-item-cal">${food.calories}</span>
+              <span class="food-item-unit"> 千卡/100g</span>
+            </div>
+            <div class="food-item-macros">
+              <span>蛋白${food.protein}g</span>
+              <span>脂肪${food.fat}g</span>
+              <span>碳水${food.carbs}g</span>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    
+    container.appendChild(section);
+  });
+</script>
+</body>
+</html>

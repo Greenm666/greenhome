@@ -1,9 +1,45 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>食品营养搜索引擎</title>
+<title>食品营养搜索引擎 - 查询食物热量、蛋白质、维生素等营养成分</title>
+<meta name="description" content="免费查询100+种常见食品的营养成分，包括热量、蛋白质、脂肪、碳水化合物、维生素、矿物质等。科学饮食，健康生活，从了解食物开始。">
+<meta name="keywords" content="食品营养,食物热量查询,营养成分表,蛋白质,维生素,健康饮食,卡路里,营养搜索">
+<meta name="author" content="食品营养搜索引擎">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://greenm666.github.io/greenhome/">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://greenm666.github.io/greenhome/">
+<meta property="og:title" content="食品营养搜索引擎 - 查询食物营养成分">
+<meta property="og:description" content="免费查询100+种常见食品的营养成分，包括热量、蛋白质、脂肪、碳水化合物、维生素、矿物质等。">
+<meta property="og:image" content="https://greenm666.github.io/greenhome/og-image.jpg">
+<meta property="og:site_name" content="食品营养搜索引擎">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="食品营养搜索引擎">
+<meta name="twitter:description" content="免费查询食品营养成分，科学饮食，健康生活">
+
+<!-- Structured Data: WebSite -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "食品营养搜索引擎",
+  "url": "https://greenm666.github.io/greenhome/",
+  "description": "免费查询食品营养成分",
+  "inLanguage": "zh-CN",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://greenm666.github.io/greenhome/index.html?search={query}",
+    "query-input": "required name=query"
+  }
+}
+</script>
+
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -49,19 +85,76 @@
     <span id="resultCount"></span>
   </section>
 
-  <main class="results" id="results"></main>
+  <div class="main-content">
+    <main class="results" id="results"></main>
+    
+    <aside class="sidebar">
+      <!-- Sidebar Ad -->
+      <div class="ad-slot ad-sidebar">
+        <span class="ad-label">广告 AD</span>
+        <p>侧边栏广告位</p>
+      </div>
+      
+      <div class="sidebar-card">
+        <h3>热门营养素</h3>
+        <ul class="sidebar-list">
+          <li><a href="nutrition-guide.html#protein">蛋白质的作用</a></li>
+          <li><a href="nutrition-guide.html#vitamins">维生素指南</a></li>
+          <li><a href="nutrition-guide.html#minerals">矿物质来源</a></li>
+          <li><a href="health.html#weight-loss">减脂饮食建议</a></li>
+          <li><a href="health.html#muscle">增肌饮食方案</a></li>
+        </ul>
+      </div>
+      
+      <div class="sidebar-card">
+        <h3>快速链接</h3>
+        <ul class="sidebar-list">
+          <li><a href="categories.html">食品分类浏览</a></li>
+          <li><a href="health.html">健康饮食指南</a></li>
+          <li><a href="nutrition-guide.html">营养成分详解</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Ad Slot: Middle -->
+  <div class="ad-slot ad-banner ad-middle">
+    <span class="ad-label">广告 AD</span>
+    <p>内容中间广告位</p>
+  </div>
 
   <div class="detail-modal" id="detailModal">
     <div class="modal-content" id="modalContent"></div>
   </div>
 
   <footer class="footer">
-    <p>数据仅供参考，实际营养成分可能因品牌、产地、烹饪方式等因素有所不同</p>
-    <p style="margin-top: 10px;">
-      <a href="about.html" style="color: var(--primary); text-decoration: none; margin: 0 8px;">关于我们</a>
-      <span style="color: var(--text-muted);">|</span>
-      <a href="privacy.html" style="color: var(--primary); text-decoration: none; margin: 0 8px;">隐私政策</a>
-    </p>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>关于网站</h4>
+        <p>食品营养搜索引擎致力于帮助用户科学饮食、健康生活</p>
+      </div>
+      <div class="footer-section">
+        <h4>快速导航</h4>
+        <ul>
+          <li><a href="index.html">首页</a></li>
+          <li><a href="categories.html">食品分类</a></li>
+          <li><a href="health.html">健康饮食</a></li>
+          <li><a href="nutrition-guide.html">营养指南</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>帮助与支持</h4>
+        <ul>
+          <li><a href="about.html">关于我们</a></li>
+          <li><a href="privacy.html">隐私政策</a></li>
+          <li><a href="mailto:gwm12345@qq.com">联系我们</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>数据仅供参考，实际营养成分可能因品牌、产地、烹饪方式等因素有所不同</p>
+      <p>&copy; 2024 食品营养搜索引擎 | <a href="about.html">关于我们</a> | <a href="privacy.html">隐私政策</a></p>
+    </div>
   </footer>
 </div>
 
