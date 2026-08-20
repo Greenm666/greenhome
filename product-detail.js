@@ -107,34 +107,17 @@
         }
       }
     },
-    supplement: {
-      label: '营养补剂',
+    seasoning: {
+      label: '低卡调味',
       categories: {
-        'vitamin': {
-          name: '维生素类',
+        'sauce': {
+          name: '健康酱料',
           items: [
-            { id: 'supplement-vitamin-1', brand: '汤臣倍健', name: '维生素C泡腾片', desc: '每片含维C 1000mg，增强免疫力，橙子口味，每日一片。', price: '¥78.0', unit: '/10片*3瓶', image: '💊', tags: ['高维C', '增强免疫', '便携'], tagColor: ['orange','green','blue'], badge: 'hot', badgeText: '热销', nutrition: { '能量': '2 kcal', '蛋白质': '0g', '脂肪': '0g', '碳水化合物': '0.5g', '膳食纤维': '0g' }, scenarios: ['增强免疫', '感冒预防', '便携补充'], warn: ['每日不超过1片', '避免长期大剂量服用', '饭后服用吸收更佳'] },
-            { id: 'supplement-vitamin-2', brand: 'D-Force', name: '维生素D3软胶囊', desc: '每粒含维D3 400IU，促进钙吸收，适合室内工作者和北方人群。', price: '¥58.0', unit: '/200粒', image: '☀️', tags: ['高维D', '促钙吸收', '健骨'], tagColor: ['yellow','purple','blue'], badge: 'recommend', badgeText: '推荐', nutrition: { 'energy': '10 kcal', '蛋白质': '0g', '脂肪': '1g', '碳水化合物': '0g', '膳食纤维': '0g' }, scenarios: ['促钙吸收', '健骨', '室内工作者'], warn: ['每日400IU即可', '避免长期大剂量', '搭配钙片效果更佳'] },
-            { id: 'supplement-vitamin-3', brand: '善存', name: '复合维生素B族', desc: '8种B族维生素全补充，能量代谢更顺畅，缓解疲劳提升精力。', price: '¥88.0', unit: '/100片', image: '🍋', tags: ['高B族', '促代谢', '抗疲劳'], tagColor: ['yellow','orange','blue'], nutrition: { 'energy': '5 kcal', '蛋白质': '0g', '脂肪': '0g', '碳水化合物': '1g', '膳食纤维': '0g' }, scenarios: ['抗疲劳', '能量代谢', 'B族补充'], warn: ['每日1片即可', '避免与其他B族重复补充', '饭后服用'] },
-            { id: 'supplement-vitamin-4', brand: 'Bio Island', name: '儿童维生素软糖', desc: '澳洲进口，多种维生素+矿物质，水果口味，小孩爱吃不抗拒。', price: '¥68.0', unit: '/60粒', image: '🧸', tags: ['多种维生素', '儿童友好', '好吃'], tagColor: ['orange','blue','pink'], nutrition: { 'energy': '15 kcal', '蛋白质': '0g', '脂肪': '0g', '碳水化合物': '3g', '膳食纤维': '0g' }, scenarios: ['儿童补充', '挑食偏食', '日常保健'], warn: ['每日不超过2粒', '注意添加糖含量', '选择大品牌儿童款'] }
-          ]
-        },
-        'mineral': {
-          name: '矿物质类',
-          items: [
-            { id: 'supplement-mineral-1', brand: '钙尔奇', name: '碳酸钙D3片', desc: '每片含钙600mg+维D3，中老年人必备，预防骨质疏松。', price: '¥128.0', unit: '/60片', image: '🦴', tags: ['高钙', '健骨', '中老年人'], tagColor: ['blue','green','orange'], badge: 'hot', badgeText: '热销', nutrition: { 'energy': '0 kcal', '蛋白质': '0g', '脂肪': '0g', '碳水化合物': '0g', '膳食纤维': '0g' }, scenarios: ['骨质疏松', '中老年', '补钙'], warn: ['每日1片即可', '避免与高铁同服', '配合日晒促进吸收'] },
-            { id: 'supplement-mineral-2', brand: '铁元', name: '德国有机补铁剂', desc: '有机铁源+维C，吸收率高不刺激胃，适合女性和贫血人群。', price: '¥168.0', unit: '/500ml', image: '🩸', tags: ['有机铁', '补血', '女性友好'], tagColor: ['red','green','pink'], badge: 'recommend', badgeText: '推荐', nutrition: { 'energy': '10 kcal', '蛋白质': '0g', '脂肪': '0g', '碳水化合物': '2g', '膳食纤维': '0g' }, scenarios: ['贫血', '女性补铁', '孕期补铁'], warn: ['每日5-10ml', '避免与茶、咖啡同服', '搭配维C促进吸收'] },
-            { id: 'supplement-mineral-3', brand: 'Mg-Plus', name: '柠檬酸镁胶囊', desc: '柠檬酸镁比氧化镁吸收率高3倍，缓解肌肉痉挛，运动人群必备。', price: '¥98.0', unit: '/120粒', image: '⚡', tags: ['高镁', '缓解疲劳', '运动'], tagColor: ['blue','orange','green'], nutrition: { 'energy': '5 kcal', '蛋白质': '0g', '脂肪': '0g', '碳水化合物': '1g', '膳食纤维': '0g' }, scenarios: ['运动人群', '缓解肌肉痉挛', '抗疲劳'], warn: ['每日1-2粒', '肾功能不全者慎用', '睡前服用助眠'] },
-            { id: 'supplement-mineral-4', brand: '锌宝贝', name: '葡萄糖酸锌口服液', desc: '锌+维B1+维C，改善食欲促进发育，挑食偏食儿童的好伙伴。', price: '¥58.0', unit: '/10ml*20支', image: '🧴', tags: ['高锌', '改善食欲', '儿童'], tagColor: ['purple','green','blue'], nutrition: { 'energy': '8 kcal', '蛋白质': '0g', '脂肪': '0g', '碳水化合物': '2g', '膳食纤维': '0g' }, scenarios: ['儿童挑食', '改善食欲', '生长发育'], warn: ['每日1支即可', '避免长期服用', '饭后服用吸收更佳'] }
-          ]
-        },
-        'protein': {
-          name: '蛋白类',
-          items: [
-            { id: 'supplement-protein-1', brand: 'WonderLab', name: '乳清蛋白粉', desc: '每100g含蛋白质80g，吸收速度快，健身增肌首选，原味/巧克力味。', price: '¥299.0', unit: '/450g', image: '🥛', tags: ['高蛋白', '低脂', '健身增肌'], tagColor: ['blue','green','red'], badge: 'hot', badgeText: '热销', nutrition: { 'energy': '380 kcal', '蛋白质': '80g', '脂肪': '3g', '碳水化合物': '5g', '膳食纤维': '0g' }, scenarios: ['健身增肌', '术后恢复', '补充蛋白'], warn: ['每日1-2勺', '用温水或冷牛奶冲调', '训练后30分钟内服用'] },
-            { id: 'supplement-protein-2', brand: '姿美堂', name: '胶原蛋白粉', desc: '分子量3000道尔顿，皮肤好吸收，美容养颜提升皮肤弹性。', price: '¥199.0', unit: '/60袋', image: '💧', tags: ['高蛋白', '美容', '女性友好'], tagColor: ['blue','pink','pink'], badge: 'recommend', badgeText: '推荐', nutrition: { 'energy': '370 kcal', '蛋白质': '90g', '脂肪': '0g', '碳水化合物': '0g', '膳食纤维': '0g' }, scenarios: ['美容养颜', '女性保健', '皮肤改善'], warn: ['每日1袋即可', '选择小分子胶原蛋白', '搭配维E效果更佳'] },
-            { id: 'supplement-protein-3', brand: '素之源', name: '豌豆蛋白粉', desc: '非转基因豌豆蛋白，植物基来源，乳糖不耐者和素食者福音。', price: '¥159.0', unit: '/500g', image: '🫛', tags: ['植物蛋白', '无乳糖', '素食'], tagColor: ['green','green','blue'], nutrition: { 'energy': '350 kcal', '蛋白质': '75g', '脂肪': '5g', '碳水化合物': '15g', '膳食纤维': '5g' }, scenarios: ['素食者', '乳糖不耐', '环保饮食'], warn: ['每日1-2勺', '选择非转基因豌豆', '搭配谷物蛋白更全面'] },
-            { id: 'supplement-protein-4', brand: '肌肉科技', name: '酪蛋白缓释蛋白粉', desc: '慢吸收蛋白，夜间持续供给氨基酸，适合睡前饮用。', price: '¥399.0', unit: '/907g', image: '🥤', tags: ['高蛋白', '缓释', '健身'], tagColor: ['blue','purple','green'], nutrition: { 'energy': '390 kcal', '蛋白质': '78g', '脂肪': '3g', '碳水化合物': '8g', '膳食纤维': '0g' }, scenarios: ['睡前饮用', '健身增肌', '夜间修复'], warn: ['睡前1小时服用', '用牛奶冲调吸收更好', '避免空腹服用'] }
+            { id: 'seasoning-sauce-1', brand: '轻食记', name: '0脂油醋汁', desc: '0脂肪、低钠配方，拌沙拉或凉拌菜的完美搭档，控卡期必备。', price: '¥15.9', unit: '/250ml', image: '🥗', tags: ['控卡', '轻食搭档'], tagColor: ['green','blue'], link: 'https://example.com/affiliate/oil-vinegar' },
+            { id: 'seasoning-sauce-2', brand: '无糖屋', name: '无糖番茄酱', desc: '用代糖替代白砂糖，保留番茄风味，搭配鸡胸肉或全麦面包都合适。', price: '¥12.8', unit: '/300g', image: '🍅', tags: ['低GI', '儿童友好'], tagColor: ['green','pink'], link: 'https://example.com/affiliate/tomato-sauce' },
+            { id: 'seasoning-sauce-3', brand: '老字号', name: '薄盐生抽', desc: '钠含量比普通生抽低30%以上，日常炒菜或蘸料都适合。', price: '¥18.5', unit: '/500ml', image: '🫙', tags: ['减盐', '家庭必备'], tagColor: ['blue','green'], link: 'https://example.com/affiliate/light-soy-sauce' },
+            { id: 'seasoning-sauce-4', brand: '辣妹子', name: '魔芋辣酱', desc: '以魔芋为基底，辣味足但热量极低，重口味人群解馋利器。', price: '¥16.9', unit: '/200g', image: '🌶️', tags: ['高蛋白', '饱腹感强'], tagColor: ['blue','purple'], link: 'https://example.com/affiliate/konjac-chili' },
+            { id: 'seasoning-sauce-5', brand: '天然香料', name: '柠檬胡椒盐', desc: '天然柠檬粉+黑胡椒+海盐混合，无添加糖和味精，煎鱼或烤蔬菜首选。', price: '¥14.5', unit: '/150g', image: '🍋', tags: ['天然香料', '无添加'], tagColor: ['orange','green'], link: 'https://example.com/affiliate/lemon-pepper' }
           ]
         }
       }

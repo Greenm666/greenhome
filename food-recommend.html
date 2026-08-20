@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>知食分子 - 健康食品推荐 | 食品营养搜索</title>
-<meta name="description" content="知食分子为您推荐安心主食、解馋零食、轻盈饮品、营养补剂，每一款都经过科学筛选，让健康饮食变得简单。">
-<meta name="keywords" content="知食分子,健康食品,健康零食,减脂饮品,营养补剂,食品推荐">
+<meta name="description" content="知食分子为您推荐安心主食、解馋零食、轻盈饮品、低卡调味，每一款都经过科学筛选，让健康饮食变得简单。">
+<meta name="keywords" content="知食分子,健康食品,健康零食,减脂饮品,低卡调味,食品推荐">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -38,7 +38,7 @@
     <button class="recommend-tab active" data-tab="staple">安心主食</button>
     <button class="recommend-tab" data-tab="snack">解馋零食</button>
     <button class="recommend-tab" data-tab="drink">轻盈饮品</button>
-    <button class="recommend-tab" data-tab="supplement">营养补剂</button>
+    <button class="recommend-tab" data-tab="seasoning">低卡调味</button>
   </div>
 
   <div class="recommend-body">
@@ -145,22 +145,15 @@
         ]}
       ]
     },
-    supplement: {
-      label: '营养补剂',
+    seasoning: {
+      label: '低卡调味',
       categories: [
-        { id: 'vitamin', name: '维生素类', products: [
-          { name: '维C泡腾片', image: '💊', desc: '每日一片，增强免疫力少感冒', tags: ['高维C', '增强免疫'], button: '查看推荐理由' },
-          { name: '维D软胶囊', image: '☀️', desc: '促进钙吸收，骨骼健康少不了', tags: ['高维D', '促钙吸收'], button: '查看推荐理由' },
-          { name: '复合维生素B', image: '🍋', desc: 'B族全补充，能量代谢更顺畅', tags: ['高B族', '促代谢'], button: '查看推荐理由' }
-        ]},
-        { id: 'mineral', name: '矿物质类', products: [
-          { name: '钙片', image: '🦴', desc: '中老年人必备，骨骼不疏松', tags: ['高钙', '健骨'], button: '查看推荐理由' },
-          { name: '补铁片', image: '🩸', desc: '搭配维C吸收更好，远离贫血', tags: ['含铁', '补血'], button: '查看推荐理由' },
-          { name: '镁片', image: '⚡', desc: '缓解肌肉疲劳，运动人群常备', tags: ['含镁', '缓解疲劳'], button: '查看推荐理由' }
-        ]},
-        { id: 'protein', name: '蛋白类', products: [
-          { name: '乳清蛋白粉', image: '🥛', desc: '健身增肌首选，吸收快纯度高', tags: ['高蛋白', '低脂'], button: '查看推荐理由' },
-          { name: '胶原蛋白粉', image: '💧', desc: '美容养颜，皮肤弹性靠它', tags: ['高蛋白', '美容'], button: '查看推荐理由' }
+        { id: 'sauce', name: '健康酱料', products: [
+          { name: '0脂油醋汁', image: '🥗', price: '¥15.9', desc: '0脂肪、低钠配方，拌沙拉或凉拌菜的完美搭档，控卡期必备。', tags: ['控卡', '轻食搭档'], link: 'https://example.com/affiliate/oil-vinegar' },
+          { name: '无糖番茄酱', image: '🍅', price: '¥12.8', desc: '用代糖替代白砂糖，保留番茄风味，搭配鸡胸肉或全麦面包都合适。', tags: ['低GI', '儿童友好'], link: 'https://example.com/affiliate/tomato-sauce' },
+          { name: '薄盐生抽', image: '🫙', price: '¥18.5', desc: '钠含量比普通生抽低30%以上，日常炒菜或蘸料都适合。', tags: ['减盐', '家庭必备'], link: 'https://example.com/affiliate/light-soy-sauce' },
+          { name: '魔芋辣酱', image: '🌶️', price: '¥16.9', desc: '以魔芋为基底，辣味足但热量极低，重口味人群解馋利器。', tags: ['高蛋白', '饱腹感强'], link: 'https://example.com/affiliate/konjac-chili' },
+          { name: '柠檬胡椒盐', image: '🍋', price: '¥14.5', desc: '天然柠檬粉+黑胡椒+海盐混合，无添加糖和味精，煎鱼或烤蔬菜首选。', tags: ['天然香料', '无添加'], link: 'https://example.com/affiliate/lemon-pepper' }
         ]}
       ]}
   };
@@ -217,9 +210,8 @@
   }
 
   function renderProductCard(p, tabKey, catId) {
-    const link = 'product-list.html?tab=' + tabKey + '&category=' + catId;
     return `
-      <div class="product-card">
+      <a href="${p.link}" class="product-card" style="text-decoration:none;color:inherit;">
         <div class="product-image">
           <span class="product-emoji">${p.image}</span>
         </div>
@@ -229,9 +221,12 @@
           <div class="product-tags">
             ${p.tags.map(t => `<span class="product-tag">${t}</span>`).join('')}
           </div>
-          <a href="${link}" class="product-btn" style="display:flex;align-items:center;justify-content:center;text-decoration:none;">查看该类目 &rarr;</a>
+          <div class="product-price-row">
+            <span class="product-price">${p.price}</span>
+            <span class="product-btn-text">去看看 &rarr;</span>
+          </div>
         </div>
-      </div>
+      </a>
     `;
   }
 

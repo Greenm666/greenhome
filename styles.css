@@ -1266,6 +1266,32 @@ body {
   box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
 }
 
+.product-price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px dashed #e0e0e0;
+}
+
+.product-price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #e65100;
+}
+
+.product-btn-text {
+  font-size: 0.85rem;
+  color: var(--primary);
+  font-weight: 600;
+  transition: transform 0.2s ease;
+}
+
+.product-card:hover .product-btn-text {
+  transform: translateX(4px);
+}
+
 /* Empty state for recommend */
 .product-area .empty-state {
   grid-column: 1/-1;

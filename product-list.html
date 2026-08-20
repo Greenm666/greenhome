@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>子品类详情 - 知食分子 | 食品营养搜索</title>
 <meta name="description" content="知食分子子品类详情页，精选同类优质食品，科学对比，理性选择。">
+<meta name="keywords" content="知食分子,健康食品,低卡调味,食品推荐">
 <link rel="stylesheet" href="styles.css">
 <style>
   .detail-page {
@@ -557,37 +558,18 @@
         }
       }
     },
-    supplement: {
-      label: '营养补剂',
+    seasoning: {
+      label: '低卡调味',
       categories: {
-        'vitamin': {
-          name: '维生素类',
-          desc: '日常饮食难以获取的微量营养素补充，增强免疫力，弥补膳食不足。',
+        'sauce': {
+          name: '健康酱料',
+          desc: '低卡、减盐、无添加的健康调味选择，让家常菜也能吃得健康又美味。',
           items: [
-            { brand: '汤臣倍健', name: '维生素C泡腾片', desc: '每片含维C 1000mg，增强免疫力，橙子口味，每日一片。', price: '¥78.0', unit: '/10片*3瓶', image: '💊', tags: ['高维C', '增强免疫', '便携'], tagColor: ['orange','green','blue'], badge: 'hot', badgeText: '热销' },
-            { brand: 'D-Force', name: '维生素D3软胶囊', desc: '每粒含维D3 400IU，促进钙吸收，适合室内工作者和北方人群。', price: '¥58.0', unit: '/200粒', image: '☀️', tags: ['高维D', '促钙吸收', '健骨'], tagColor: ['yellow','purple','blue'], badge: 'recommend', badgeText: '推荐' },
-            { brand: '善存', name: '复合维生素B族', desc: '8种B族维生素全补充，能量代谢更顺畅，缓解疲劳提升精力。', price: '¥88.0', unit: '/100片', image: '🍋', tags: ['高B族', '促代谢', '抗疲劳'], tagColor: ['yellow','orange','blue'] },
-            { brand: 'Bio Island', name: '儿童维生素软糖', desc: '澳洲进口，多种维生素+矿物质，水果口味，小孩爱吃不抗拒。', price: '¥68.0', unit: '/60粒', image: '🧸', tags: ['多种维生素', '儿童友好', '好吃'], tagColor: ['orange','blue','pink'] }
-          ]
-        },
-        'mineral': {
-          name: '矿物质类',
-          desc: '钙、铁、锌、镁等矿物质补充剂，针对特定人群需求，科学配比。',
-          items: [
-            { brand: '钙尔奇', name: '碳酸钙D3片', desc: '每片含钙600mg+维D3，中老年人必备，预防骨质疏松。', price: '¥128.0', unit: '/60片', image: '🦴', tags: ['高钙', '健骨', '中老年人'], tagColor: ['blue','green','orange'], badge: 'hot', badgeText: '热销' },
-            { brand: '铁元', name: '德国有机补铁剂', desc: '有机铁源+维C，吸收率高不刺激胃，适合女性和贫血人群。', price: '¥168.0', unit: '/500ml', image: '🩸', tags: ['有机铁', '补血', '女性友好'], tagColor: ['red','green','pink'], badge: 'recommend', badgeText: '推荐' },
-            { brand: 'Mg-Plus', name: '柠檬酸镁胶囊', desc: '柠檬酸镁比氧化镁吸收率高3倍，缓解肌肉痉挛，运动人群必备。', price: '¥98.0', unit: '/120粒', image: '⚡', tags: ['高镁', '缓解疲劳', '运动'], tagColor: ['blue','orange','green'] },
-            { brand: '锌宝贝', name: '葡萄糖酸锌口服液', desc: '锌+维B1+维C，改善食欲促进发育，挑食偏食儿童的好伙伴。', price: '¥58.0', unit: '/10ml*20支', image: '🧴', tags: ['高锌', '改善食欲', '儿童'], tagColor: ['purple','green','blue'] }
-          ]
-        },
-        'protein': {
-          name: '蛋白类',
-          desc: '优质蛋白补充剂，适合健身人群、素食者或术后恢复人群。',
-          items: [
-            { brand: 'WonderLab', name: '乳清蛋白粉', desc: '每100g含蛋白质80g，吸收速度快，健身增肌首选，原味/巧克力味。', price: '¥299.0', unit: '/450g', image: '🥛', tags: ['高蛋白', '低脂', '健身增肌'], tagColor: ['blue','green','red'], badge: 'hot', badgeText: '热销' },
-            { brand: '姿美堂', name: '胶原蛋白粉', desc: '分子量3000道尔顿，皮肤好吸收，美容养颜提升皮肤弹性。', price: '¥199.0', unit: '/60袋', image: '💧', tags: ['高蛋白', '美容', '女性友好'], tagColor: ['blue','pink','pink'], badge: 'recommend', badgeText: '推荐' },
-            { brand: '素之源', name: '豌豆蛋白粉', desc: '非转基因豌豆蛋白，植物基来源，乳糖不耐者和素食者福音。', price: '¥159.0', unit: '/500g', image: '🫛', tags: ['植物蛋白', '无乳糖', '素食'], tagColor: ['green','green','blue'] },
-            { brand: '肌肉科技', name: '酪蛋白缓释蛋白粉', desc: '慢吸收蛋白，夜间持续供给氨基酸，适合睡前饮用。', price: '¥399.0', unit: '/907g', image: '🥤', tags: ['高蛋白', '缓释', '健身'], tagColor: ['blue','purple','green'] }
+            { brand: '轻食记', name: '0脂油醋汁', desc: '0脂肪、低钠配方，拌沙拉或凉拌菜的完美搭档，控卡期必备。', price: '¥15.9', unit: '/250ml', image: '🥗', tags: ['控卡', '轻食搭档'], tagColor: ['green','blue'], link: 'https://example.com/affiliate/oil-vinegar' },
+            { brand: '无糖屋', name: '无糖番茄酱', desc: '用代糖替代白砂糖，保留番茄风味，搭配鸡胸肉或全麦面包都合适。', price: '¥12.8', unit: '/300g', image: '🍅', tags: ['低GI', '儿童友好'], tagColor: ['green','pink'], link: 'https://example.com/affiliate/tomato-sauce' },
+            { brand: '老字号', name: '薄盐生抽', desc: '钠含量比普通生抽低30%以上，日常炒菜或蘸料都适合。', price: '¥18.5', unit: '/500ml', image: '🫙', tags: ['减盐', '家庭必备'], tagColor: ['blue','green'], link: 'https://example.com/affiliate/light-soy-sauce' },
+            { brand: '辣妹子', name: '魔芋辣酱', desc: '以魔芋为基底，辣味足但热量极低，重口味人群解馋利器。', price: '¥16.9', unit: '/200g', image: '🌶️', tags: ['高蛋白', '饱腹感强'], tagColor: ['blue','purple'], link: 'https://example.com/affiliate/konjac-chili' },
+            { brand: '天然香料', name: '柠檬胡椒盐', desc: '天然柠檬粉+黑胡椒+海盐混合，无添加糖和味精，煎鱼或烤蔬菜首选。', price: '¥14.5', unit: '/150g', image: '🍋', tags: ['天然香料', '无添加'], tagColor: ['orange','green'], link: 'https://example.com/affiliate/lemon-pepper' }
           ]
         }
       }
@@ -619,7 +601,7 @@
     return '<span class="detail-tag ' + (colorMap[colorClass] || 'tag-green') + '">' + tag + '</span>';
   }
 
-  function renderProductCard(item) {
+  function renderProductCard(item, tabKey, categoryKey) {
     var badgeHtml = '';
     if (item.badge && item.badgeText) {
       badgeHtml = '<div class="detail-card-badge ' + item.badge + '">' + item.badgeText + '</div>';
@@ -629,8 +611,18 @@
       return renderTag(t, item.tagColor ? item.tagColor[i] : 'green');
     }).join('');
 
+    var targetLink;
+    var buttonText;
+    if (item.link) {
+      targetLink = item.link;
+      buttonText = '去看看';
+    } else {
+      targetLink = 'product-detail.html?tab=' + tabKey + '&category=' + categoryKey + '&id=' + encodeURIComponent(item.name);
+      buttonText = '查看详情';
+    }
+
     return `
-      <div class="detail-card">
+      <div class="detail-card" data-link="${targetLink}" style="cursor:pointer;" onclick="window.location.href='${targetLink}'">
         <div class="detail-card-image">
           ${badgeHtml}
           <span class="detail-emoji">${item.image}</span>
@@ -642,7 +634,7 @@
           <div class="detail-card-tags">${tagsHtml}</div>
           <div class="detail-card-price">
             <div class="detail-price">${item.price}<span class="unit">${item.unit}</span></div>
-            <button class="detail-link-btn" onclick="alert('跳转至购买页面')">查看详情</button>
+            <button class="detail-link-btn" onclick="event.stopPropagation(); window.location.href='${targetLink}'">${buttonText} &rarr;</button>
           </div>
         </div>
       </div>
@@ -702,7 +694,7 @@
 
     document.getElementById('detailTitle').textContent = cat.name + ' · 精选推荐';
 
-    document.getElementById('detailProductGrid').innerHTML = items.map(renderProductCard).join('');
+    document.getElementById('detailProductGrid').innerHTML = items.map(function(item){return renderProductCard(item, tabKey, categoryKey);}).join('');
 
     var relatedKeys = Object.keys(categories).filter(function(k) { return k !== categoryKey; });
     if (relatedKeys.length > 0) {
