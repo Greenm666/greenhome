@@ -330,6 +330,41 @@
     };
   }
 
+};
+
+  // Daily Soul Question Rotation
+  const soulQuestions = [
+    "今天喝够水了吗？",
+    "久坐一小时了，站起来伸个懒腰吧！",
+    "今天的绿叶菜吃够了吗？",
+    "晚上准备几点睡？",
+    "刚才那顿饭，是不是吃太快了？",
+    "你有多久没吃新鲜水果了？",
+    "今天有没有给自己一点放松的时间？",
+    "睡前是不是又忍不住刷手机了？",
+    "今天的蛋白质摄入达标了吗？",
+    "出门前，别忘了带上你的水杯哦~"
+  ];
+
+  function initSoulCard() {
+    const soulBody = document.getElementById('soulCardBody');
+    if (!soulBody) return;
+
+    const today = new Date();
+    const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+    const index = dayOfYear % soulQuestions.length;
+
+    soulBody.style.opacity = '0';
+    soulBody.style.transition = 'opacity 0.5s ease';
+
+    setTimeout(() => {
+      soulBody.textContent = soulQuestions[index];
+      soulBody.style.opacity = '1';
+    }, 300);
+  }
+
+  initSoulCard();
+
   // Initialize
   renderResults(searchFood('', 'all'));
 })();
