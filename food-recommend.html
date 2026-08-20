@@ -166,7 +166,10 @@
 
   function renderCategoryNav(tabKey) {
     const tab = recommendData[tabKey];
-    currentCategory = tab.categories[0].id;
+    const validCatIds = tab.categories.map(c => c.id);
+    if (!currentCategory || validCatIds.indexOf(currentCategory) === -1) {
+      currentCategory = tab.categories[0].id;
+    }
 
     categoryNav.innerHTML = `
       <div class="category-nav-title">${tab.label}</div>
@@ -210,8 +213,11 @@
   }
 
   function renderProductCard(p, tabKey, catId) {
+    var href = p.link || ('product-list.html?tab=' + tabKey + '&category=' + catId);
+    var priceHtml = p.price ? '<span class="product-price">' + p.price + '</span>' : '';
+    var btnText = p.link ? '去看看 →' : (p.button || '查看该类目 →');
     return `
-      <a href="${p.link}" class="product-card" style="text-decoration:none;color:inherit;">
+      <a href="${href}" class="product-card" style="text-decoration:none;color:inherit;">
         <div class="product-image">
           <span class="product-emoji">${p.image}</span>
         </div>
@@ -222,8 +228,8 @@
             ${p.tags.map(t => `<span class="product-tag">${t}</span>`).join('')}
           </div>
           <div class="product-price-row">
-            <span class="product-price">${p.price}</span>
-            <span class="product-btn-text">去看看 &rarr;</span>
+            ${priceHtml}
+            <span class="product-btn-text">${btnText}</span>
           </div>
         </div>
       </a>

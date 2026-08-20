@@ -633,7 +633,7 @@
           <p class="detail-card-desc">${item.desc}</p>
           <div class="detail-card-tags">${tagsHtml}</div>
           <div class="detail-card-price">
-            <div class="detail-price">${item.price}<span class="unit">${item.unit}</span></div>
+            <div class="detail-price">${item.price || ''}<span class="unit">${item.unit || ''}</span></div>
             <button class="detail-link-btn" onclick="event.stopPropagation(); window.location.href='${targetLink}'">${buttonText} &rarr;</button>
           </div>
         </div>
