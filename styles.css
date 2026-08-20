@@ -991,3 +991,413 @@ body {
     gap: 20px;
   }
 }
+
+/* ============ 知食分子 Page Styles ============ */
+
+.recommend-header {
+  text-align: center;
+  padding: 40px 20px 30px;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.recommend-header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.recommend-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+.recommend-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 30px;
+  padding: 8px;
+  background: var(--card-bg);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  flex-wrap: wrap;
+}
+
+.recommend-tab {
+  flex: 1;
+  min-width: 120px;
+  max-width: 200px;
+  padding: 14px 24px;
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.recommend-tab:hover {
+  color: var(--primary);
+  background: #f1f8e9;
+}
+
+.recommend-tab.active {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+}
+
+.recommend-body {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 24px;
+  align-items: start;
+  margin-bottom: 40px;
+}
+
+/* Category Nav (Left) */
+.category-nav {
+  background: var(--card-bg);
+  border-radius: 14px;
+  padding: 20px 16px;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 80px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+}
+
+.category-nav-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--bg);
+}
+
+.category-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.category-nav-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  width: 100%;
+}
+
+.category-nav-item:hover {
+  background: #f1f8e9;
+  color: var(--primary);
+}
+
+.category-nav-item.active {
+  background: linear-gradient(135deg, #e8f5e9 0%, #f0f9e8 100%);
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+
+.category-count {
+  font-size: 0.75rem;
+  background: var(--bg);
+  color: var(--text-muted);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.category-nav-item.active .category-count {
+  background: var(--primary);
+  color: white;
+}
+
+/* Product Area (Right) */
+.product-area {
+  min-height: 400px;
+}
+
+.product-area-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 0 4px;
+}
+
+.product-area-header h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+.product-count {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* Product Card */
+.product-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(46, 125, 50, 0.15);
+  border-color: var(--primary-light);
+}
+
+.product-image {
+  background: linear-gradient(135deg, #f1f8e9 0%, #fff8e1 100%);
+  padding: 32px 20px;
+  text-align: center;
+  position: relative;
+}
+
+.product-emoji {
+  font-size: 3.5rem;
+  display: inline-block;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.08));
+}
+
+.product-info {
+  padding: 18px 20px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.product-desc {
+  font-size: 0.88rem;
+  color: var(--text-light);
+  line-height: 1.6;
+  margin-bottom: 14px;
+  flex: 1;
+}
+
+.product-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.product-tag {
+  font-size: 0.72rem;
+  padding: 3px 10px;
+  background: linear-gradient(135deg, #e8f5e9 0%, #f0f9e8 100%);
+  color: #2e7d32;
+  border-radius: 10px;
+  font-weight: 600;
+  border: 1px solid #c5e1a5;
+}
+
+.product-tag:nth-child(2) {
+  background: linear-gradient(135deg, #fff3e0 0%, #fff8e1 100%);
+  color: #e65100;
+  border-color: #ffcc80;
+}
+
+.product-tag:nth-child(3) {
+  background: linear-gradient(135deg, #e3f2fd 0%, #e1f5fe 100%);
+  color: #1565c0;
+  border-color: #90caf9;
+}
+
+.product-tag:nth-child(4) {
+  background: linear-gradient(135deg, #f3e5f5 0%, #fce4ec 100%);
+  color: #6a1b9a;
+  border-color: #ce93d8;
+}
+
+.product-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.product-btn:hover {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+}
+
+/* Empty state for recommend */
+.product-area .empty-state {
+  grid-column: 1/-1;
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+}
+
+.product-area .empty-state .empty-icon {
+  font-size: 60px;
+  margin-bottom: 16px;
+}
+
+.product-area .empty-state h3 {
+  font-size: 1.2rem;
+  color: var(--text-light);
+  margin-bottom: 8px;
+}
+
+/* ============ Responsive for 知食分子 ============ */
+
+@media (max-width: 900px) {
+  .recommend-body {
+    grid-template-columns: 1fr;
+  }
+
+  .category-nav {
+    position: static;
+    max-height: none;
+    padding: 14px;
+    margin-bottom: 0;
+  }
+
+  .category-nav-title {
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+  }
+
+  .category-nav-list {
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 8px;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .category-nav-item {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+
+  .category-count {
+    display: none;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+  }
+
+  .product-emoji {
+    font-size: 2.8rem;
+  }
+
+  .product-name {
+    font-size: 1rem;
+  }
+
+  .product-desc {
+    font-size: 0.82rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .recommend-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .recommend-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .recommend-tab {
+    padding: 12px 14px;
+    font-size: 0.9rem;
+    min-width: 0;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .product-image {
+    padding: 24px 12px;
+  }
+
+  .product-emoji {
+    font-size: 2.4rem;
+  }
+
+  .product-info {
+    padding: 12px 14px 14px;
+  }
+
+  .product-name {
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+  }
+
+  .product-desc {
+    font-size: 0.78rem;
+    margin-bottom: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .product-tag {
+    font-size: 0.65rem;
+    padding: 2px 7px;
+  }
+
+  .product-btn {
+    padding: 10px;
+    font-size: 0.82rem;
+  }
+
+  .product-area-header h2 {
+    font-size: 1.1rem;
+  }
+}

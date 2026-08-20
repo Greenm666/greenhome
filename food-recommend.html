@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>知食分子 - 健康食品推荐 | 食品营养搜索</title>
+<meta name="description" content="知食分子为您推荐安心主食、解馋零食、轻盈饮品、营养补剂，每一款都经过科学筛选，让健康饮食变得简单。">
+<meta name="keywords" content="知食分子,健康食品,健康零食,减脂饮品,营养补剂,食品推荐">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">🥗</span>
+        <span>食品营养搜索</span>
+      </a>
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">首页</a></li>
+        <li><a href="categories.html" class="nav-link">食品分类</a></li>
+        <li><a href="health.html" class="nav-link">健康饮食</a></li>
+        <li><a href="nutrition-guide.html" class="nav-link">营养指南</a></li>
+        <li><a href="food-recommend.html" class="nav-link active">知食分子</a></li>
+        <li><a href="about.html" class="nav-link">关于我们</a></li>
+        <li><a href="privacy.html" class="nav-link">隐私政策</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="recommend-header">
+    <h1>知食分子</h1>
+    <p class="recommend-subtitle">用营养学眼光，挑选真正适合你的食品</p>
+  </div>
+
+  <div class="recommend-tabs" id="recommendTabs">
+    <button class="recommend-tab active" data-tab="staple">安心主食</button>
+    <button class="recommend-tab" data-tab="snack">解馋零食</button>
+    <button class="recommend-tab" data-tab="drink">轻盈饮品</button>
+    <button class="recommend-tab" data-tab="supplement">营养补剂</button>
+  </div>
+
+  <div class="recommend-body">
+    <aside class="category-nav" id="categoryNav">
+    </aside>
+
+    <main class="product-area" id="productArea">
+    </main>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>关于网站</h4>
+        <p>食品营养搜索引擎致力于帮助用户科学饮食、健康生活</p>
+      </div>
+      <div class="footer-section">
+        <h4>快速导航</h4>
+        <ul>
+          <li><a href="index.html">首页</a></li>
+          <li><a href="categories.html">食品分类</a></li>
+          <li><a href="health.html">健康饮食</a></li>
+          <li><a href="nutrition-guide.html">营养指南</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>帮助与支持</h4>
+        <ul>
+          <li><a href="about.html">关于我们</a></li>
+          <li><a href="privacy.html">隐私政策</a></li>
+          <li><a href="disclaimer.html">免责声明</a></li>
+          <li><a href="mailto:gwm12345@qq.com">联系我们</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>数据仅供参考，实际营养成分可能因品牌、产地、烹饪方式等因素有所不同</p>
+      <p>&copy; 2024 食品营养搜索引擎 | <a href="about.html">关于我们</a> | <a href="privacy.html">隐私政策</a> | <a href="disclaimer.html">免责声明</a></p>
+    </div>
+  </footer>
+</div>
+
+<script>
+(function() {
+
+  const recommendData = {
+    staple: {
+      label: '安心主食',
+      categories: [
+        { id: 'whole-grain', name: '全谷物', products: [
+          { name: '有机燕麦片', image: '🥣', desc: '高纤维控糖首选，早餐搭配牛奶营养满满', tags: ['高纤维', '低糖', '低脂'], button: '去尝尝这款' },
+          { name: '糙米', image: '🍚', desc: '保留胚芽营养，饱腹感比白米强3倍', tags: ['高纤维', '低糖', '富含B族'], button: '去尝尝这款' },
+          { name: '全麦面条', image: '🍜', desc: '慢吸收碳水，稳血糖不油腻', tags: ['高纤维', '低糖'], button: '去尝尝这款' },
+          { name: '红薯', image: '🍠', desc: '天然甜不发胖，维生素A满满', tags: ['高纤维', '低脂', '富含维A'], button: '去尝尝这款' }
+        ]},
+        { id: 'mixed-grain', name: '杂粮饭', products: [
+          { name: '三色米', image: '🍙', desc: '糙米+红米+黑米，一餐吃够多种营养', tags: ['高纤维', '低脂'], button: '去尝尝这款' },
+          { name: '藜麦', image: '🌾', desc: '完全蛋白食材，素食者的优质选择', tags: ['高蛋白', '低脂', '无麸质'], button: '去尝尝这款' }
+        ]},
+        { id: 'bean', name: '豆类主食', products: [
+          { name: '蒸南瓜', image: '🎃', desc: '天然清甜，减脂期主食完美替代', tags: ['低卡', '低脂', '富含维A'], button: '去尝尝这款' },
+          { name: '鹰嘴豆', image: '🫘', desc: '高蛋白低GI，饱腹感持续4小时', tags: ['高蛋白', '高纤维', '低脂'], button: '去尝尝这款' }
+        ]}
+      ]
+    },
+    snack: {
+      label: '解馋零食',
+      categories: [
+        { id: 'nut', name: '原味坚果', products: [
+          { name: '原味巴旦木', image: '🌰', desc: '配料表只有巴旦木，维E含量爆表', tags: ['低糖', '高维E', '无添加'], button: '去尝尝这款' },
+          { name: '低糖核桃', image: '🥜', desc: '每日3颗，补充Omega-3好脑子', tags: ['低糖', '高Omega-3'], button: '去尝尝这款' },
+          { name: '无添加腰果', image: '🌯', desc: '原味烘烤，零添加更健康', tags: ['无添加', '低糖'], button: '去尝尝这款' }
+        ]},
+        { id: 'biscuit', name: '无糖饼干', products: [
+          { name: '燕麦代餐饼', image: '🍪', desc: '高纤维配方，控糖期放心解馋', tags: ['低糖', '高纤维', '低脂'], button: '去尝尝这款' },
+          { name: '全麦消化饼', image: '🥠', desc: '真正全麦制作，非全麦粉冒充', tags: ['低糖', '高纤维'], button: '去尝尝这款' }
+        ]},
+        { id: 'chip', name: '健康脆片', products: [
+          { name: '烤红薯片', image: '🍟', desc: '烘烤非油炸，低卡又香脆', tags: ['低卡', '低脂', '无油炸'], button: '去尝尝这款' },
+          { name: '海苔脆片', image: '🍙', desc: '解馋不长肉，还补充矿物质', tags: ['低卡', '低脂'], button: '去尝尝这款' }
+        ]},
+        { id: 'chocolate', name: '黑巧系列', products: [
+          { name: '85%黑巧克力', image: '🍫', desc: '高可可含量，控糖期也能吃的甜品', tags: ['低糖', '高抗氧化'], button: '查看推荐理由' },
+          { name: '无糖可可豆', image: '🥥', desc: '零添加糖，纯粹的可可香', tags: ['无糖', '高抗氧化'], button: '查看推荐理由' }
+        ]}
+      ]
+    },
+    drink: {
+      label: '轻盈饮品',
+      categories: [
+        { id: 'tea', name: '健康茶饮', products: [
+          { name: '无糖绿茶', image: '🍵', desc: '含儿茶素，抗氧化又解腻', tags: ['无糖', '零热量', '抗氧化'], button: '去尝尝这款' },
+          { name: '洋甘菊茶', image: '🌼', desc: '舒缓助眠，睡前一杯好梦', tags: ['无咖啡因', '助眠'], button: '去尝尝这款' },
+          { name: '大麦茶', image: '🌾', desc: '解腻助消化，大餐后来一杯', tags: ['零热量', '助消化'], button: '去尝尝这款' }
+        ]},
+        { id: 'milk', name: '乳品饮品', products: [
+          { name: '无糖酸奶', image: '🥛', desc: '含益生菌助消化，低糖不酸牙', tags: ['低糖', '高钙', '含益生菌'], button: '去尝尝这款' },
+          { name: '低脂牛奶', image: '🥤', desc: '补充优质蛋白和钙质', tags: ['低脂', '高蛋白', '高钙'], button: '去尝尝这款' },
+          { name: '燕麦奶', image: '🥣', desc: '植物奶替代，低卡无乳糖', tags: ['低卡', '无乳糖', '低脂'], button: '去尝尝这款' }
+        ]},
+        { id: 'juice', name: '鲜榨果汁', products: [
+          { name: '鲜榨橙汁', image: '🍊', desc: '天然维C加油站，一杯满足每日所需', tags: ['高维C', '天然'], button: '查看推荐理由' },
+          { name: '蓝莓汁', image: '🫐', desc: '花青素之王，护眼抗氧化', tags: ['高抗氧化', '护眼'], button: '查看推荐理由' }
+        ]}
+      ]
+    },
+    supplement: {
+      label: '营养补剂',
+      categories: [
+        { id: 'vitamin', name: '维生素类', products: [
+          { name: '维C泡腾片', image: '💊', desc: '每日一片，增强免疫力少感冒', tags: ['高维C', '增强免疫'], button: '查看推荐理由' },
+          { name: '维D软胶囊', image: '☀️', desc: '促进钙吸收，骨骼健康少不了', tags: ['高维D', '促钙吸收'], button: '查看推荐理由' },
+          { name: '复合维生素B', image: '🍋', desc: 'B族全补充，能量代谢更顺畅', tags: ['高B族', '促代谢'], button: '查看推荐理由' }
+        ]},
+        { id: 'mineral', name: '矿物质类', products: [
+          { name: '钙片', image: '🦴', desc: '中老年人必备，骨骼不疏松', tags: ['高钙', '健骨'], button: '查看推荐理由' },
+          { name: '补铁片', image: '🩸', desc: '搭配维C吸收更好，远离贫血', tags: ['含铁', '补血'], button: '查看推荐理由' },
+          { name: '镁片', image: '⚡', desc: '缓解肌肉疲劳，运动人群常备', tags: ['含镁', '缓解疲劳'], button: '查看推荐理由' }
+        ]},
+        { id: 'protein', name: '蛋白类', products: [
+          { name: '乳清蛋白粉', image: '🥛', desc: '健身增肌首选，吸收快纯度高', tags: ['高蛋白', '低脂'], button: '查看推荐理由' },
+          { name: '胶原蛋白粉', image: '💧', desc: '美容养颜，皮肤弹性靠它', tags: ['高蛋白', '美容'], button: '查看推荐理由' }
+        ]}
+      ]}
+  };
+
+  const tabs = document.querySelectorAll('.recommend-tab');
+  const categoryNav = document.getElementById('categoryNav');
+  const productArea = document.getElementById('productArea');
+  let currentTab = 'staple';
+  let currentCategory = null;
+
+  function renderCategoryNav(tabKey) {
+    const tab = recommendData[tabKey];
+    currentCategory = tab.categories[0].id;
+
+    categoryNav.innerHTML = `
+      <div class="category-nav-title">${tab.label}</div>
+      <div class="category-nav-list">
+        ${tab.categories.map(cat => `
+          <button class="category-nav-item ${cat.id === currentCategory ? 'active' : ''}" data-cat="${cat.id}">
+            ${cat.name}
+            <span class="category-count">${cat.products.length}</span>
+          </button>
+        `).join('')}
+      </div>
+    `;
+
+    categoryNav.querySelectorAll('.category-nav-item').forEach(btn => {
+      btn.addEventListener('click', () => {
+        currentCategory = btn.dataset.cat;
+        renderCategoryNav(tabKey);
+        renderProducts(tabKey);
+      });
+    });
+  }
+
+  function renderProducts(tabKey) {
+    const tab = recommendData[tabKey];
+    const cat = tab.categories.find(c => c.id === currentCategory);
+
+    if (!cat) {
+      productArea.innerHTML = '<div class="empty-state"><div class="empty-icon">🔍</div><h3>暂无商品</h3></div>';
+      return;
+    }
+
+    productArea.innerHTML = `
+      <div class="product-area-header">
+        <h2>${cat.name}</h2>
+        <span class="product-count">共 ${cat.products.length} 款推荐</span>
+      </div>
+      <div class="product-grid">
+        ${cat.products.map(p => renderProductCard(p)).join('')}
+      </div>
+    `;
+  }
+
+  function renderProductCard(p) {
+    return `
+      <div class="product-card">
+        <div class="product-image">
+          <span class="product-emoji">${p.image}</span>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">${p.name}</h3>
+          <p class="product-desc">${p.desc}</p>
+          <div class="product-tags">
+            ${p.tags.map(t => `<span class="product-tag">${t}</span>`).join('')}
+          </div>
+          <button class="product-btn">${p.button}</button>
+        </div>
+      </div>
+    `;
+  }
+
+  function selectTab(tabKey) {
+    currentTab = tabKey;
+    tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === tabKey));
+    renderCategoryNav(tabKey);
+    renderProducts(tabKey);
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => selectTab(tab.dataset.tab));
+  });
+
+  selectTab('staple');
+
+})();
+</script>
+</body>
+</html>
