@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>商品详情 - 知食分子 | 食品营养搜索</title>
+<meta name="description" content="知食分子商品详情，科学解读每一款食品的健康价值与选购标准。">
+<link rel="stylesheet" href="styles.css">
+<style>
+* { box-sizing: border-box; }
+.detail-wrap { max-width: 1100px; margin: 0 auto; padding: 24px 20px; }
+.crumb-bar { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: #999; margin-bottom: 24px; flex-wrap: wrap; }
+.crumb-bar a { color: #7cb342; text-decoration: none; }
+.crumb-bar a:hover { color: #33691e; text-decoration: underline; }
+.back-btn { display: inline-flex; align-items: center; gap: 4px; margin-right: 8px; padding: 6px 12px; background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; color: #666; font-weight: 500; cursor: pointer; text-decoration: none; }
+.back-btn:hover { background: #f1f8e9; border-color: #aed581; color: #33691e; }
+.product-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-bottom: 40px; }
+.product-gallery { background: linear-gradient(135deg, #f5f7f0 0%, #ecf0e5 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; min-height: 400px; position: relative; overflow: hidden; }
+.product-emoji-big { font-size: 9rem; line-height: 1; filter: drop-shadow(0 8px 24px rgba(0,0,0,0.08)); }
+.product-brand-tag { position: absolute; top: 20px; left: 20px; padding: 4px 12px; background: rgba(255,255,255,0.9); border-radius: 12px; font-size: 0.78rem; color: #666; font-weight: 500; }
+.product-info-panel { display: flex; flex-direction: column; gap: 20px; }
+.product-title-block h1 { font-size: 1.6rem; font-weight: 700; color: #222; line-height: 1.4; margin: 0 0 12px; }
+.product-core-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.core-tag { display: inline-flex; align-items: center; gap: 4px; padding: 5px 14px; background: #f1f8e9; color: #33691e; border-radius: 14px; font-size: 0.82rem; font-weight: 600; border: 1px solid #dcedc8; }
+.core-tag .dot { width: 6px; height: 6px; border-radius: 50%; background: #689f38; }
+.product-price-block { display: flex; align-items: baseline; gap: 10px; padding: 16px 0; border-top: 1px solid #f0f0f0; border-bottom: 1px solid #f0f0f0; }
+.price-value { font-size: 1.6rem; font-weight: 700; color: #2e7d32; }
+.price-unit { font-size: 0.9rem; color: #888; }
+.price-notice { font-size: 0.75rem; color: #bbb; margin-left: auto; }
+.recommend-block { background: #fafbf7; border: 1px solid #e8ede0; border-left: 3px solid #8bc34a; border-radius: 12px; padding: 20px 22px; }
+.recommend-title { font-size: 0.85rem; font-weight: 700; color: #558b2f; margin: 0 0 12px; display: flex; align-items: center; gap: 6px; }
+.recommend-text { font-size: 0.92rem; line-height: 1.75; color: #555; margin: 0; }
+.recommend-text strong { color: #33691e; font-weight: 600; }
+.warn-block { background: #fffbf5; border: 1px solid #fde9c7; border-left: 3px solid #ffb74d; border-radius: 12px; padding: 20px 22px; }
+.warn-title { font-size: 0.85rem; font-weight: 700; color: #e65100; margin: 0 0 12px; }
+.warn-list { list-style: none; padding: 0; margin: 0; }
+.warn-list li { font-size: 0.88rem; line-height: 1.7; color: #666; padding-left: 18px; position: relative; margin-bottom: 6px; }
+.warn-list li::before { content: '✕'; position: absolute; left: 0; color: #ff7043; font-weight: 700; font-size: 0.75rem; }
+.action-block { display: flex; gap: 12px; padding-top: 8px; }
+.btn-primary { flex: 1; padding: 14px 24px; background: #2e7d32; color: #fff; border: none; border-radius: 14px; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.25s ease; display: flex; align-items: center; justify-content: center; gap: 6px; }
+.btn-primary:hover { background: #1b5e20; transform: translateY(-1px); box-shadow: 0 6px 16px rgba(46, 125, 50, 0.25); }
+.btn-secondary { padding: 14px 20px; background: #fff; color: #558b2f; border: 1px solid #c5e1a5; border-radius: 14px; font-size: 0.9rem; font-weight: 500; cursor: pointer; text-decoration: none; text-align: center; }
+.btn-secondary:hover { background: #f1f8e9; }
+.detail-section { margin-top: 40px; }
+.detail-section-title { font-size: 1.05rem; font-weight: 700; color: #333; margin: 0 0 16px; padding-bottom: 10px; border-bottom: 2px solid #f0f0f0; display: flex; align-items: center; gap: 8px; }
+.info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
+.info-card { background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 14px 16px; }
+.info-card-label { font-size: 0.78rem; color: #999; margin-bottom: 6px; }
+.info-card-value { font-size: 1rem; font-weight: 600; color: #333; }
+.info-card-value .unit { font-size: 0.82rem; color: #999; font-weight: 400; margin-left: 2px; }
+.scenarios { display: flex; flex-wrap: wrap; gap: 10px; }
+.scenario-tag { padding: 8px 16px; background: #eef5e9; color: #558b2f; border-radius: 18px; font-size: 0.85rem; font-weight: 500; }
+.related-products { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
+.related-item { background: #fff; border: 1px solid #eee; border-radius: 14px; padding: 14px; text-align: center; transition: all 0.25s ease; cursor: pointer; text-decoration: none; display: block; color: inherit; }
+.related-item:hover { transform: translateY(-4px); border-color: #c5e1a5; box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+.related-emoji { font-size: 2.2rem; margin-bottom: 6px; }
+.related-name { font-size: 0.82rem; font-weight: 600; color: #333; margin-bottom: 4px; }
+.related-price { font-size: 0.8rem; color: #2e7d32; font-weight: 600; }
+.page-footer-note { text-align: center; padding: 32px 20px; margin-top: 40px; border-top: 1px solid #f0f0f0; }
+.page-footer-note p { font-size: 0.82rem; color: #aaa; margin: 4px 0; }
+@media (max-width: 860px) {
+  .product-layout { grid-template-columns: 1fr; gap: 28px; }
+  .product-gallery { min-height: 280px; }
+  .product-emoji-big { font-size: 6rem; }
+  .product-title-block h1 { font-size: 1.3rem; }
+  .info-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 500px) {
+  .detail-wrap { padding: 16px 14px; }
+  .product-emoji-big { font-size: 4.5rem; }
+  .product-title-block h1 { font-size: 1.15rem; }
+  .action-block { flex-direction: column; }
+  .btn-primary, .btn-secondary { width: 100%; }
+  .info-grid { grid-template-columns: 1fr; }
+  .related-products { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo"><span class="logo-icon">🥗</span><span>食品营养搜索</span></a>
+    <ul class="nav-menu">
+      <li><a href="index.html" class="nav-link">首页</a></li>
+      <li><a href="categories.html" class="nav-link">食品分类</a></li>
+      <li><a href="health.html" class="nav-link">健康饮食</a></li>
+      <li><a href="nutrition-guide.html" class="nav-link">营养指南</a></li>
+      <a href="food-recommend.html" class="nav-link active">知食分子</a></li>
+      <li><a href="about.html" class="nav-link">关于我们</a></li>
+      <li><a href="privacy.html" class="nav-link">隐私政策</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="detail-wrap">
+  <div class="crumb-bar" id="crumbBar"></div>
+  <div class="product-layout">
+    <div class="product-gallery">
+      <div class="product-brand-tag" id="galleryBrand"></div>
+      <span class="product-emoji-big" id="galleryEmoji"></span>
+    </div>
+    <div class="product-info-panel">
+      <div class="product-title-block">
+        <h1 id="productName"></h1>
+        <div class="product-core-tags" id="coreTags"></div>
+      </div>
+      <div class="product-price-block">
+        <span class="price-value" id="productPrice"></span>
+        <span class="price-unit" id="productUnit"></span>
+        <span class="price-notice">价格仅供参考，以实际页面为准</span>
+      </div>
+      <div class="recommend-block">
+        <div class="recommend-title">📖 推荐理由</div>
+        <p class="recommend-text" id="recommendText"></p>
+      </div>
+      <div class="warn-block">
+        <div class="warn-title">⚠️ 选购避坑指南</div>
+        <ul class="warn-list" id="warnList"></ul>
+      </div>
+      <div class="action-block">
+        <button class="btn-primary" id="tasteBtn"><span>🌿</span> 去尝尝这款</button>
+        <a href="javascript:history.back()" class="btn-secondary">← 返回</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-section">
+    <h3 class="detail-section-title">🧪 营养数据参考</h3>
+    <div class="info-grid" id="nutritionGrid"></div>
+  </div>
+
+  <div class="detail-section">
+    <h3 class="detail-section-title">🎯 适合场景</h3>
+    <div class="scenarios" id="scenarioList"></div>
+  </div>
+
+  <div class="detail-section" id="relatedSection">
+    <h3 class="detail-section-title">🔗 同类推荐</h3>
+    <div class="related-products" id="relatedGrid"></div>
+  </div>
+
+  <div class="page-footer-note">
+    <p>本页信息由注册营养师审核，仅供科普参考</p>
+    <p>实际购买请以商品页面最新信息为准</p>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-bottom">
+    <p>&copy; 2024 食品营养搜索引擎 | <a href="about.html">关于我们</a> | <a href="privacy.html">隐私政策</a></p>
+  </div>
+</footer>
+
+<script src="product-detail.js"></script>
+</body>
+</html>
