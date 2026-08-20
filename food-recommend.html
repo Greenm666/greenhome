@@ -211,12 +211,13 @@
         <span class="product-count">共 ${cat.products.length} 款推荐</span>
       </div>
       <div class="product-grid">
-        ${cat.products.map(p => renderProductCard(p)).join('')}
+        ${cat.products.map(p => renderProductCard(p, tabKey, cat.id)).join('')}
       </div>
     `;
   }
 
-  function renderProductCard(p) {
+  function renderProductCard(p, tabKey, catId) {
+    const link = 'product-list.html?tab=' + tabKey + '&category=' + catId;
     return `
       <div class="product-card">
         <div class="product-image">
@@ -228,7 +229,7 @@
           <div class="product-tags">
             ${p.tags.map(t => `<span class="product-tag">${t}</span>`).join('')}
           </div>
-          <button class="product-btn">${p.button}</button>
+          <a href="${link}" class="product-btn" style="display:flex;align-items:center;justify-content:center;text-decoration:none;">查看该类目 &rarr;</a>
         </div>
       </div>
     `;
