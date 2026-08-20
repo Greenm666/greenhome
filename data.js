@@ -7,7 +7,8 @@ const foodDatabase = [
     sodium: 1, potassium: 107, cholesterol: 0,
     vitaminA: 54, vitaminC: 4.6, vitaminD: 0, vitaminB12: 0,
     calcium: 6, iron: 0.12, magnesium: 5,
-    healthTip: "苹果富含膳食纤维和维生素C，有助于促进肠道蠕动，每天一个苹果有益健康。"
+    healthTip: "苹果富含膳食纤维和维生素C，有助于促进肠道蠕动，每天一个苹果有益健康。",
+    intakeTip: "每天吃1个拳头大小的苹果就好，俗话说「一天一苹果，医生远离我」，建议连皮吃（记得清洗哦）。"
   },
   {
     id: 2, name: "香蕉", category: "水果", aliases: ["banana"],
@@ -16,7 +17,8 @@ const foodDatabase = [
     sodium: 1, potassium: 358, cholesterol: 0,
     vitaminA: 10, vitaminC: 8.7, vitaminD: 0, vitaminB12: 0,
     calcium: 5, iron: 0.26, magnesium: 27,
-    healthTip: "香蕉是钾的良好来源，有助于维持正常血压，运动后食用可补充能量。"
+    healthTip: "香蕉是钾的良好来源，有助于维持正常血压，运动后食用可补充能量。",
+    intakeTip: "每天1根中等大小的香蕉（约150克），运动后吃可以快速补充能量和钾元素，也适合早餐搭配酸奶。"
   },
   {
     id: 3, name: "橙子", category: "水果", aliases: ["orange", "柑橘"],
@@ -25,7 +27,8 @@ const foodDatabase = [
     sodium: 0, potassium: 181, cholesterol: 0,
     vitaminA: 24, vitaminC: 53.2, vitaminD: 0, vitaminB12: 0,
     calcium: 40, iron: 0.12, magnesium: 10,
-    healthTip: "橙子富含维生素C，能增强免疫力，促进铁吸收，预防感冒。"
+    healthTip: "橙子富含维生素C，能增强免疫力，促进铁吸收，预防感冒。",
+    intakeTip: "每天吃1个拳头大小即可。注意：橙子含糖量较高，解馋就好，不要一次吃太多哦。"
   },
   {
     id: 4, name: "葡萄", category: "水果", aliases: ["grape"],
@@ -34,7 +37,8 @@ const foodDatabase = [
     sodium: 2, potassium: 191, cholesterol: 0,
     vitaminA: 8, vitaminC: 3.2, vitaminD: 0, vitaminB12: 0,
     calcium: 10, iron: 0.36, magnesium: 9,
-    healthTip: "葡萄含有抗氧化物质如白藜芦醇，有助于保护心血管健康。"
+    healthTip: "葡萄含有抗氧化物质如白藜芦醇，有助于保护心血管健康。",
+    intakeTip: "每天一小串（约15-20粒），葡萄含糖量不低，建议饭后当甜点，不要空腹吃哦。"
   },
   {
     id: 5, name: "草莓", category: "水果", aliases: ["strawberry"],
@@ -43,7 +47,8 @@ const foodDatabase = [
     sodium: 1, potassium: 153, cholesterol: 0,
     vitaminA: 1, vitaminC: 58.8, vitaminD: 0, vitaminB12: 0,
     calcium: 16, iron: 0.41, magnesium: 13,
-    healthTip: "草莓维生素C含量极高，还含有花青素等抗氧化成分。"
+    healthTip: "草莓维生素C含量极高，还含有花青素等抗氧化成分。",
+    intakeTip: "每天5-8颗就好，草莓维生素C很丰富，建议洗净后食用，拌酸奶也超级美味~"
   },
   {
     id: 6, name: "西瓜", category: "水果", aliases: ["watermelon"],
@@ -52,7 +57,8 @@ const foodDatabase = [
     sodium: 1, potassium: 112, cholesterol: 0,
     vitaminA: 28, vitaminC: 8, vitaminD: 0, vitaminB12: 0,
     calcium: 7, iron: 0.24, magnesium: 10,
-    healthTip: "西瓜含水量高，夏季食用可消暑解渴，还含有番茄红素。"
+    healthTip: "西瓜含水量高，夏季食用可消暑解渴，还含有番茄红素。",
+    intakeTip: "每天1-2块（约200-300克），西瓜含水量高，夏天吃特别解渴，但别一次吃太多哦。"
   },
   {
     id: 7, name: "芒果", category: "水果", aliases: ["mango"],
@@ -61,7 +67,8 @@ const foodDatabase = [
     sodium: 1, potassium: 168, cholesterol: 0,
     vitaminA: 54, vitaminC: 36.4, vitaminD: 0, vitaminB12: 0,
     calcium: 11, iron: 0.16, magnesium: 10,
-    healthTip: "芒果富含维生素A和C，以及膳食纤维，有助于消化系统健康。"
+    healthTip: "芒果富含维生素A和C，以及膳食纤维，有助于消化系统健康。",
+    intakeTip: "每天半个拳头大小，芒果糖分较高，建议饭后适量食用，解馋就好~"
   },
   {
     id: 8, name: "蓝莓", category: "水果", aliases: ["blueberry"],
@@ -70,7 +77,8 @@ const foodDatabase = [
     sodium: 1, potassium: 77, cholesterol: 0,
     vitaminA: 3, vitaminC: 9.7, vitaminD: 0, vitaminB12: 0,
     calcium: 6, iron: 0.28, magnesium: 6,
-    healthTip: "蓝莓被誉为'超级食物'，富含花青素，对眼睛和大脑有益。"
+    healthTip: "蓝莓被誉为'超级食物'，富含花青素，对眼睛和大脑有益。",
+    intakeTip: "每天1小把（约30颗），蓝莓是「抗氧化之王」，拌酸奶或当零食都很棒，冷冻的也好吃~"
   },
 
   // 蔬菜
@@ -81,7 +89,8 @@ const foodDatabase = [
     sodium: 5, potassium: 237, cholesterol: 0,
     vitaminA: 92, vitaminC: 13.7, vitaminD: 0, vitaminB12: 0,
     calcium: 10, iron: 0.33, magnesium: 20,
-    healthTip: "西红柿富含番茄红素，是一种强大的抗氧化剂，有助于预防慢性病。"
+    healthTip: "西红柿富含番茄红素，是一种强大的抗氧化剂，有助于预防慢性病。",
+    intakeTip: "每天1-2个拳头大小，生吃或炒菜都好，炒过的西红柿番茄红素更好吸收哦~"
   },
   {
     id: 10, name: "黄瓜", category: "蔬菜", aliases: ["cucumber"],
@@ -90,7 +99,8 @@ const foodDatabase = [
     sodium: 2, potassium: 147, cholesterol: 0,
     vitaminA: 3, vitaminC: 2.8, vitaminD: 0, vitaminB12: 0,
     calcium: 16, iron: 0.28, magnesium: 14,
-    healthTip: "黄瓜水分含量高，热量低，是减脂餐的理想选择。"
+    healthTip: "黄瓜水分含量高，热量低，是减脂餐的理想选择。",
+    intakeTip: "每天1根，清脆爽口，直接生吃或者拍黄瓜凉拌都不错，热量超低放心吃~"
   },
   {
     id: 11, name: "胡萝卜", category: "蔬菜", aliases: ["carrot"],
@@ -99,7 +109,8 @@ const foodDatabase = [
     sodium: 59, potassium: 326, cholesterol: 0,
     vitaminA: 1068, vitaminC: 5.9, vitaminD: 0, vitaminB12: 0,
     calcium: 33, iron: 0.3, magnesium: 12,
-    healthTip: "胡萝卜富含β-胡萝卜素，在体内转化为维生素A，对眼睛健康至关重要。"
+    healthTip: "胡萝卜富含β-胡萝卜素，在体内转化为维生素A，对眼睛健康至关重要。",
+    intakeTip: "每天半根到1根，建议用油炒着吃，胡萝卜素需要油脂才能更好吸收哦~"
   },
   {
     id: 12, name: "白菜", category: "蔬菜", aliases: ["cabbage", "圆白菜"],
@@ -108,7 +119,8 @@ const foodDatabase = [
     sodium: 7, potassium: 196, cholesterol: 0,
     vitaminA: 98, vitaminC: 36.6, vitaminD: 0, vitaminB12: 0,
     calcium: 40, iron: 0.47, magnesium: 12,
-    healthTip: "白菜含有丰富的维生素K和C，以及硫代葡萄糖苷，具有防癌功效。"
+    healthTip: "白菜含有丰富的维生素K和C，以及硫代葡萄糖苷，具有防癌功效。",
+    intakeTip: "推荐每天吃2-3把（约300-500克），绿叶菜多多益善，煮汤或清炒都健康~"
   },
   {
     id: 13, name: "菠菜", category: "蔬菜", aliases: ["spinach"],
@@ -117,7 +129,8 @@ const foodDatabase = [
     sodium: 99, potassium: 558, cholesterol: 0,
     vitaminA: 481, vitaminC: 28.1, vitaminD: 0, vitaminB12: 0,
     calcium: 136, iron: 2.71, magnesium: 87,
-    healthTip: "菠菜是铁、钙和维生素K的极佳来源，有助于骨骼和血液健康。"
+    healthTip: "菠菜是铁、钙和维生素K的极佳来源，有助于骨骼和血液健康。",
+    intakeTip: "推荐每天吃2-3把（约300克），菠菜含铁丰富，建议焯水后再炒，去掉草酸更好吸收~"
   },
   {
     id: 14, name: "西兰花", category: "蔬菜", aliases: ["broccoli", "花椰菜"],
@@ -126,7 +139,8 @@ const foodDatabase = [
     sodium: 41, potassium: 303, cholesterol: 0,
     vitaminA: 120, vitaminC: 89.2, vitaminD: 0, vitaminB12: 0,
     calcium: 47, iron: 0.73, magnesium: 21,
-    healthTip: "西兰花是'蔬菜之王'，富含维生素C和抗癌物质萝卜硫素。"
+    healthTip: "西兰花是'蔬菜之王'，富含维生素C和抗癌物质萝卜硫素。",
+    intakeTip: "每天1整朵，西兰花营养密度高，蒸着吃或蒜蓉炒都很棒，减脂期首选~"
   },
   {
     id: 15, name: "土豆", category: "蔬菜", aliases: ["potato", "马铃薯"],
@@ -135,7 +149,8 @@ const foodDatabase = [
     sodium: 6, potassium: 421, cholesterol: 0,
     vitaminA: 5, vitaminC: 19.7, vitaminD: 0, vitaminB12: 0,
     calcium: 12, iron: 0.78, magnesium: 23,
-    healthTip: "土豆是钾的重要来源，富含膳食纤维，有助于维持心血管健康。"
+    healthTip: "土豆是钾的重要来源，富含膳食纤维，有助于维持心血管健康。",
+    intakeTip: "每天1个拳头大小，注意土豆皮发芽的部分不能吃哦，建议带皮吃更有营养~"
   },
   {
     id: 16, name: "茄子", category: "蔬菜", aliases: ["eggplant", "aubergine"],
@@ -144,7 +159,8 @@ const foodDatabase = [
     sodium: 5, potassium: 230, cholesterol: 0,
     vitaminA: 8, vitaminC: 2.2, vitaminD: 0, vitaminB12: 0,
     calcium: 16, iron: 0.55, magnesium: 14,
-    healthTip: "茄子含有丰富的可溶性纤维，有助于降低胆固醇水平。"
+    healthTip: "茄子含有丰富的可溶性纤维，有助于降低胆固醇水平。",
+    intakeTip: "每天1根长茄子，红烧茄子或蒸茄子都好吃，但烹饪时注意少放油哦~"
   },
 
   // 肉类
@@ -155,7 +171,8 @@ const foodDatabase = [
     sodium: 64, potassium: 376, cholesterol: 85,
     vitaminA: 15, vitaminC: 0, vitaminD: 0, vitaminB12: 0.24,
     calcium: 15, iron: 1.3, magnesium: 32,
-    healthTip: "鸡胸肉是优质高蛋白低脂肪食品，适合健身人群和减脂人群食用。"
+    healthTip: "鸡胸肉是优质高蛋白低脂肪食品，适合健身人群和减脂人群食用。",
+    intakeTip: "每天1块手掌大小（约150-200克），鸡胸肉是增肌好伙伴，建议水煮或少油煎~"
   },
   {
     id: 18, name: "鸡腿肉", category: "肉类", aliases: ["chicken thigh", "鸡腿"],
@@ -164,7 +181,8 @@ const foodDatabase = [
     sodium: 75, potassium: 340, cholesterol: 102,
     vitaminA: 48, vitaminC: 0, vitaminD: 0, vitaminB12: 0.2,
     calcium: 15, iron: 1.29, magnesium: 26,
-    healthTip: "鸡腿肉肉质鲜嫩，蛋白质含量高，铁含量也比鸡胸肉略高。"
+    healthTip: "鸡腿肉肉质鲜嫩，蛋白质含量高，铁含量也比鸡胸肉略高。",
+    intakeTip: "每天1只鸡腿（约150克），比鸡胸肉更嫩更多汁，去皮吃更健康~"
   },
   {
     id: 19, name: "牛肉(瘦)", category: "肉类", aliases: ["beef", "瘦牛肉"],
@@ -173,7 +191,8 @@ const foodDatabase = [
     sodium: 73, potassium: 315, cholesterol: 73,
     vitaminA: 12, vitaminC: 0, vitaminD: 0, vitaminB12: 2.6,
     calcium: 12, iron: 2.6, magnesium: 22,
-    healthTip: "牛肉是血红素铁的极佳来源，还富含维生素B12和肌酸，适合增肌人群。"
+    healthTip: "牛肉是血红素铁的极佳来源，还富含维生素B12和肌酸，适合增肌人群。",
+    intakeTip: "每周2-3次，每次1-2片（约100-150克），瘦牛肉含铁丰富，搭配维C蔬菜更好吸收~"
   },
   {
     id: 20, name: "猪肉(瘦)", category: "肉类", aliases: ["pork", "瘦猪肉"],
@@ -182,7 +201,8 @@ const foodDatabase = [
     sodium: 57, potassium: 305, cholesterol: 81,
     vitaminA: 44, vitaminC: 0, vitaminD: 0, vitaminB12: 0.9,
     calcium: 6, iron: 3, magnesium: 25,
-    healthTip: "猪肉富含B族维生素，尤其是维生素B1，有助于神经系统健康。"
+    healthTip: "猪肉富含B族维生素，尤其是维生素B1，有助于神经系统健康。",
+    intakeTip: "每天1-2片（约100克），瘦猪肉B族维生素丰富，建议搭配蔬菜均衡饮食~"
   },
   {
     id: 21, name: "羊肉(瘦)", category: "肉类", aliases: ["lamb", "瘦羊肉"],
@@ -191,7 +211,8 @@ const foodDatabase = [
     sodium: 68, potassium: 284, cholesterol: 60,
     vitaminA: 11, vitaminC: 0, vitaminD: 0, vitaminB12: 2.7,
     calcium: 6, iron: 2.3, magnesium: 22,
-    healthTip: "羊肉含有丰富的蛋白质和铁，具有温补作用，适合冬季食用。"
+    healthTip: "羊肉含有丰富的蛋白质和铁，具有温补作用，适合冬季食用。",
+    intakeTip: "冬天可以适当多吃，每次1-2片（约100克），羊肉温补暖胃，夏天就别吃太多啦~"
   },
 
   // 水产
@@ -202,7 +223,8 @@ const foodDatabase = [
     sodium: 59, potassium: 363, cholesterol: 55,
     vitaminA: 12, vitaminC: 0, vitaminD: 11, vitaminB12: 3.2,
     calcium: 12, iron: 0.8, magnesium: 29,
-    healthTip: "三文鱼富含Omega-3脂肪酸，对心血管和大脑健康有重要作用。"
+    healthTip: "三文鱼富含Omega-3脂肪酸，对心血管和大脑健康有重要作用。",
+    intakeTip: "每周2-3次，每次1块手掌大小（约150克），三文鱼对大脑和心脏都好，推荐清蒸~"
   },
   {
     id: 23, name: "金枪鱼", category: "水产", aliases: ["tuna"],
@@ -211,7 +233,8 @@ const foodDatabase = [
     sodium: 33, potassium: 498, cholesterol: 47,
     vitaminA: 68, vitaminC: 0, vitaminD: 3.7, vitaminB12: 9.4,
     calcium: 11, iron: 2.5, magnesium: 50,
-    healthTip: "金枪鱼是高蛋白低脂肪食品，富含维生素B12和Omega-3脂肪酸。"
+    healthTip: "金枪鱼是高蛋白低脂肪食品，富含维生素B12和Omega-3脂肪酸。",
+    intakeTip: "每周1-2次，每次约100克，金枪鱼高蛋白低脂肪，健身好选择，沙拉或三明治都好~"
   },
   {
     id: 24, name: "草鱼", category: "水产", aliases: ["grass carp"],
@@ -220,7 +243,8 @@ const foodDatabase = [
     sodium: 46, potassium: 312, cholesterol: 86,
     vitaminA: 11, vitaminC: 0, vitaminD: 0, vitaminB12: 2.7,
     calcium: 38, iron: 0.8, magnesium: 31,
-    healthTip: "草鱼肉质鲜美，富含优质蛋白和多种微量元素，适合日常食用。"
+    healthTip: "草鱼肉质鲜美，富含优质蛋白和多种微量元素，适合日常食用。",
+    intakeTip: "每周2-3次，每次1段鱼肉（约200克），草鱼性价比高，清蒸或红烧都美味~"
   },
   {
     id: 25, name: "虾", category: "水产", aliases: ["shrimp", "prawn"],
@@ -229,7 +253,8 @@ const foodDatabase = [
     sodium: 168, potassium: 220, cholesterol: 195,
     vitaminA: 26, vitaminC: 0, vitaminD: 0, vitaminB12: 2.6,
     calcium: 32, iron: 2.2, magnesium: 22,
-    healthTip: "虾是高蛋白低脂肪食品，富含虾青素等抗氧化物质。"
+    healthTip: "虾是高蛋白低脂肪食品，富含虾青素等抗氧化物质。",
+    intakeTip: "每周2-3次，每次8-10只，虾高蛋白低脂肪，水煮或白灼最健康，注意过敏哦~"
   },
   {
     id: 26, name: "螃蟹", category: "水产", aliases: ["crab"],
@@ -238,7 +263,8 @@ const foodDatabase = [
     sodium: 291, potassium: 356, cholesterol: 100,
     vitaminA: 20, vitaminC: 0, vitaminD: 0, vitaminB12: 6,
     calcium: 50, iron: 0.5, magnesium: 30,
-    healthTip: "螃蟹含有丰富的蛋白质和维生素B12，注意适量食用。"
+    healthTip: "螃蟹含有丰富的蛋白质和维生素B12，注意适量食用。",
+    intakeTip: "每周最多1次，每次1只，螃蟹胆固醇较高，有痛风的朋友要少吃哦~"
   },
 
   // 蛋奶
@@ -249,7 +275,8 @@ const foodDatabase = [
     sodium: 141, potassium: 138, cholesterol: 237,
     vitaminA: 70, vitaminC: 0, vitaminD: 1.1, vitaminB12: 1.1,
     calcium: 56, iron: 1.8, magnesium: 12,
-    healthTip: "鸡蛋是完美的蛋白质来源，含有人体所需的全部必需氨基酸。"
+    healthTip: "鸡蛋是完美的蛋白质来源，含有人体所需的全部必需氨基酸。",
+    intakeTip: "每天1-2个，煮蛋或炒蛋都好，全蛋营养更全面，不用担心蛋黄的胆固醇~"
   },
   {
     id: 28, name: "牛奶", category: "蛋奶", aliases: ["milk"],
@@ -258,7 +285,8 @@ const foodDatabase = [
     sodium: 52, potassium: 157, cholesterol: 5,
     vitaminA: 24, vitaminC: 0, vitaminD: 0.1, vitaminB12: 0.4,
     calcium: 125, iron: 0, magnesium: 14,
-    healthTip: "牛奶是钙的最佳来源之一，每日一杯牛奶有助于骨骼健康。"
+    healthTip: "牛奶是钙的最佳来源之一，每日一杯牛奶有助于骨骼健康。",
+    intakeTip: "推荐每天喝1杯（约300ml），补充优质蛋白和钙质，早餐或睡前都适合~"
   },
   {
     id: 29, name: "酸奶", category: "蛋奶", aliases: ["yogurt"],
@@ -267,7 +295,8 @@ const foodDatabase = [
     sodium: 70, potassium: 250, cholesterol: 5,
     vitaminA: 26, vitaminC: 0.5, vitaminD: 0, vitaminB12: 0.5,
     calcium: 110, iron: 0.1, magnesium: 9,
-    healthTip: "酸奶含有益生菌，有助于肠道健康，乳糖不耐受者也可食用。"
+    healthTip: "酸奶含有益生菌，有助于肠道健康，乳糖不耐受者也可食用。",
+    intakeTip: "每天1杯（约150-200ml），酸奶含益生菌助消化，建议选择低糖原味款~"
   },
   {
     id: 30, name: "奶酪", category: "蛋奶", aliases: ["cheese", "芝士"],
@@ -276,7 +305,8 @@ const foodDatabase = [
     sodium: 584, potassium: 72, cholesterol: 105,
     vitaminA: 158, vitaminC: 0, vitaminD: 0.6, vitaminB12: 0.5,
     calcium: 721, iron: 0.7, magnesium: 28,
-    healthTip: "奶酪钙含量极高，是补钙的好选择，但注意选择低钠产品。"
+    healthTip: "奶酪钙含量极高，是补钙的好选择，但注意选择低钠产品。",
+    intakeTip: "每天1-2小片（约30克），奶酪钙含量很高，搭配面包或披萨都美味，注意选择低钠款~"
   },
 
   // 谷物
@@ -287,7 +317,8 @@ const foodDatabase = [
     sodium: 1, potassium: 115, cholesterol: 0,
     vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0,
     calcium: 10, iron: 0.2, magnesium: 12,
-    healthTip: "白米饭是主食之一，提供碳水化合物能量，建议搭配蔬菜和蛋白质食用。"
+    healthTip: "白米饭是主食之一，提供碳水化合物能量，建议搭配蔬菜和蛋白质食用。",
+    intakeTip: "每天1碗（约150克熟饭），白饭是能量来源，建议搭配蔬菜和蛋白质一起吃更营养~"
   },
   {
     id: 32, name: "糙米", category: "谷物", aliases: ["brown rice"],
@@ -296,7 +327,8 @@ const foodDatabase = [
     sodium: 0, potassium: 223, cholesterol: 0,
     vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0,
     calcium: 10, iron: 0.5, magnesium: 84,
-    healthTip: "糙米保留了胚芽和麸皮，富含纤维和B族维生素，比白米更有营养。"
+    healthTip: "糙米保留了胚芽和麸皮，富含纤维和B族维生素，比白米更有营养。",
+    intakeTip: "每天1碗（约150克熟饭），糙米比白米更营养，带胚芽和麸皮，饱腹感也更强~"
   },
   {
     id: 33, name: "小麦面粉", category: "谷物", aliases: ["flour", "面粉"],
@@ -305,7 +337,8 @@ const foodDatabase = [
     sodium: 2, potassium: 107, cholesterol: 0,
     vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0,
     calcium: 15, iron: 2.7, magnesium: 22,
-    healthTip: "小麦粉是制作面食的原料，建议多食用全麦制品以获取更多营养。"
+    healthTip: "小麦粉是制作面食的原料，建议多食用全麦制品以获取更多营养。",
+    intakeTip: "每天不超过1碗（换算成面食约150克），建议多吃全麦面食，营养更全面~"
   },
   {
     id: 34, name: "燕麦", category: "谷物", aliases: ["oatmeal", "oats", "麦片"],
@@ -314,7 +347,8 @@ const foodDatabase = [
     sodium: 3, potassium: 429, cholesterol: 0,
     vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0,
     calcium: 54, iron: 4.7, magnesium: 170,
-    healthTip: "燕麦富含β-葡聚糖，有助于降低胆固醇，是健康早餐的理想选择。"
+    healthTip: "燕麦富含β-葡聚糖，有助于降低胆固醇，是健康早餐的理想选择。",
+    intakeTip: "每天4-5汤匙（约40克），燕麦是健康早餐首选，搭配牛奶或酸奶最佳，还能降胆固醇~"
   },
   {
     id: 35, name: "玉米", category: "谷物", aliases: ["corn", "玉米棒"],
@@ -323,7 +357,8 @@ const foodDatabase = [
     sodium: 1, potassium: 237, cholesterol: 0,
     vitaminA: 7, vitaminC: 0, vitaminD: 0, vitaminB12: 0,
     calcium: 14, iron: 1.1, magnesium: 32,
-    healthTip: "玉米含有叶黄素和玉米黄质，对眼睛健康有益。"
+    healthTip: "玉米含有叶黄素和玉米黄质，对眼睛健康有益。",
+    intakeTip: "每天1根玉米棒（约200克），玉米含有叶黄素对眼睛好，煮着吃最健康，或者玉米粒拌沙拉~"
   },
   {
     id: 36, name: "小米", category: "谷物", aliases: ["millet"],
@@ -332,7 +367,8 @@ const foodDatabase = [
     sodium: 8, potassium: 284, cholesterol: 0,
     vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0,
     calcium: 41, iron: 5.1, magnesium: 107,
-    healthTip: "小米富含铁和B族维生素，易消化吸收，适合肠胃虚弱人群。"
+    healthTip: "小米富含铁和B族维生素，易消化吸收，适合肠胃虚弱人群。",
+    intakeTip: "每天1碗小米粥（约100克小米煮的），小米易消化，养胃适合肠胃弱的朋友，睡前喝小米粥安神~"
   },
 
   // 豆类
@@ -343,7 +379,8 @@ const foodDatabase = [
     sodium: 2, potassium: 1503, cholesterol: 0,
     vitaminA: 37, vitaminC: 0, vitaminD: 0, vitaminB12: 0,
     calcium: 191, iron: 8.2, magnesium: 99,
-    healthTip: "黄豆是植物蛋白之王，还含有异黄酮等植物化学物质。"
+    healthTip: "黄豆是植物蛋白之王，还含有异黄酮等植物化学物质。",
+    intakeTip: "每天1小把（约30克干豆），黄豆是植物蛋白之王，建议做成豆浆或豆腐食用更好吸收~"
   },
   {
     id: 38, name: "豆腐", category: "豆类", aliases: ["tofu"],
@@ -352,7 +389,8 @@ const foodDatabase = [
     sodium: 7, potassium: 125, cholesterol: 0,
     vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0,
     calcium: 350, iron: 2.6, magnesium: 30,
-    healthTip: "豆腐是植物性蛋白的优质来源，富含钙，适合素食者食用。"
+    healthTip: "豆腐是植物性蛋白的优质来源，富含钙，适合素食者食用。",
+    intakeTip: "每天1块手掌大小（约100克），豆腐植物蛋白丰富，红烧或煮汤都好，补钙还不长胖~"
   },
   {
     id: 39, name: "红豆", category: "豆类", aliases: ["red bean", "红豆沙"],
@@ -361,7 +399,8 @@ const foodDatabase = [
     sodium: 2, potassium: 860, cholesterol: 0,
     vitaminA: 13, vitaminC: 0, vitaminD: 0, vitaminB12: 0,
     calcium: 74, iron: 7.4, magnesium: 138,
-    healthTip: "红豆富含铁和膳食纤维，中医认为有助于补血利水。"
+    healthTip: "红豆富含铁和膳食纤维，中医认为有助于补血利水。",
+    intakeTip: "每天1小把（约30克），红豆补血利水，煮成红豆汤或红豆饭都不错，女生可以多吃~"
   },
   {
     id: 40, name: "绿豆", category: "豆类", aliases: ["mung bean"],
@@ -370,7 +409,8 @@ const foodDatabase = [
     sodium: 3, potassium: 787, cholesterol: 0,
     vitaminA: 22, vitaminC: 0, vitaminD: 0, vitaminB12: 0,
     calcium: 81, iron: 6.5, magnesium: 125,
-    healthTip: "绿豆具有清热解毒的功效，夏季食用可消暑。"
+    healthTip: "绿豆具有清热解毒的功效，夏季食用可消暑。",
+    intakeTip: "每天1小把（约30克），绿豆清热解暑，夏天煮绿豆汤特别合适，冰镇的更好喝~"
   },
 
   // 坚果
@@ -381,7 +421,8 @@ const foodDatabase = [
     sodium: 6, potassium: 455, cholesterol: 0,
     vitaminA: 5, vitaminC: 1.3, vitaminD: 0, vitaminB12: 0,
     calcium: 98, iron: 2.9, magnesium: 131,
-    healthTip: "核桃富含Omega-3脂肪酸和维生素E，对大脑健康有益。"
+    healthTip: "核桃富含Omega-3脂肪酸和维生素E，对大脑健康有益。",
+    intakeTip: "每天3-5颗核桃（约15克），核桃对大脑好，建议带壳吃更新鲜，补脑益智~"
   },
   {
     id: 42, name: "杏仁", category: "坚果", aliases: ["almond"],
@@ -390,7 +431,8 @@ const foodDatabase = [
     sodium: 1, potassium: 705, cholesterol: 0,
     vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0,
     calcium: 269, iron: 3.7, magnesium: 270,
-    healthTip: "杏仁是维生素E和钙的极佳来源，每日适量食用有益骨骼健康。"
+    healthTip: "杏仁是维生素E和钙的极佳来源，每日适量食用有益骨骼健康。",
+    intakeTip: "每天5-8颗（约15克），杏仁维生素E丰富，注意选择原味无盐的，补钙健骨~"
   },
   {
     id: 43, name: "花生", category: "坚果", aliases: ["peanut"],
@@ -399,7 +441,8 @@ const foodDatabase = [
     sodium: 18, potassium: 705, cholesterol: 0,
     vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0,
     calcium: 92, iron: 4.6, magnesium: 168,
-    healthTip: "花生富含不饱和脂肪酸和蛋白质，注意选择无盐、非油炸的产品。"
+    healthTip: "花生富含不饱和脂肪酸和蛋白质，注意选择无盐、非油炸的产品。",
+    intakeTip: "每天1小把（约20克），花生性价比高，建议选择原味非油炸款，别吃多哦会上火~"
   },
   {
     id: 44, name: "腰果", category: "坚果", aliases: ["cashew"],
@@ -408,7 +451,8 @@ const foodDatabase = [
     sodium: 12, potassium: 600, cholesterol: 0,
     vitaminA: 0, vitaminC: 0.5, vitaminD: 0, vitaminB12: 0,
     calcium: 37, iron: 6.7, magnesium: 292,
-    healthTip: "腰果含镁量高，对心脏健康有益，但热量较高需适量食用。"
+    healthTip: "腰果含镁量高，对心脏健康有益，但热量较高需适量食用。",
+    intakeTip: "每天3-5颗（约10克），腰果镁含量高，但热量较高别多吃，一天几颗就好~"
   },
 
   // 饮料
@@ -419,7 +463,8 @@ const foodDatabase = [
     sodium: 3, potassium: 27, cholesterol: 0,
     vitaminA: 0, vitaminC: 0.3, vitaminD: 0, vitaminB12: 0,
     calcium: 3, iron: 0.04, magnesium: 3,
-    healthTip: "绿茶富含儿茶素等抗氧化物质，有助于预防癌症和心血管疾病。"
+    healthTip: "绿茶富含儿茶素等抗氧化物质，有助于预防癌症和心血管疾病。",
+    intakeTip: "每天2-3杯（约300-500ml），绿茶抗氧化，建议饭后1小时再喝，别空腹喝哦~"
   },
   {
     id: 46, name: "咖啡", category: "饮料", aliases: ["coffee"],
@@ -428,7 +473,8 @@ const foodDatabase = [
     sodium: 2, potassium: 49, cholesterol: 0,
     vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0,
     calcium: 5, iron: 0.04, magnesium: 3,
-    healthTip: "咖啡含咖啡因，可提神醒脑，但孕妇和心血管疾病患者应谨慎饮用。"
+    healthTip: "咖啡含咖啡因，可提神醒脑，但孕妇和心血管疾病患者应谨慎饮用。",
+    intakeTip: "每天最多1-2杯（约200ml），咖啡提神，下午3点后别喝以免影响睡眠，孕妇要少喝哦~"
   },
   {
     id: 47, name: "橙汁", category: "饮料", aliases: ["orange juice"],
@@ -437,7 +483,8 @@ const foodDatabase = [
     sodium: 4, potassium: 200, cholesterol: 0,
     vitaminA: 12, vitaminC: 33.6, vitaminD: 0, vitaminB12: 0,
     calcium: 9, iron: 0.1, magnesium: 11,
-    healthTip: "橙汁富含维生素C，但含糖量较高，建议适量饮用或选择鲜榨低糖款。"
+    healthTip: "橙汁富含维生素C，但含糖量较高，建议适量饮用或选择鲜榨低糖款。",
+    intakeTip: "每天1杯（约250ml），橙汁维C丰富，但含糖量高建议选鲜榨无糖的，或者直接吃橙子更好~"
   },
   {
     id: 48, name: "可乐", category: "饮料", aliases: ["cola", "coke"],
@@ -446,7 +493,8 @@ const foodDatabase = [
     sodium: 4, potassium: 2, cholesterol: 0,
     vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0,
     calcium: 6, iron: 0, magnesium: 0,
-    healthTip: "碳酸饮料含糖量高，营养价值低，建议少喝或选择无糖版本。"
+    healthTip: "碳酸饮料含糖量高，营养价值低，建议少喝或选择无糖版本。",
+    intakeTip: "尽量少喝，如果喝的话每周不超过1罐（约330ml），可乐含糖高没啥营养，用气泡水代替吧~"
   },
 
   // 零食
@@ -457,7 +505,8 @@ const foodDatabase = [
     sodium: 1480, potassium: 197, cholesterol: 0,
     vitaminA: 0, vitaminC: 8, vitaminD: 0, vitaminB12: 0,
     calcium: 20, iron: 1.2, magnesium: 22,
-    healthTip: "薯片高脂高盐，过量食用不利于健康，建议选择烤薯片或其他健康零食。"
+    healthTip: "薯片高脂高盐，过量食用不利于健康，建议选择烤薯片或其他健康零食。",
+    intakeTip: "尽量少吃，如果吃的话每次不超过1小把（约30克），选择烤薯片比油炸的好，解馋就好~"
   },
   {
     id: 50, name: "巧克力", category: "零食", aliases: ["chocolate"],
@@ -466,7 +515,8 @@ const foodDatabase = [
     sodium: 24, potassium: 359, cholesterol: 0,
     vitaminA: 5, vitaminC: 0, vitaminD: 0, vitaminB12: 0,
     calcium: 56, iron: 6.7, magnesium: 192,
-    healthTip: "黑巧克力（70%以上）富含可可黄烷醇，适量食用对心血管有益。"
+    healthTip: "黑巧克力（70%以上）富含可可黄烷醇，适量食用对心血管有益。",
+    intakeTip: "每天1-2小块（约15克），建议选择70%以上黑巧克力更健康，别吃牛奶巧克力哦~"
   },
   {
     id: 51, name: "饼干", category: "零食", aliases: ["biscuit", "cookie"],
@@ -475,7 +525,8 @@ const foodDatabase = [
     sodium: 400, potassium: 120, cholesterol: 5,
     vitaminA: 10, vitaminC: 0, vitaminD: 0, vitaminB12: 0,
     calcium: 60, iron: 3.5, magnesium: 15,
-    healthTip: "饼干糖分和油脂含量高，建议选择低糖低油的健康饼干。"
+    healthTip: "饼干糖分和油脂含量高，建议选择低糖低油的健康饼干。",
+    intakeTip: "每天2-3片（约20克），建议选择低糖低油的健康饼干，或者用水果代替更营养~"
   },
   {
     id: 52, name: "冰淇淋", category: "零食", aliases: ["ice cream"],
@@ -484,6 +535,7 @@ const foodDatabase = [
     sodium: 56, potassium: 138, cholesterol: 41,
     vitaminA: 16, vitaminC: 0.4, vitaminD: 0.4, vitaminB12: 0.4,
     calcium: 128, iron: 0.3, magnesium: 14,
-    healthTip: "冰淇淋含糖量和脂肪含量较高，建议饭后适量食用。"
+    healthTip: "冰淇淋含糖量和脂肪含量较高，建议饭后适量食用。",
+    intakeTip: "每周1-2次，每次1小球（约100克），别空腹吃，饭后当甜点更合适，吃太快会头疼哦~"
   }
 ];

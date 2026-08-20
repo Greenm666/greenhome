@@ -210,6 +210,9 @@
             <strong>💡 健康提示：</strong>${food.healthTip}
           </div>
         </div>
+
+        <!-- 生活化摄入建议 -->
+        ${generateIntakeTip(food)}
       </div>
     `;
 
@@ -263,6 +266,26 @@
       return '';
     }
     return highlights.join('');
+  }
+
+  function generateIntakeTip(food) {
+    if (!food.intakeTip) return '';
+
+    return `
+      <div class="intake-tip-card">
+        <div class="intake-tip-header">
+          <span class="intake-tip-icon">💡</span>
+          <span class="intake-tip-title">生活化摄入建议</span>
+        </div>
+        <div class="intake-tip-body">
+          <div class="intake-tip-food-name">${food.name}</div>
+          <p class="intake-tip-text">${food.intakeTip}</p>
+        </div>
+        <div class="intake-tip-footer">
+          <span class="intake-tip-note">温馨提示：以上建议仅供参考，具体摄入量请根据个人情况调整</span>
+        </div>
+      </div>
+    `;
   }
 
   function closeModal() {

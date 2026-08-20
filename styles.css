@@ -681,6 +681,105 @@ body {
   border-radius: 4px;
 }
 
+/* 生活化摄入建议模块 */
+.intake-tip-card {
+  margin-top: 20px;
+  background: linear-gradient(135deg, #f0f9e8 0%, #fefce8 100%);
+  border: 2px solid #aed581;
+  border-radius: 16px;
+  padding: 20px 22px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(139, 195, 74, 0.15);
+}
+
+.intake-tip-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #7cb342, #cddc39, #ffd54f);
+  border-radius: 16px 16px 0 0;
+}
+
+.intake-tip-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.intake-tip-icon {
+  font-size: 1.4rem;
+}
+
+.intake-tip-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #33691e;
+  letter-spacing: 0.5px;
+}
+
+.intake-tip-body {
+  background: rgba(255, 255, 255, 0.65);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  border: 1px dashed #c5e1a5;
+}
+
+.intake-tip-food-name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #558b2f;
+  margin-bottom: 8px;
+}
+
+.intake-tip-text {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #33691e;
+  font-weight: 500;
+}
+
+.intake-tip-footer {
+  padding-top: 8px;
+  border-top: 1px dashed #c5e1a5;
+}
+
+.intake-tip-note {
+  font-size: 0.85rem;
+  color: #689f38;
+  opacity: 0.85;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .intake-tip-card {
+    padding: 16px 18px;
+    border-radius: 14px;
+  }
+
+  .intake-tip-title {
+    font-size: 1.1rem;
+  }
+
+  .intake-tip-food-name {
+    font-size: 1rem;
+  }
+
+  .intake-tip-text {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .intake-tip-note {
+    font-size: 0.8rem;
+  }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .logo h1 {
