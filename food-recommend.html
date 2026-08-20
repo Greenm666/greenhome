@@ -84,7 +84,7 @@
 <script>
 (function() {
 
-  const recommendData = {
+  var recommendData = {
     staple: {
       label: '安心主食',
       categories: [
@@ -155,96 +155,147 @@
           { name: '魔芋辣酱', image: '🌶️', price: '¥16.9', desc: '以魔芋为基底，辣味足但热量极低，重口味人群解馋利器。', tags: ['高蛋白', '饱腹感强'], link: 'https://example.com/affiliate/konjac-chili' },
           { name: '柠檬胡椒盐', image: '🍋', price: '¥14.5', desc: '天然柠檬粉+黑胡椒+海盐混合，无添加糖和味精，煎鱼或烤蔬菜首选。', tags: ['天然香料', '无添加'], link: 'https://example.com/affiliate/lemon-pepper' }
         ]}
-      ]}
+      ]
+    }
   };
 
-  const tabs = document.querySelectorAll('.recommend-tab');
-  const categoryNav = document.getElementById('categoryNav');
-  const productArea = document.getElementById('productArea');
-  let currentTab = 'staple';
-  let currentCategory = null;
+  var tabs = document.querySelectorAll('.recommend-tab');
+  var categoryNav = document.getElementById('categoryNav');
+  var productArea = document.getElementById('productArea');
+  var currentTab = 'staple';
+  var currentCategory = null;
+
+  function getTab(tabKey) {
+    return recommendData[tabKey];
+  }
+
+  function findCategory(tabKey, catId) {
+    var tab = getTab(tabKey);
+    if (!tab) return null;
+    return tab.categories.find(function(c) { return c.id === catId; });
+  }
 
   function renderCategoryNav(tabKey) {
-    const tab = recommendData[tabKey];
-    const validCatIds = tab.categories.map(c => c.id);
-    if (!currentCategory || validCatIds.indexOf(currentCategory) === -1) {
+    var tab = getTab(tabKey);
+    if (!tab) return;
+
+    var validIds = tab.categories.map(function(c) { return c.id; });
+    if (!currentCategory || validIds.indexOf(currentCategory) === -1) {
       currentCategory = tab.categories[0].id;
     }
 
-    categoryNav.innerHTML = `
-      <div class="category-nav-title">${tab.label}</div>
-      <div class="category-nav-list">
-        ${tab.categories.map(cat => `
-          <button class="category-nav-item ${cat.id === currentCategory ? 'active' : ''}" data-cat="${cat.id}">
-            ${cat.name}
-            <span class="category-count">${cat.products.length}</span>
-          </button>
-        `).join('')}
-      </div>
-    `;
-
-    categoryNav.querySelectorAll('.category-nav-item').forEach(btn => {
-      btn.addEventListener('click', () => {
-        currentCategory = btn.dataset.cat;
-        renderCategoryNav(tabKey);
-        renderProducts(tabKey);
-      });
+    var html = '<div class="category-nav-title">' + tab.label + '</div>';
+    html += '<div class="category-nav-list">';
+    tab.categories.forEach(function(cat) {
+      var active = cat.id === currentCategory ? ' active' : '';
+      html += '<button class="category-nav-item' + active + '" data-cat="' + cat.id + '">';
+      html += cat.name;
+      html += '<span class="category-count">' + cat.products.length + '</span>';
+      html += '</button>';
     });
+    html += '</div>';
+
+    categoryNav.innerHTML = html;
   }
 
   function renderProducts(tabKey) {
-    const tab = recommendData[tabKey];
-    const cat = tab.categories.find(c => c.id === currentCategory);
+    var tab = getTab(tabKey);
+    if (!tab) return;
 
+    var cat = findCategory(tabKey, currentCategory);
     if (!cat) {
       productArea.innerHTML = '<div class="empty-state"><div class="empty-icon">🔍</div><h3>暂无商品</h3></div>';
       return;
     }
 
-    productArea.innerHTML = `
-      <div class="product-area-header">
-        <h2>${cat.name}</h2>
-        <span class="product-count">共 ${cat.products.length} 款推荐</span>
-      </div>
-      <div class="product-grid">
-        ${cat.products.map(p => renderProductCard(p, tabKey, cat.id)).join('')}
-      </div>
-    `;
+    var html = '<div class="product-area-header">';
+    html += '<h2>' + cat.name + '</h2>';
+    html += '<span class="product-count">共 ' + cat.products.length + ' 款推荐</span>';
+    html += '</div>';
+    html += '<div class="product-grid">';
+    cat.products.forEach(function(p) {
+      html += renderProductCard(p, tabKey, cat.id);
+    });
+    html += '</div>';
+
+    productArea.innerHTML = html;
   }
 
   function renderProductCard(p, tabKey, catId) {
-    var href = p.link || ('product-list.html?tab=' + tabKey + '&category=' + catId);
-    var priceHtml = p.price ? '<span class="product-price">' + p.price + '</span>' : '';
-    var btnText = p.link ? '去看看 →' : (p.button || '查看该类目 →');
-    return `
-      <a href="${href}" class="product-card" style="text-decoration:none;color:inherit;">
-        <div class="product-image">
-          <span class="product-emoji">${p.image}</span>
-        </div>
-        <div class="product-info">
-          <h3 class="product-name">${p.name}</h3>
-          <p class="product-desc">${p.desc}</p>
-          <div class="product-tags">
-            ${p.tags.map(t => `<span class="product-tag">${t}</span>`).join('')}
-          </div>
-          <div class="product-price-row">
-            ${priceHtml}
-            <span class="product-btn-text">${btnText}</span>
-          </div>
-        </div>
-      </a>
-    `;
+    var href, priceHtml, btnText;
+
+    if (p && p.link) {
+      href = p.link;
+    } else {
+      href = 'product-list.html?tab=' + encodeURIComponent(tabKey) + '&category=' + encodeURIComponent(catId);
+    }
+
+    if (p && p.price) {
+      priceHtml = '<span class="product-price">' + p.price + '</span>';
+    } else {
+      priceHtml = '';
+    }
+
+    if (p && p.link) {
+      btnText = '去看看 →';
+    } else if (p && p.button) {
+      btnText = p.button;
+    } else {
+      btnText = '查看该类目 →';
+    }
+
+    var tagsHtml = '';
+    if (p && p.tags) {
+      tagsHtml = p.tags.map(function(t) {
+        return '<span class="product-tag">' + t + '</span>';
+      }).join('');
+    }
+
+    return '<a href="' + href + '" class="product-card" style="text-decoration:none;color:inherit;">' +
+      '<div class="product-image">' +
+        '<span class="product-emoji">' + (p ? (p.image || '📦') : '📦') + '</span>' +
+      '</div>' +
+      '<div class="product-info">' +
+        '<h3 class="product-name">' + (p ? (p.name || '未知商品') : '未知商品') + '</h3>' +
+        '<p class="product-desc">' + (p ? (p.desc || '') : '') + '</p>' +
+        '<div class="product-tags">' + tagsHtml + '</div>' +
+        '<div class="product-price-row">' +
+          priceHtml +
+          '<span class="product-btn-text">' + btnText + '</span>' +
+        '</div>' +
+      '</div>' +
+    '</a>';
   }
 
   function selectTab(tabKey) {
     currentTab = tabKey;
-    tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === tabKey));
+    tabs.forEach(function(t) {
+      t.classList.toggle('active', t.dataset.tab === tabKey);
+    });
     renderCategoryNav(tabKey);
     renderProducts(tabKey);
   }
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => selectTab(tab.dataset.tab));
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      selectTab(tab.dataset.tab);
+    });
+  });
+
+  categoryNav.addEventListener('click', function(e) {
+    var target = e.target;
+    while (target && target !== categoryNav) {
+      if (target.classList && target.classList.contains('category-nav-item')) {
+        var catId = target.dataset.cat;
+        if (catId && catId !== currentCategory) {
+          currentCategory = catId;
+          renderCategoryNav(currentTab);
+          renderProducts(currentTab);
+        }
+        return;
+      }
+      target = target.parentNode;
+    }
   });
 
   selectTab('staple');

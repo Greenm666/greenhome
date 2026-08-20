@@ -161,6 +161,7 @@
     flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
+    cursor: pointer;
   }
 
   .detail-card:hover {
@@ -621,20 +622,22 @@
       buttonText = '查看详情';
     }
 
+    var priceHtml = (item.price || '') + '<span class="unit">' + (item.unit || '') + '</span>';
+
     return `
-      <div class="detail-card" data-link="${targetLink}" style="cursor:pointer;" onclick="window.location.href='${targetLink}'">
+      <div class="detail-card" data-link="${targetLink}">
         <div class="detail-card-image">
           ${badgeHtml}
-          <span class="detail-emoji">${item.image}</span>
+          <span class="detail-emoji">${item.image || '📦'}</span>
         </div>
         <div class="detail-card-info">
-          <div class="detail-brand">${item.brand}</div>
-          <h3 class="detail-card-name">${item.name}</h3>
-          <p class="detail-card-desc">${item.desc}</p>
+          <div class="detail-brand">${item.brand || ''}</div>
+          <h3 class="detail-card-name">${item.name || '未知商品'}</h3>
+          <p class="detail-card-desc">${item.desc || ''}</p>
           <div class="detail-card-tags">${tagsHtml}</div>
           <div class="detail-card-price">
-            <div class="detail-price">${item.price || ''}<span class="unit">${item.unit || ''}</span></div>
-            <button class="detail-link-btn" onclick="event.stopPropagation(); window.location.href='${targetLink}'">${buttonText} &rarr;</button>
+            <div class="detail-price">${priceHtml}</div>
+            <button class="detail-link-btn" data-link="${targetLink}">${buttonText} &rarr;</button>
           </div>
         </div>
       </div>
@@ -717,6 +720,26 @@
   });
 
   renderDetail();
+
+  var detailGrid = document.getElementById('detailProductGrid');
+  if (detailGrid) {
+    detailGrid.addEventListener('click', function(e) {
+      var target = e.target;
+      while (target && target !== detailGrid) {
+        if (target.classList && target.classList.contains('detail-link-btn')) {
+          var link = target.dataset.link;
+          if (link) { window.location.href = link; }
+          return;
+        }
+        if (target.classList && target.classList.contains('detail-card')) {
+          var link = target.dataset.link;
+          if (link) { window.location.href = link; }
+          return;
+        }
+        target = target.parentNode;
+      }
+    });
+  }
 
 })();
 </script>
