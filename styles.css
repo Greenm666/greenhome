@@ -856,6 +856,28 @@ body {
 }
 
 /* Bottom Slogan */
+.bottom-slogan {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #666;
+  padding: 28px 20px 24px;
+  line-height: 1.8;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  max-width: 600px;
+  margin: 30px auto 0;
+  position: relative;
+}
+
+.bottom-slogan::before {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #c5e1a5, transparent);
+  margin: 0 auto 18px;
+}
+
 .footer-slogan {
   text-align: center;
   font-size: 0.95rem;
@@ -902,9 +924,10 @@ body {
     font-size: 0.98rem;
   }
 
-  .footer-slogan {
+  .bottom-slogan {
     font-size: 0.85rem;
-    padding: 16px 16px 10px;
+    padding: 20px 16px 16px;
+    margin: 20px auto 0;
   }
 }
 

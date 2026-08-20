@@ -330,9 +330,6 @@
     };
   }
 
-};
-
-  // Daily Soul Question Rotation
   const soulQuestions = [
     "今天喝够水了吗？",
     "久坐一小时了，站起来伸个懒腰吧！",
@@ -365,6 +362,5 @@
 
   initSoulCard();
 
-  // Initialize
   renderResults(searchFood('', 'all'));
 })();
