@@ -1,10 +1,9 @@
-// 自动生成的商品数据 - 示例格式
-// 来源: 京东联盟API（待接入）
+// 京东联盟选品数据 - 供网页使用
 // 搜索关键词: 低卡调味
-// 生成时间: 待生成
-// 使用方法: 将 products 数组复制到对应 HTML/JS 文件中
+// 生成时间: 示例数据
+// 将此文件通过 <script src="products-data.js"> 引入 HTML 页面
 
-const products = [
+window.JD_PRODUCTS = [
   {
     "name": "千禾零添加油醋汁",
     "brand": "千禾旗舰店",
@@ -61,5 +60,3 @@ const products = [
     "skuId": "567890123"
   }
 ];
-
-module.exports = products;
