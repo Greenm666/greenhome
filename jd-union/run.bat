@@ -22,7 +22,13 @@ echo 数量: %COUNT%
 echo.
 
 cd /d "%~dp0"
-node index.js "%KEYWORD%" %COUNT%
+
+where node >nul 2>nul
+if %ERRORLEVEL%==0 (
+    node index.js "%KEYWORD%" %COUNT%
+) else (
+    "C:\Program Files\nodejs\node.exe" index.js "%KEYWORD%" %COUNT%
+)
 
 echo.
 pause

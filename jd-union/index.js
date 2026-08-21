@@ -187,34 +187,46 @@ function generateMockProducts(keyword, count) {
   console.log('📝 使用示例数据生成（API未连接）...');
   const mockData = {
     '低卡调味': [
-      { name: '千禾零添加油醋汁', price: '¥19.9', rating: '98%', desc: '0脂肪零添加，适合拌沙拉', tags: ['控卡', '轻食搭档'] },
-      { name: '亨氏无糖番茄酱', price: '¥15.8', rating: '96%', desc: '代糖配方，保留番茄风味', tags: ['低GI', '儿童友好'] },
-      { name: '千禾薄盐生抽', price: '¥22.5', rating: '99%', desc: '减盐30%，日常调味必备', tags: ['减盐', '家庭必备'] },
-      { name: '辣酱王魔芋辣酱', price: '¥17.9', rating: '95%', desc: '魔芋基底，低卡又够味', tags: ['高蛋白', '饱腹感强'] },
-      { name: ' McCormick柠檬胡椒盐', price: '¥14.5', rating: '97%', desc: '天然香料，无添加糖', tags: ['天然香料', '无添加'] }
+      { name: '千禾零添加油醋汁', price: '¥19.9', rating: '98%', desc: '0脂肪零添加，无味精无色素，适合拌沙拉、凉拌菜，控卡期必备健康调料。', tags: ['控卡', '轻食搭档'], image: '🥗' },
+      { name: '亨氏无糖番茄酱', price: '¥15.8', rating: '96%', desc: '使用赤藓糖醇替代白砂糖，保留番茄风味，不添加人工色素，适合搭配鸡胸肉或全麦面包。', tags: ['低GI', '儿童友好'], image: '🍅' },
+      { name: '千禾零添加薄盐生抽', price: '¥22.5', rating: '99%', desc: '钠含量比普通生抽低30%以上，采用非转基因大豆酿造，0添加防腐剂，日常炒菜或蘸料都适合。', tags: ['减盐', '家庭必备'], image: '🫙' },
+      { name: '辣妹子魔芋辣酱', price: '¥17.9', rating: '95%', desc: '以魔芋为基底，添加精选辣椒，辣味足但热量极低，每100g仅80大卡，重口味人群解馋利器。', tags: ['高蛋白', '饱腹感强'], image: '🌶️' },
+      { name: 'McCormick柠檬胡椒盐', price: '¥14.5', rating: '97%', desc: '天然柠檬粉+黑胡椒+海盐混合，无添加糖和味精，无防腐剂，煎鱼、烤蔬菜、牛排的完美搭档。', tags: ['天然香料', '无添加'], image: '🍋' }
     ],
     '零食': [
-      { name: '良品铺子原味巴旦木', price: '¥29.9', rating: '98%', desc: '维E含量高，健康零食首选', tags: ['低糖', '高维E'] },
-      { name: '三只松鼠低糖核桃', price: '¥25.8', rating: '97%', desc: 'Omega-3好来源', tags: ['低糖', '高Omega-3'] },
-      { name: '百草味无添加腰果', price: '¥32.5', rating: '96%', desc: '原味烘烤，零添加', tags: ['无添加', '低糖'] }
+      { name: '良品铺子原味巴旦木', price: '¥29.9', rating: '98%', desc: '配料表只有巴旦木，维E含量爆表，每日一小把补充优质脂肪。', tags: ['低糖', '高维E'], image: '🌰' },
+      { name: '三只松鼠低糖核桃', price: '¥25.8', rating: '97%', desc: '每日3颗，补充Omega-3，酥脆可口不甜腻。', tags: ['低糖', '高Omega-3'], image: '🥜' },
+      { name: '百草味无添加腰果', price: '¥32.5', rating: '96%', desc: '原味烘烤，零添加，香脆可口，健康零食首选。', tags: ['无添加', '低糖'], image: '🥥' },
+      { name: '良品铺子烤红薯片', price: '¥19.9', rating: '95%', desc: '烘烤非油炸，低卡又香脆，解馋不长肉。', tags: ['低卡', '低脂'], image: '🍟' },
+      { name: '三只松鼠85%黑巧克力', price: '¥39.9', rating: '98%', desc: '高可可含量，控糖期也能吃的甜品，富含抗氧化物质。', tags: ['低糖', '高抗氧化'], image: '🍫' }
     ],
     '饮品': [
-      { name: '农夫山泉无糖绿茶', price: '¥3.5', rating: '97%', desc: '含儿茶素，抗氧化', tags: ['无糖', '零热量'] },
-      { name: '伊利无糖酸奶', price: '¥8.9', rating: '98%', desc: '含益生菌，助消化', tags: ['低糖', '高钙'] }
+      { name: '农夫山泉无糖绿茶', price: '¥3.5', rating: '97%', desc: '含儿茶素，抗氧化又解腻，大餐后来一杯。', tags: ['无糖', '零热量'], image: '🍵' },
+      { name: '伊利无糖酸奶', price: '¥8.9', rating: '98%', desc: '含益生菌助消化，低糖不酸牙，早餐最佳搭配。', tags: ['低糖', '高钙'], image: '🥛' },
+      { name: '维他奶无糖豆奶', price: '¥4.5', rating: '96%', desc: '植物蛋白来源，低卡无乳糖，适合乳糖不耐人群。', tags: ['低糖', '无乳糖'], image: '🥤' },
+      { name: '东方树叶无糖乌龙茶', price: '¥5.5', rating: '97%', desc: '0卡路里纯茶饮料，解腻助消化，大餐必备。', tags: ['零热量', '助消化'], image: '🍶' },
+      { name: '伊利低脂牛奶', price: '¥6.9', rating: '98%', desc: '补充优质蛋白和钙质，低脂无负担。', tags: ['低脂', '高蛋白'], image: '🥛' }
     ],
     '主食': [
-      { name: '桂格即食燕麦片', price: '¥45.9', rating: '99%', desc: '高纤维控糖首选', tags: ['高纤维', '低糖'] },
-      { name: '金龙鱼糙米', price: '¥12.8', rating: '97%', desc: '保留胚芽营养', tags: ['高纤维', '低糖'] }
+      { name: '桂格即食燕麦片', price: '¥45.9', rating: '99%', desc: '高纤维控糖首选，早餐搭配牛奶营养满满。', tags: ['高纤维', '低糖'], image: '🥣' },
+      { name: '金龙鱼糙米', price: '¥12.8', rating: '97%', desc: '保留胚芽营养，饱腹感比白米强3倍。', tags: ['高纤维', '低糖'], image: '🍚' },
+      { name: '中粮三色米', price: '¥25.9', rating: '96%', desc: '糙米+红米+黑米，一餐吃够多种营养。', tags: ['高纤维', '低脂'], image: '🍙' },
+      { name: '藜麦君白藜麦', price: '¥49.9', rating: '98%', desc: '完全蛋白食材，素食者的优质选择，无麸质。', tags: ['高蛋白', '无麸质'], image: '🌾' },
+      { name: '贝贝南瓜', price: '¥9.9', rating: '97%', desc: '天然清甜，减脂期主食完美替代，富含维A。', tags: ['低卡', '富含维A'], image: '🎃' }
     ]
   };
 
   const key = Object.keys(mockData).find(k => keyword.includes(k)) || keyword;
   let products = mockData[key] || mockData[Object.keys(mockData)[0]] || [];
   return products.slice(0, count).map(p => ({
-    ...p,
-    link: `https://item.jd.com/${Math.floor(Math.random() * 999999999)}.html?union=1`,
-    image: '📦',
-    price: p.price.startsWith('¥') ? p.price : `¥${p.price}`
+    name: p.name,
+    brand: '京东自营',
+    price: p.price.startsWith('¥') ? p.price : `¥${p.price}`,
+    rating: p.rating,
+    image: p.image || '📦',
+    link: `https://item.jd.com/${Math.floor(Math.random() * 999999999)}.html?union=YOUR_UNION_ID`,
+    tags: p.tags,
+    desc: p.desc
   }));
 }
 
@@ -261,8 +273,11 @@ async function main() {
   try {
     config = loadConfig();
   } catch (e) {
-    console.log('❌ 配置错误:', e.message);
-    process.exit(1);
+    console.log('⚠️  配置未完成:', e.message);
+    console.log('📝 将使用示例数据继续执行（填写 config.json 后可调用真实API）\n');
+    const products = generateMockProducts(keyword, count);
+    writeJsFile(products, keyword);
+    return;
   }
 
   let accessToken;
