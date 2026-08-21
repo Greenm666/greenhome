@@ -6,15 +6,20 @@ const https = require('https');
 const configPath = path.join(__dirname, 'config.json');
 const OUTPUT_PATH = path.join(__dirname, '..', 'data.js');
 const WEB_DATA_PATH = path.join(__dirname, '..', 'products-data.js');
+const API_HOST = 'api.jd.com';
+const API_PATH = '/routerjson';
 
 function loadConfig() {
   const raw = fs.readFileSync(configPath, 'utf8');
   const config = JSON.parse(raw);
   if (!config.appKey || config.appKey === 'YOUR_APP_KEY_HERE') {
-    throw new Error('请先在 config.json 中填写你的 AppKey');
+    throw new Error('请先在 config.json 中填写 AppKey');
   }
   if (!config.appSecret || config.appSecret === 'YOUR_APP_SECRET_HERE') {
-    throw new Error('请先在 config.json 中填写你的 AppSecret');
+    throw new Error('请先在 config.json 中填写 AppSecret');
+  }
+  if (!config.unionId || config.unionId === 'YOUR_UNION_ID_HERE') {
+    throw new Error('请先在 config.json 中填写 unionId（在 union.jd.com 个人中心获取）');
   }
   return config;
 }
@@ -29,21 +34,21 @@ function sign(params, appSecret) {
   return crypto.createHash('md5').update(str, 'utf8').digest('hex').toUpperCase();
 }
 
-function requestApi(basePath, params) {
+function requestApi(params) {
   return new Promise((resolve, reject) => {
     const queryString = Object.keys(params)
       .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(params[k])}`)
       .join('&');
 
     const options = {
-      hostname: 'api.jd.com',
-      path: `/routerjson?${queryString}`,
+      hostname: API_HOST,
+      path: `${API_PATH}?${queryString}`,
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
-      timeout: 10000
+      timeout: 15000
     };
 
     const req = https.request(options, (res) => {
@@ -54,7 +59,7 @@ function requestApi(basePath, params) {
           const jsonData = JSON.parse(data);
           resolve(jsonData);
         } catch (e) {
-          reject(new Error('响应解析失败: ' + data.substring(0, 200)));
+          reject(new Error(`响应解析失败，原始响应前200字符: ${data.substring(0, 200)}`));
         }
       });
     });
@@ -62,7 +67,7 @@ function requestApi(basePath, params) {
     req.on('error', (e) => reject(e));
     req.on('timeout', () => {
       req.destroy();
-      reject(new Error('请求超时，请检查网络连接'));
+      reject(new Error('请求超时，请检查网络连接或 API 是否可达'));
     });
 
     req.end();
@@ -71,7 +76,11 @@ function requestApi(basePath, params) {
 
 async function getAccessToken(config) {
   if (config.accessToken && config.accessToken.trim()) {
-    return config.accessToken.trim();
+    const expiresAt = config.tokenExpiresAt || 0;
+    if (Date.now() < expiresAt) {
+      console.log(`🔑 使用缓存的 access_token（有效期至 ${new Date(expiresAt).toLocaleString('zh-CN')}）`);
+      return config.accessToken.trim();
+    }
   }
 
   console.log('🔑 正在获取 access_token...');
@@ -88,99 +97,139 @@ async function getAccessToken(config) {
   params['sign'] = sign(params, config.appSecret);
 
   try {
-    const result = await requestApi('/routerjson', params);
+    const result = await requestApi(params);
     if (result.error_response) {
-      throw new Error('获取access_token失败: ' + JSON.stringify(result.error_response));
+      const err = result.error_response;
+      throw new Error(`获取access_token失败 [code=${err.code}]: ${err.zhDesc || err.msg || JSON.stringify(err)}`);
     }
+
     const accessToken = result.access_token || result.open_access_token;
+    const expiresIn = result.expires_in || result.expires || 86400;
+
     if (!accessToken) {
-      throw new Error('未获取到access_token，响应: ' + JSON.stringify(result).substring(0, 300));
+      throw new Error(`未获取到access_token，响应: ${JSON.stringify(result).substring(0, 300)}`);
     }
-    console.log('✅ access_token 获取成功');
+
     config.accessToken = accessToken;
+    config.tokenExpiresAt = Date.now() + (expiresIn - 60) * 1000;
     fs.writeFileSync(configPath, JSON.stringify(config, null, 2), 'utf8');
+    console.log(`✅ access_token 获取成功（有效期 ${expiresIn} 秒）`);
     return accessToken;
   } catch (e) {
-    throw new Error('获取access_token失败: ' + e.message + '\n请检查AppKey和AppSecret是否正确');
+    throw new Error(`获取access_token失败: ${e.message}\n请检查 config.json 中的 AppKey 和 AppSecret 是否正确`);
   }
 }
 
-async function searchProducts(config, accessToken, keyword, count) {
-  console.log(`🔍 正在搜索 "${keyword}" 相关商品...`);
+async function callUnionApi(config, accessToken, method, bizParams) {
   const timestamp = Math.floor(Date.now() / 1000);
   const params = {
-    'method': 'jd.union.open.goods.search',
+    'method': method,
     'app_key': config.appKey,
     'access_token': accessToken,
     'timestamp': String(timestamp),
     'v': '2.0',
     'sign_method': 'md5',
-    'req.param': JSON.stringify({
-      'goodsSearchReq': {
-        'keyword': keyword,
-        'pageIndex': 1,
-        'pageSize': Math.max(count * 3, 30),
-        'sortType': 'comment_num_desc',
-        'priceMax': 0,
-        'priceMin': 0
-      }
-    })
+    'req.param': JSON.stringify(bizParams)
   };
   params['sign'] = sign(params, config.appSecret);
+  return requestApi(params);
+}
+
+async function searchProducts(config, accessToken, keyword, count) {
+  console.log(`🔍 正在搜索 "${keyword}" 相关商品（京东联盟API）...`);
+
+  const req = {
+    goodsSearchReq: {
+      keyword: keyword,
+      pageIndex: 1,
+      pageSize: Math.max(count * 3, 30),
+      sortType: 'comment_num_desc'
+    }
+  };
 
   try {
-    const result = await requestApi('/routerjson', params);
+    const result = await callUnionApi(config, accessToken, 'jd.union.open.goods.search', req);
+
     if (result.error_response) {
-      console.warn('⚠️ 搜索接口返回错误:', JSON.stringify(result.error_response).substring(0, 300));
+      const err = result.error_response;
+      console.warn(`⚠️  搜索接口返回错误 [code=${err.code}]: ${err.zhDesc || err.msg || JSON.stringify(err)}`);
       return [];
     }
-    const goods = result.result?.goodsSearchResponse?.data ||
-                  result.data ||
-                  (result.result && Array.isArray(result.result)) || [];
+
+    let goods = [];
+    if (result.result) {
+      if (result.result.goodsSearchResponse && result.result.goodsSearchResponse.data) {
+        goods = result.result.goodsSearchResponse.data;
+      } else if (Array.isArray(result.result)) {
+        goods = result.result;
+      } else if (result.result.data) {
+        goods = result.result.data;
+      }
+    }
+
     console.log(`   找到 ${goods.length} 个商品`);
+    if (goods.length > 0) {
+      const sample = goods[0];
+      console.log(`   字段示例: ${Object.keys(sample).slice(0, 10).join(', ')}`);
+    }
     return goods;
   } catch (e) {
-    console.warn('⚠️ 商品搜索失败:', e.message);
+    console.warn(`⚠️  商品搜索失败: ${e.message}`);
     return [];
   }
 }
 
-async function generatePromotionLink(config, accessToken, skuId, materialId) {
-  const timestamp = Math.floor(Date.now() / 1000);
-  const params = {
-    'method': 'jd.union.open.promotion.common.get',
-    'app_key': config.appKey,
-    'access_token': accessToken,
-    'timestamp': String(timestamp),
-    'v': '2.0',
-    'sign_method': 'md5',
-    'req.param': JSON.stringify({
-      'promotionCodeReq': {
-        'materialId': materialId || config.unionId,
-        'couponInfo': '',
-        'pids': '',
-        'subUnionId': 'health_' + Date.now()
-      }
-    })
+async function generatePromotionLink(config, accessToken, skuId) {
+  const req = {
+    promotionCodeReq: {
+      materialId: config.unionId,
+      couponInfo: '',
+      subUnionId: 'health_' + Date.now()
+    }
   };
-  params['sign'] = sign(params, config.appSecret);
 
   try {
-    const result = await requestApi('/routerjson', params);
+    const result = await callUnionApi(config, accessToken, 'jd.union.open.promotion.common.get', req);
+
     if (result.error_response) {
-      return { skuId, link: null, error: result.error_response.zhDesc || JSON.stringify(result.error_response) };
+      const err = result.error_response;
+      return { skuId, link: null, error: `[code=${err.code}] ${err.zhDesc || err.msg || JSON.stringify(err).substring(0, 100)}` };
     }
-    const data = result.result?.promotionCodeResponse || result.data || result.result;
-    if (data && data.couponInfo) {
-      return { skuId, link: data.couponInfo, shortLink: data.shortLink };
+
+    let data = null;
+    if (result.result) {
+      if (result.result.promotionCodeResponse) {
+        data = result.result.promotionCodeResponse;
+      } else if (typeof result.result === 'object' && !Array.isArray(result.result)) {
+        data = result.result;
+      }
+    } else if (result.data) {
+      data = result.data;
     }
-    if (typeof data === 'string') {
-      return { skuId, link: data };
+
+    if (data) {
+      const clickUrl = data.clickUrl || data.couponInfo || data.shortLink || data.url;
+      if (clickUrl) {
+        return { skuId, link: clickUrl, shortLink: data.shortLink };
+      }
+      if (typeof data === 'string') {
+        return { skuId, link: data };
+      }
     }
-    return { skuId, link: null, error: '响应格式异常' };
+
+    return { skuId, link: null, error: `响应格式异常: ${JSON.stringify(result).substring(0, 200)}` };
   } catch (e) {
     return { skuId, link: null, error: e.message };
   }
+}
+
+function extractField(obj, keys, defaultValue) {
+  for (const k of keys) {
+    if (obj && obj[k] !== undefined && obj[k] !== null && obj[k] !== '') {
+      return obj[k];
+    }
+  }
+  return defaultValue;
 }
 
 function generateMockProducts(keyword, count) {
@@ -217,7 +266,7 @@ function generateMockProducts(keyword, count) {
   };
 
   const key = Object.keys(mockData).find(k => keyword.includes(k)) || keyword;
-  let products = mockData[key] || mockData[Object.keys(mockData)[0]] || [];
+  const products = mockData[key] || mockData[Object.keys(mockData)[0]] || [];
   return products.slice(0, count).map(p => ({
     name: p.name,
     brand: '京东自营',
@@ -231,7 +280,7 @@ function generateMockProducts(keyword, count) {
 }
 
 function writeJsFile(products, keyword) {
-  const header = `// 自动生成的商品数据 - 来源: 京东联盟API
+  const header = `// 自动生成的商品数据 - 来源: 京东联盟API (union.jd.com)
 // 搜索关键词: ${keyword}
 // 生成时间: ${new Date().toLocaleString('zh-CN')}
 // 共 ${products.length} 款商品
@@ -262,12 +311,12 @@ async function main() {
   const keyword = args[0] || '低卡调味';
   const count = parseInt(args[1]) || 5;
 
-  console.log('========================================');
-  console.log('  京东联盟选品助手');
-  console.log('========================================');
+  console.log('==============================================');
+  console.log('  京东联盟选品助手 (union.jd.com)');
+  console.log('==============================================');
   console.log(`  关键词: ${keyword}`);
   console.log(`  数量: ${count}`);
-  console.log('========================================\n');
+  console.log('==============================================\n');
 
   let config;
   try {
@@ -285,8 +334,8 @@ async function main() {
     accessToken = await getAccessToken(config);
   } catch (e) {
     console.log('❌ 认证失败:', e.message);
-    console.log('\n💡 提示: 请检查 config.json 中的 AppKey 和 AppSecret');
-    console.log('💡 如果还没有密钥，请参考 README.md 的获取步骤');
+    console.log('\n💡 请检查 config.json 中的 AppKey / AppSecret / unionId');
+    console.log('💡 密钥获取地址: union.jd.com → 应用管理 → 我的应用');
     console.log('\n📝 将使用示例数据继续执行...\n');
     const products = generateMockProducts(keyword, count);
     writeJsFile(products, keyword);
@@ -296,49 +345,58 @@ async function main() {
   const goods = await searchProducts(config, accessToken, keyword, count * 3);
 
   if (!goods || goods.length === 0) {
-    console.log('⚠️ API未返回商品数据，使用示例数据...');
+    console.log('⚠️  API未返回商品数据，使用示例数据...');
     const products = generateMockProducts(keyword, count);
     writeJsFile(products, keyword);
     return;
   }
 
   console.log(`\n🔗 正在为 ${Math.min(count, goods.length)} 个商品生成推广链接...`);
-  const materialId = config.unionId;
+  console.log(`   推广位ID (materialId): ${config.unionId}`);
   const results = [];
 
   for (let i = 0; i < Math.min(count, goods.length); i++) {
     const g = goods[i];
-    const skuId = g.skuId || g.sku_id || g.id;
-    const name = g.skuName || g.name || g.title || '未知商品';
-    const price = g.price || g.wxPrice || g.jdPrice || '0';
-    const rating = g.commentScore || g.star || g.commentRate || 'N/A';
-    const image = g.imagePath || g.imgUrl || g.picture || '';
-    const shop = g.shopName || g.shop || '';
 
-    console.log(`   [${i + 1}/${count}] ${name.substring(0, 20)}...`);
+    const skuId = extractField(g, ['skuId', 'sku_id', 'skuIdStr', 'id'], '');
+    const name = extractField(g, ['skuName', 'name', 'title', 'skuName'], '未知商品');
+    const price = extractField(g, ['price', 'wxPrice', 'jdPrice', 'salePrice'], '0');
+    const rating = extractField(g, ['commentScore', 'star', 'commentRate', 'goodsComment'], 'N/A');
+    const image = extractField(g, ['imagePath', 'imgUrl', 'picture', 'image', 'skuImg'], '');
+    const shop = extractField(g, ['shopName', 'shop', 'shopNameStr'], '');
+    const comments = extractField(g, ['comments', 'comment', 'commentNum', 'remark'], '');
+
+    console.log(`   [${i + 1}/${count}] ${(name || '').substring(0, 25)}...`);
 
     let link = '';
     if (skuId) {
-      const linkResult = await generatePromotionLink(config, accessToken, skuId, materialId);
-      link = linkResult.link || linkResult.shortLink || '';
-      if (!link && linkResult.error) {
-        console.log(`      ⚠️ 链接生成失败: ${linkResult.error}`);
+      const linkResult = await generatePromotionLink(config, accessToken, skuId);
+      if (linkResult.link) {
+        link = linkResult.link;
+      } else if (linkResult.error) {
+        console.log(`      ⚠️  链接生成失败: ${linkResult.error}`);
+        link = `https://item.jd.com/${skuId}.html`;
       }
+    } else {
+      link = `https://item.jd.com/0.html`;
     }
 
-    if (!link) {
-      link = `https://item.jd.com/${skuId || '0'}.html`;
+    let ratingStr = String(rating);
+    if (typeof rating === 'number' && rating <= 5) {
+      ratingStr = `${(rating * 20).toFixed(0)}%`;
+    } else if (ratingStr && !ratingStr.includes('%') && ratingStr !== 'N/A') {
+      ratingStr = ratingStr;
     }
 
     results.push({
       name: name,
       brand: shop,
-      price: `¥${price}`,
-      rating: typeof rating === 'number' ? `${rating}%` : String(rating),
+      price: price.startsWith('¥') ? price : `¥${price}`,
+      rating: ratingStr,
       image: image || '📦',
       link: link,
       tags: [],
-      desc: g.comments || g.comment || '',
+      desc: String(comments || '').substring(0, 100),
       skuId: skuId
     });
 
@@ -346,7 +404,7 @@ async function main() {
   }
 
   if (results.length === 0) {
-    console.log('⚠️ 未获取到商品数据，使用示例数据...');
+    console.log('⚠️  未获取到商品数据，使用示例数据...');
     const mock = generateMockProducts(keyword, count);
     writeJsFile(mock, keyword);
     return;
@@ -354,6 +412,7 @@ async function main() {
 
   writeJsFile(results, keyword);
   console.log('\n🎯 完成！现在可以将 data.js 的内容复制到网页中使用');
+  console.log('💡 提示: 在浏览器中打开 products-data.html 可查看数据预览');
 }
 
 main().catch(e => {
@@ -363,16 +422,18 @@ main().catch(e => {
   const path = require('path');
   const mockData = {
     '低卡调味': [
-      { name: '千禾零添加油醋汁', price: '¥19.9', rating: '98%', image: '🥗', link: 'https://item.jd.com/example1.html', tags: ['控卡', '轻食搭档'], desc: '0脂肪零添加' },
-      { name: '亨氏无糖番茄酱', price: '¥15.8', rating: '96%', image: '🍅', link: 'https://item.jd.com/example2.html', tags: ['低GI', '儿童友好'], desc: '代糖配方' },
-      { name: '千禾薄盐生抽', price: '¥22.5', rating: '99%', image: '🫙', link: 'https://item.jd.com/example3.html', tags: ['减盐', '家庭必备'], desc: '减盐30%' },
+      { name: '千禾零添加油醋汁', price: '¥19.9', rating: '98%', image: '🥗', link: 'https://item.jd.com/example1.html', tags: ['控卡', '轻食搭档'], desc: '0脂肪零添加，适合拌沙拉' },
+      { name: '亨氏无糖番茄酱', price: '¥15.8', rating: '96%', image: '🍅', link: 'https://item.jd.com/example2.html', tags: ['低GI', '儿童友好'], desc: '代糖配方，保留番茄风味' },
+      { name: '千禾薄盐生抽', price: '¥22.5', rating: '99%', image: '🫙', link: 'https://item.jd.com/example3.html', tags: ['减盐', '家庭必备'], desc: '减盐30%，日常调味必备' },
       { name: '魔芋辣酱', price: '¥17.9', rating: '95%', image: '🌶️', link: 'https://item.jd.com/example4.html', tags: ['高蛋白', '饱腹感强'], desc: '魔芋基底低卡' },
       { name: '柠檬胡椒盐', price: '¥14.5', rating: '97%', image: '🍋', link: 'https://item.jd.com/example5.html', tags: ['天然香料', '无添加'], desc: '天然香料' }
     ]
   };
   const outPath = path.join(__dirname, '..', 'data.js');
-  const header = `// 自动生成的商品数据（示例）- ${new Date().toLocaleString('zh-CN')}\n\n`;
-  fs.writeFileSync(outPath, header + `const products = ${JSON.stringify(mockData['低卡调味'], null, 2)};\n\nmodule.exports = products;\n`, 'utf8');
-  console.log('✅ 示例数据已写入 data.js');
+  const webPath = path.join(__dirname, '..', 'products-data.js');
+  const timestamp = new Date().toLocaleString('zh-CN');
+  fs.writeFileSync(outPath, `// 自动生成的商品数据（示例）- ${timestamp}\n\nconst products = ${JSON.stringify(mockData['低卡调味'], null, 2)};\n\nmodule.exports = products;\n`, 'utf8');
+  fs.writeFileSync(webPath, `// 京东联盟选品数据（示例）- ${timestamp}\n\nwindow.JD_PRODUCTS = ${JSON.stringify(mockData['低卡调味'], null, 2)};\n`, 'utf8');
+  console.log('✅ 示例数据已写入 data.js 和 products-data.js');
   process.exit(0);
 });

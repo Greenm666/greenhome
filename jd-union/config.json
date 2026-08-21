@@ -2,5 +2,6 @@
   "appKey": "YOUR_APP_KEY_HERE",
   "appSecret": "YOUR_APP_SECRET_HERE",
   "unionId": "YOUR_UNION_ID_HERE",
-  "accessToken": ""
+  "accessToken": "",
+  "tokenExpiresAt": 0
 }
