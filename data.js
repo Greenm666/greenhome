@@ -1,78 +1,75 @@
-// 商品数据 - 来源: 淘宝联盟 (alimama.com)
-// 更新时间: 2026/8/25
-// 共 7 款商品（含2款真实淘宝联盟链接）
+const foodDatabase = [
+  { name: '苹果', category: '水果', aliases: ['apple', '红富士'], serving: '100克', calories: 52, protein: 0.3, fat: 0.2, carbs: 14, fiber: 2.4, sugar: 10, sodium: 1, potassium: 107, cholesterol: 0, calcium: 6, iron: 0.12, magnesium: 5, vitaminA: 54, vitaminC: 4.6, vitaminD: 0, vitaminB12: 0, healthTip: '苹果富含果胶，有助于调节肠道菌群，每天一个苹果有益健康。', intakeTip: '每天1-2个，建议连皮吃以获取更多膳食纤维。' },
+  { name: '香蕉', category: '水果', aliases: ['banana'], serving: '100克', calories: 89, protein: 1.1, fat: 0.3, carbs: 23, fiber: 2.6, sugar: 12, sodium: 1, potassium: 358, cholesterol: 0, calcium: 5, iron: 0.26, magnesium: 27, vitaminA: 10, vitaminC: 8.7, vitaminD: 0, vitaminB12: 0, healthTip: '香蕉含钾丰富，有助于维持正常血压，运动后食用可补充能量。', intakeTip: '运动后或早餐食用1根，注意糖尿病患者需控制摄入量。' },
+  { name: '橙子', category: '水果', aliases: ['orange'], serving: '100克', calories: 47, protein: 0.9, fat: 0.1, carbs: 12, fiber: 2.4, sugar: 9, sodium: 0, potassium: 181, cholesterol: 0, calcium: 40, iron: 0.06, magnesium: 10, vitaminA: 200, vitaminC: 53.2, vitaminD: 0, vitaminB12: 0, healthTip: '橙子是维C之王，一个橙子即可满足每日维C需求。', intakeTip: '每天1-2个，饭后半小时食用效果最佳。' },
+  { name: '猕猴桃', category: '水果', aliases: ['kiwi'], serving: '100克', calories: 61, protein: 1.1, fat: 0.5, carbs: 15, fiber: 3, sugar: 9, sodium: 3, potassium: 312, cholesterol: 0, calcium: 61, iron: 0.55, magnesium: 33, vitaminA: 150, vitaminC: 61, vitaminD: 0, vitaminB12: 0, healthTip: '猕猴桃维C含量极高，还富含叶酸和膳食纤维。', intakeTip: '每天1-2个，建议饭后食用。' },
+  { name: '蓝莓', category: '水果', aliases: ['blueberry'], serving: '100克', calories: 57, protein: 0.7, fat: 0.3, carbs: 14, fiber: 2.4, sugar: 10, sodium: 1, potassium: 77, cholesterol: 0, calcium: 6, iron: 0.28, magnesium: 6, vitaminA: 3, vitaminC: 9.7, vitaminD: 0, vitaminB12: 0, healthTip: '蓝莓花青素含量高，具有抗氧化和护眼功效。', intakeTip: '每天50-100g，可直接食用或加入酸奶。' },
+  { name: '草莓', category: '水果', aliases: ['strawberry'], serving: '100克', calories: 32, protein: 0.7, fat: 0.3, carbs: 8, fiber: 2, sugar: 5, sodium: 1, potassium: 153, cholesterol: 0, calcium: 16, iron: 0.41, magnesium: 13, vitaminA: 27, vitaminC: 58.8, vitaminD: 0, vitaminB12: 0, healthTip: '草莓富含维C和锰，热量低适合减脂期食用。', intakeTip: '每天150-200g，新鲜食用最佳。' },
+  { name: '西瓜', category: '水果', aliases: ['watermelon'], serving: '100克', calories: 26, protein: 0.6, fat: 0.2, carbs: 6, fiber: 0.4, sugar: 5, sodium: 1, potassium: 112, cholesterol: 0, calcium: 7, iron: 0.24, magnesium: 10, vitaminA: 569, vitaminC: 8, vitaminD: 0, vitaminB12: 0, healthTip: '西瓜富含番茄红素，具有抗氧化作用，含水量高清热解暑。', intakeTip: '夏季每天200-300g，注意控制糖分摄入。' },
+  { name: '葡萄', category: '水果', aliases: ['grape'], serving: '100克', calories: 69, protein: 0.6, fat: 0.4, carbs: 18, fiber: 0.9, sugar: 16, sodium: 2, potassium: 191, cholesterol: 0, calcium: 10, iron: 0.36, magnesium: 7, vitaminA: 100, vitaminC: 3.2, vitaminD: 0, vitaminB12: 0, healthTip: '葡萄含葡萄籽提取物，具有抗氧化功效。', intakeTip: '每天100-150g，糖尿病患者需谨慎。' },
+  { name: '梨', category: '水果', aliases: ['pear'], serving: '100克', calories: 57, protein: 0.4, fat: 0.1, carbs: 15, fiber: 3.1, sugar: 10, sodium: 1, potassium: 116, cholesterol: 0, calcium: 9, iron: 0.18, magnesium: 6, vitaminA: 33, vitaminC: 6.3, vitaminD: 0, vitaminB12: 0, healthTip: '梨具有润肺止咳的功效，秋冬季节食用特别好。', intakeTip: '每天1-2个，建议生吃。' },
+  { name: '芒果', category: '水果', aliases: ['mango'], serving: '100克', calories: 60, protein: 0.8, fat: 0.4, carbs: 15, fiber: 1.6, sugar: 13, sodium: 1, potassium: 168, cholesterol: 0, calcium: 11, iron: 0.16, magnesium: 9, vitaminA: 1080, vitaminC: 36.4, vitaminD: 0, vitaminB12: 0, healthTip: '芒果富含维A和维C，胡萝卜素含量高。', intakeTip: '每天100-200g，过敏体质者注意。' },
 
-const products = [
-  {
-    "name": "有机纯燕麦片",
-    "brand": "",
-    "price": "¥16.06",
-    "rating": "",
-    "image": "🥣",
-    "link": "https://m.tb.cn/h.89tr8x1",
-    "tags": ["高蛋白", "高纤维", "低糖"],
-    "desc": "口感软糯，高蛋白高纤维，营养早餐首选。"
-  },
-  {
-    "name": "七色糙米",
-    "brand": "",
-    "price": "¥13.21",
-    "rating": "",
-    "image": "🍚",
-    "link": "https://m.tb.cn/h.8kBwPpv",
-    "tags": ["高纤维", "多谷物", "低脂"],
-    "desc": "七色谷物搭配，口感丰富，营养全面，日常健康主食。"
-  },
-  {
-    "name": "0脂油醋汁",
-    "brand": "",
-    "price": "¥19.9",
-    "rating": "",
-    "image": "🥗",
-    "link": "",
-    "tags": ["控卡", "轻食搭档"],
-    "desc": "0脂肪、低钠配方，拌沙拉或凉拌菜的完美搭档。"
-  },
-  {
-    "name": "无糖番茄酱",
-    "brand": "",
-    "price": "¥15.8",
-    "rating": "",
-    "image": "🍅",
-    "link": "",
-    "tags": ["低GI", "儿童友好"],
-    "desc": "用代糖替代白砂糖，保留番茄风味，搭配鸡胸肉或全麦面包都合适。"
-  },
-  {
-    "name": "薄盐生抽",
-    "brand": "",
-    "price": "¥22.5",
-    "rating": "",
-    "image": "🫙",
-    "link": "",
-    "tags": ["减盐", "家庭必备"],
-    "desc": "钠含量比普通生抽低30%以上，日常炒菜或蘸料都适合。"
-  },
-  {
-    "name": "魔芋辣酱",
-    "brand": "",
-    "price": "¥17.9",
-    "rating": "",
-    "image": "🌶️",
-    "link": "",
-    "tags": ["高蛋白", "饱腹感强"],
-    "desc": "以魔芋为基底，辣味足但热量极低，重口味人群解馋利器。"
-  },
-  {
-    "name": "柠檬胡椒盐",
-    "brand": "",
-    "price": "¥14.5",
-    "rating": "",
-    "image": "🍋",
-    "link": "",
-    "tags": ["天然香料", "无添加"],
-    "desc": "天然柠檬粉+黑胡椒+海盐混合，无添加糖和味精，煎鱼或烤蔬菜首选。"
-  }
+  { name: '菠菜', category: '蔬菜', aliases: ['spinach'], serving: '100克', calories: 23, protein: 2.9, fat: 0.4, carbs: 3.6, fiber: 2.2, sugar: 0.4, sodium: 85, potassium: 558, cholesterol: 0, calcium: 136, iron: 2.9, magnesium: 87, vitaminA: 4819, vitaminC: 28.1, vitaminD: 0, vitaminB12: 0, healthTip: '菠菜富含铁和维K，是营养密度最高的蔬菜之一。', intakeTip: '每天100-150g，焯水后食用有利于钙吸收。' },
+  { name: '西兰花', category: '蔬菜', aliases: ['broccoli'], serving: '100克', calories: 34, protein: 2.8, fat: 0.4, carbs: 7, fiber: 2.6, sugar: 1.4, sodium: 55, potassium: 467, cholesterol: 0, calcium: 47, iron: 0.73, magnesium: 21, vitaminA: 1688, vitaminC: 89.2, vitaminD: 0, vitaminB12: 0, healthTip: '西兰花含萝卜硫素，具有抗癌抗氧化作用。', intakeTip: '每周2-3次，每次150-200g。' },
+  { name: '胡萝卜', category: '蔬菜', aliases: ['carrot'], serving: '100克', calories: 41, protein: 0.9, fat: 0.2, carbs: 10, fiber: 2.8, sugar: 4.5, sodium: 59, potassium: 326, cholesterol: 0, calcium: 33, iron: 0.62, magnesium: 12, vitaminA: 6880, vitaminC: 5.9, vitaminD: 0, vitaminB12: 0, healthTip: '胡萝卜富含β-胡萝卜素，对眼睛和皮肤健康有益。', intakeTip: '每天100g左右，炒熟后营养吸收更好。' },
+  { name: '番茄', category: '蔬菜', aliases: ['tomato'], serving: '100克', calories: 18, protein: 0.9, fat: 0.2, carbs: 3.9, fiber: 1.2, sugar: 2.8, sodium: 5, potassium: 237, cholesterol: 0, calcium: 10, iron: 0.27, magnesium: 11, vitaminA: 925, vitaminC: 19, vitaminD: 0, vitaminB12: 0, healthTip: '番茄富含番茄红素，具有抗氧化和防癌作用。', intakeTip: '每天1-2个，熟吃比生吃番茄红素吸收更高。' },
+  { name: '白菜', category: '蔬菜', aliases: ['大白菜', 'chinese cabbage'], serving: '100克', calories: 17, protein: 1.5, fat: 0.1, carbs: 3.2, fiber: 0.8, sugar: 1.2, sodium: 57, potassium: 130, cholesterol: 0, calcium: 50, iron: 0.7, magnesium: 11, vitaminA: 120, vitaminC: 31, vitaminD: 0, vitaminB12: 0, healthTip: '白菜低热量高纤维，是秋冬季节的主要蔬菜之一。', intakeTip: '每天200-300g，煲汤或炒菜都好。' },
+  { name: '黄瓜', category: '蔬菜', aliases: ['cucumber'], serving: '100克', calories: 16, protein: 0.7, fat: 0.1, carbs: 3.6, fiber: 0.5, sugar: 1.7, sodium: 8, potassium: 102, cholesterol: 0, calcium: 25, iron: 0.48, magnesium: 11, vitaminA: 152, vitaminC: 3.2, vitaminD: 0, vitaminB12: 0, healthTip: '黄瓜含水量高，低热量，适合减脂期食用。', intakeTip: '每天1-2根，凉拌或生吃最佳。' },
+  { name: '茄子', category: '蔬菜', aliases: ['eggplant'], serving: '100克', calories: 25, protein: 1, fat: 0.2, carbs: 6, fiber: 3, sugar: 3.5, sodium: 5, potassium: 142, cholesterol: 0, calcium: 14, iron: 0.23, magnesium: 14, vitaminA: 8, vitaminC: 5.2, vitaminD: 0, vitaminB12: 0, healthTip: '茄子富含维生素P，有助于保护心血管。', intakeTip: '每周2-3次，注意烹饪方式少油。' },
+  { name: '青椒', category: '蔬菜', aliases: ['green pepper', '甜椒'], serving: '100克', calories: 26, protein: 1, fat: 0.3, carbs: 6, fiber: 2.1, sugar: 2.4, sodium: 5, potassium: 257, cholesterol: 0, calcium: 7, iron: 0.42, magnesium: 12, vitaminA: 53, vitaminC: 127.7, vitaminD: 0, vitaminB12: 0, healthTip: '青椒维C含量高，是橙子的2倍以上。', intakeTip: '每天100g左右，建议生吃或快炒。' },
+  { name: '生菜', category: '蔬菜', aliases: ['lettuce'], serving: '100克', calories: 13, protein: 1.3, fat: 0.3, carbs: 2.9, fiber: 1.3, sugar: 0.5, sodium: 32, potassium: 249, cholesterol: 0, calcium: 34, iron: 0.9, magnesium: 10, vitaminA: 295, vitaminC: 9.2, vitaminD: 0, vitaminB12: 0, healthTip: '生菜低热量，富含叶酸和维生素K。', intakeTip: '每天100g左右，沙拉或配菜食用。' },
+  { name: '玉米', category: '蔬菜', aliases: ['corn', '甜玉米'], serving: '100克', calories: 106, protein: 4, fat: 1.2, carbs: 22.8, fiber: 2.9, sugar: 9.6, sodium: 1, potassium: 238, cholesterol: 0, calcium: 14, iron: 1.1, magnesium: 32, vitaminA: 7, vitaminC: 0, vitaminD: 0, vitaminB12: 0, healthTip: '玉米富含叶黄素，对眼睛健康有益。', intakeTip: '每天1根，建议整根水煮食用。' },
+
+  { name: '鸡胸肉', category: '肉类', aliases: ['chicken breast'], serving: '100克', calories: 165, protein: 31, fat: 3.6, carbs: 0, fiber: 0, sugar: 0, sodium: 64, potassium: 334, cholesterol: 85, calcium: 15, iron: 1.3, magnesium: 27, vitaminA: 24, vitaminC: 0, vitaminD: 0, vitaminB12: 0.3, healthTip: '鸡胸肉是最优质的低脂高蛋白肉类，适合增肌减脂人群。', intakeTip: '每天100-150g，建议水煮、清蒸或烤制。' },
+  { name: '牛肉（瘦）', category: '肉类', aliases: ['beef', '瘦牛肉'], serving: '100克', calories: 125, protein: 19.9, fat: 4.2, carbs: 2, fiber: 0, sugar: 0, sodium: 53, potassium: 284, cholesterol: 58, calcium: 9, iron: 2.8, magnesium: 25, vitaminA: 6, vitaminC: 0, vitaminD: 0, vitaminB12: 0.3, healthTip: '牛肉富含血红素铁和B族维生素，预防贫血效果好。', intakeTip: '每周2-3次，每次100-150g。' },
+  { name: '猪肉（瘦）', category: '肉类', aliases: ['pork', '瘦猪肉'], serving: '100克', calories: 143, protein: 20.3, fat: 6.2, carbs: 1.5, fiber: 0, sugar: 0, sodium: 57, potassium: 305, cholesterol: 81, calcium: 6, iron: 3, magnesium: 28, vitaminA: 44, vitaminC: 0, vitaminD: 0, vitaminB12: 0.3, healthTip: '瘦猪肉是B族维生素的良好来源。', intakeTip: '每周2-3次，每次50-100g。' },
+  { name: '羊肉（瘦）', category: '肉类', aliases: ['lamb'], serving: '100克', calories: 118, protein: 20.5, fat: 3.9, carbs: 0, fiber: 0, sugar: 0, sodium: 68, potassium: 403, cholesterol: 60, calcium: 6, iron: 2.3, magnesium: 22, vitaminA: 11, vitaminC: 0, vitaminD: 0, vitaminB12: 0.3, healthTip: '羊肉性温补，适合秋冬季节食用。', intakeTip: '冬季每周1-2次，每次100g左右。' },
+  { name: '鸡腿', category: '肉类', aliases: ['chicken leg'], serving: '100克', calories: 181, protein: 16, fat: 13, carbs: 0, fiber: 0, sugar: 0, sodium: 75, potassium: 242, cholesterol: 167, calcium: 8, iron: 1.2, magnesium: 19, vitaminA: 30, vitaminC: 0, vitaminD: 0, vitaminB12: 0.2, healthTip: '鸡腿肉比鸡胸肉脂肪稍高，但口感更好。', intakeTip: '去皮后食用更健康，每周1-2次。' },
+  { name: '鸭肉', category: '肉类', aliases: ['duck'], serving: '100克', calories: 240, protein: 15.5, fat: 19.7, carbs: 0.2, fiber: 0, sugar: 0, sodium: 69, potassium: 191, cholesterol: 91, calcium: 6, iron: 2.2, magnesium: 14, vitaminA: 52, vitaminC: 0, vitaminD: 0, vitaminB12: 0.2, healthTip: '鸭肉富含不饱和脂肪酸，对心血管有益。', intakeTip: '每周1次左右，注意去皮减油。' },
+
+  { name: '三文鱼', category: '水产', aliases: ['salmon'], serving: '100克', calories: 139, protein: 17.2, fat: 7.8, carbs: 0, fiber: 0, sugar: 0, sodium: 59, potassium: 363, cholesterol: 55, calcium: 9, iron: 0.3, magnesium: 36, vitaminA: 12, vitaminC: 0, vitaminD: 11, vitaminB12: 3.2, healthTip: '三文鱼是Omega-3脂肪酸的极佳来源，对大脑和心脏有益。', intakeTip: '每周2-3次，每次100-150g。' },
+  { name: '虾', category: '水产', aliases: ['shrimp', '对虾'], serving: '100克', calories: 93, protein: 18.6, fat: 0.8, carbs: 1, fiber: 0, sugar: 0, sodium: 165, potassium: 215, cholesterol: 193, calcium: 62, iron: 1.5, magnesium: 36, vitaminA: 15, vitaminC: 0, vitaminD: 0, vitaminB12: 1.3, healthTip: '虾是低脂高蛋白的代表，富含硒和维生素B12。', intakeTip: '每周2-3次，每次100g左右。' },
+  { name: '鲈鱼', category: '水产', aliases: ['sea bass'], serving: '100克', calories: 105, protein: 18.6, fat: 3.4, carbs: 0, fiber: 0, sugar: 0, sodium: 68, potassium: 205, cholesterol: 82, calcium: 138, iron: 2, magnesium: 30, vitaminA: 19, vitaminC: 0, vitaminD: 0, vitaminB12: 0.2, healthTip: '鲈鱼补肝肾，是产后和术后恢复的佳品。', intakeTip: '每周1-2次，清蒸最佳。' },
+  { name: '带鱼', category: '水产', aliases: ['hairtail'], serving: '100克', calories: 127, protein: 17.7, fat: 4.9, carbs: 3.1, fiber: 0, sugar: 0, sodium: 150, potassium: 280, cholesterol: 76, calcium: 28, iron: 1.2, magnesium: 28, vitaminA: 29, vitaminC: 0, vitaminD: 0, vitaminB12: 0.5, healthTip: '带鱼富含DHA和EPA，对大脑发育有益。', intakeTip: '每周1-2次，注意选择新鲜带鱼。' },
+  { name: '草鱼', category: '水产', aliases: ['grass carp'], serving: '100克', calories: 113, protein: 16.6, fat: 5.2, carbs: 0, fiber: 0, sugar: 0, sodium: 46, potassium: 312, cholesterol: 86, calcium: 38, iron: 0.8, magnesium: 31, vitaminA: 11, vitaminC: 0, vitaminD: 0, vitaminB12: 0.2, healthTip: '草鱼便宜实惠，适合家庭日常食用。', intakeTip: '每周1-2次，每次200g左右。' },
+  { name: '金枪鱼', category: '水产', aliases: ['tuna'], serving: '100克', calories: 189, protein: 27.7, fat: 6.2, carbs: 0, fiber: 0, sugar: 0, sodium: 52, potassium: 369, cholesterol: 75, calcium: 22, iron: 1.4, magnesium: 33, vitaminA: 18, vitaminC: 0, vitaminD: 0, vitaminB12: 4.5, healthTip: '金枪鱼高蛋白低脂，是健身爱好者的理想选择。', intakeTip: '每周1次，建议新鲜食用。' },
+
+  { name: '鸡蛋', category: '蛋奶', aliases: ['egg'], serving: '100克', calories: 155, protein: 13, fat: 11, carbs: 1.1, fiber: 0, sugar: 1.1, sodium: 131, potassium: 164, cholesterol: 423, calcium: 56, iron: 2, magnesium: 12, vitaminA: 520, vitaminC: 0, vitaminD: 1.1, vitaminB12: 1.1, healthTip: '鸡蛋是完全蛋白质来源，一个鸡蛋约70卡路里。', intakeTip: '每天1-2个，煮蛋营养保留最好。' },
+  { name: '牛奶', category: '蛋奶', aliases: ['milk'], serving: '100克', calories: 54, protein: 3, fat: 3.2, carbs: 3.4, fiber: 0, sugar: 3.4, sodium: 37, potassium: 157, cholesterol: 16, calcium: 104, iron: 0.3, magnesium: 11, vitaminA: 117, vitaminC: 1, vitaminD: 0.1, vitaminB12: 0.4, healthTip: '牛奶是钙的最佳来源之一，建议每天饮用。', intakeTip: '每天250-500ml，早晚各一杯。' },
+  { name: '酸奶', category: '蛋奶', aliases: ['yogurt'], serving: '100克', calories: 72, protein: 2.5, fat: 2.7, carbs: 9.3, fiber: 0, sugar: 9.3, sodium: 39, potassium: 150, cholesterol: 10, calcium: 118, iron: 0.4, magnesium: 12, vitaminA: 26, vitaminC: 0.5, vitaminD: 0.1, vitaminB12: 0.5, healthTip: '酸奶含益生菌，有助于肠道健康和乳糖消化。', intakeTip: '每天150-200g，建议饭后半小时食用。' },
+  { name: '奶酪', category: '蛋奶', aliases: ['cheese'], serving: '100克', calories: 402, protein: 25.7, fat: 33.8, carbs: 3.5, fiber: 0, sugar: 3.5, sodium: 584, potassium: 72, cholesterol: 100, calcium: 721, iron: 0.7, magnesium: 28, vitaminA: 1050, vitaminC: 0, vitaminD: 0.6, vitaminB12: 0.5, healthTip: '奶酪是高钙高密度营养食品，少量食用即可。', intakeTip: '每天30-50g，搭配面包或水果。' },
+  { name: '鸭蛋', category: '蛋奶', aliases: ['duck egg'], serving: '100克', calories: 180, protein: 12.6, fat: 13, carbs: 3.1, fiber: 0, sugar: 3.1, sodium: 135, potassium: 135, cholesterol: 563, calcium: 62, iron: 2.2, magnesium: 13, vitaminA: 520, vitaminC: 0, vitaminD: 1.3, vitaminB12: 1.3, healthTip: '鸭蛋比鸡蛋脂肪和胆固醇含量更高。', intakeTip: '每周2-3个，建议咸鸭蛋适量。' },
+
+  { name: '大米（白）', category: '谷物', aliases: ['white rice', '粳米'], serving: '100克', calories: 346, protein: 7.4, fat: 0.8, carbs: 77.9, fiber: 0.7, sugar: 0, sodium: 3.8, potassium: 103, cholesterol: 0, calcium: 13, iron: 2.3, magnesium: 24, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, healthTip: '大米是中国人的主食，提供能量但营养密度较低。', intakeTip: '每天200-300g（生重），建议搭配糙米食用。' },
+  { name: '糙米', category: '谷物', aliases: ['brown rice'], serving: '100克', calories: 348, protein: 7.7, fat: 2.7, carbs: 73, fiber: 3.4, sugar: 0, sodium: 4, potassium: 223, cholesterol: 0, calcium: 12, iron: 2, magnesium: 111, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, healthTip: '糙米保留了胚芽和麸皮，营养比白米丰富得多。', intakeTip: '可与白米混合食用，每天200-300g。' },
+  { name: '小米', category: '谷物', aliases: ['millet'], serving: '100克', calories: 361, protein: 9, fat: 3.1, carbs: 75.1, fiber: 1.6, sugar: 0, sodium: 4.3, potassium: 284, cholesterol: 0, calcium: 41, iron: 5.1, magnesium: 107, vitaminA: 17, vitaminC: 0, vitaminD: 0, vitaminB12: 0, healthTip: '小米养胃易消化，适合产妇和脾胃虚弱人群。', intakeTip: '每天50-100g，熬粥最佳。' },
+  { name: '燕麦', category: '谷物', aliases: ['oatmeal', 'oats'], serving: '100克', calories: 367, protein: 15, fat: 7, carbs: 66, fiber: 10.6, sugar: 0, sodium: 3, potassium: 335, cholesterol: 0, calcium: 186, iron: 7, magnesium: 235, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, healthTip: '燕麦富含β-葡聚糖，可降低胆固醇。', intakeTip: '每天40-60g，早餐食用最佳。' },
+  { name: '小麦面粉', category: '谷物', aliases: ['flour', '小麦粉'], serving: '100克', calories: 354, protein: 11.2, fat: 1.5, carbs: 74.6, fiber: 2.1, sugar: 0, sodium: 5, potassium: 190, cholesterol: 0, calcium: 18, iron: 3.5, magnesium: 50, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, healthTip: '面粉是面制品的原料，营养集中在胚芽和麸皮。', intakeTip: '可搭配全麦粉增加膳食纤维摄入。' },
+  { name: '红薯', category: '谷物', aliases: ['sweet potato'], serving: '100克', calories: 86, protein: 1.6, fat: 0.1, carbs: 20.1, fiber: 3, sugar: 4.2, sodium: 28, potassium: 337, cholesterol: 0, calcium: 30, iron: 0.5, magnesium: 25, vitaminA: 1256, vitaminC: 2.4, vitaminD: 0, vitaminB12: 0, healthTip: '红薯富含膳食纤维和β-胡萝卜素，是健康主食替代品。', intakeTip: '每天100-200g，蒸煮烤都可以。' },
+
+  { name: '黄豆', category: '豆类', aliases: ['soybean', '大豆'], serving: '100克', calories: 359, protein: 35, fat: 16, carbs: 34.2, fiber: 15.5, sugar: 0, sodium: 2.2, potassium: 1503, cholesterol: 0, calcium: 191, iron: 8.2, magnesium: 199, vitaminA: 37, vitaminC: 0, vitaminD: 0, vitaminB12: 0, healthTip: '黄豆是植物蛋白之王，含异黄酮对女性健康有益。', intakeTip: '每周3-4次，每次50-100g（干重）。' },
+  { name: '豆腐', category: '豆类', aliases: ['tofu'], serving: '100克', calories: 76, protein: 8.1, fat: 3.7, carbs: 3.8, fiber: 0.4, sugar: 0, sodium: 7.2, potassium: 125, cholesterol: 0, calcium: 164, iron: 1.9, magnesium: 14, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, healthTip: '豆腐易消化吸收，是素食者的优质蛋白来源。', intakeTip: '每天100-200g，建议搭配其他食材。' },
+  { name: '红豆', category: '豆类', aliases: ['red bean', '赤小豆'], serving: '100克', calories: 309, protein: 20.2, fat: 0.6, carbs: 63.4, fiber: 14.4, sugar: 0, sodium: 2.2, potassium: 860, cholesterol: 0, calcium: 74, iron: 7.4, magnesium: 138, vitaminA: 13, vitaminC: 0, vitaminD: 0, vitaminB12: 0, healthTip: '红豆有利尿消肿的作用，适合水肿人群。', intakeTip: '每周2-3次，熬粥或煮水。' },
+  { name: '绿豆', category: '豆类', aliases: ['mung bean'], serving: '100克', calories: 316, protein: 21.6, fat: 0.8, carbs: 62, fiber: 11.6, sugar: 0, sodium: 3.2, potassium: 787, cholesterol: 0, calcium: 81, iron: 6.5, magnesium: 125, vitaminA: 22, vitaminC: 0, vitaminD: 0, vitaminB12: 0, healthTip: '绿豆清热解暑，是夏季的理想食品。', intakeTip: '夏季每周2-3次，煮绿豆汤或绿豆粥。' },
+  { name: '豆浆', category: '豆类', aliases: ['soy milk'], serving: '100克', calories: 31, protein: 1.8, fat: 1.6, carbs: 1.1, fiber: 0.1, sugar: 0, sodium: 2, potassium: 93, cholesterol: 0, calcium: 10, iron: 0.5, magnesium: 5, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, healthTip: '豆浆是牛奶的植物替代品，适合乳糖不耐受人群。', intakeTip: '每天250-500ml，建议无糖。' },
+
+  { name: '核桃', category: '坚果', aliases: ['walnut'], serving: '100克', calories: 627, protein: 14.9, fat: 58.8, carbs: 19.1, fiber: 9.5, sugar: 0, sodium: 6.4, potassium: 385, cholesterol: 0, calcium: 56, iron: 2.7, magnesium: 131, vitaminA: 5, vitaminC: 1.3, vitaminD: 0, vitaminB12: 0, healthTip: '核桃富含Omega-3脂肪酸，对大脑健康有益。', intakeTip: '每天3-5个（约15g），不宜多吃。' },
+  { name: '杏仁', category: '坚果', aliases: ['almond'], serving: '100克', calories: 578, protein: 21.2, fat: 49.9, carbs: 21.6, fiber: 12.5, sugar: 0, sodium: 1, potassium: 106, cholesterol: 0, calcium: 264, iron: 3.7, magnesium: 268, vitaminA: 3, vitaminC: 0, vitaminD: 0, vitaminB12: 0, healthTip: '杏仁富含维E和钙，对皮肤和骨骼有益。', intakeTip: '每天10-15颗，原味最佳。' },
+  { name: '花生', category: '坚果', aliases: ['peanut'], serving: '100克', calories: 563, protein: 24.8, fat: 44.3, carbs: 21.7, fiber: 8.5, sugar: 0, sodium: 18, potassium: 587, cholesterol: 0, calcium: 39, iron: 1.5, magnesium: 178, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, healthTip: '花生含不饱和脂肪酸，适量食用有益心血管。', intakeTip: '每天15-20g，水煮或原味。' },
+  { name: '腰果', category: '坚果', aliases: ['cashew'], serving: '100克', calories: 553, protein: 17.6, fat: 36.7, carbs: 32.7, fiber: 3.6, sugar: 0, sodium: 12, potassium: 460, cholesterol: 0, calcium: 26, iron: 4.8, magnesium: 292, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, healthTip: '腰果富含镁和铁，对贫血人群有益。', intakeTip: '每天10-15颗。' },
+  { name: '巴旦木', category: '坚果', aliases: ['almond kernel'], serving: '100克', calories: 600, protein: 22, fat: 52, carbs: 19, fiber: 10, sugar: 0, sodium: 5, potassium: 150, cholesterol: 0, calcium: 250, iron: 3.5, magnesium: 270, vitaminA: 5, vitaminC: 0, vitaminD: 0, vitaminB12: 0, healthTip: '巴旦木维E含量高，是天然的抗氧化剂。', intakeTip: '每天10-15颗，孕妇适合食用。' },
+
+  { name: '可乐', category: '饮料', aliases: ['cola', '可口可乐'], serving: '100克', calories: 43, protein: 0, fat: 0, carbs: 10.6, fiber: 0, sugar: 10.6, sodium: 4, potassium: 2, cholesterol: 0, calcium: 0, iron: 0, magnesium: 0, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, healthTip: '可乐含糖量高，建议少喝，尤其是儿童。', intakeTip: '尽量少喝，每周不超过1次。' },
+  { name: '橙汁', category: '饮料', aliases: ['orange juice'], serving: '100克', calories: 45, protein: 0.7, fat: 0.2, carbs: 10.4, fiber: 0.2, sugar: 10.4, sodium: 1, potassium: 200, cholesterol: 0, calcium: 9, iron: 0.1, magnesium: 10, vitaminA: 200, vitaminC: 50, vitaminD: 0, vitaminB12: 0, healthTip: '橙汁富含维C但含糖量高，建议鲜榨少糖。', intakeTip: '每天不超过150ml，建议鲜榨。' },
+  { name: '绿茶', category: '饮料', aliases: ['green tea'], serving: '100克', calories: 1, protein: 0, fat: 0, carbs: 0.2, fiber: 0, sugar: 0, sodium: 3, potassium: 28, cholesterol: 0, calcium: 3, iron: 0, magnesium: 2, vitaminA: 0, vitaminC: 0.3, vitaminD: 0, vitaminB12: 0, healthTip: '绿茶含儿茶素和茶多酚，具有抗氧化作用。', intakeTip: '每天3-4杯，饭后1小时饮用最佳。' },
+  { name: '咖啡', category: '饮料', aliases: ['coffee'], serving: '100克', calories: 2, protein: 0.2, fat: 0, carbs: 0, fiber: 0, sugar: 0, sodium: 5, potassium: 49, cholesterol: 0, calcium: 5, iron: 0.04, magnesium: 3, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, healthTip: '咖啡含咖啡因，可提神醒脑，但不宜过量。', intakeTip: '每天不超过3杯，孕妇限200mg咖啡因。' },
+  { name: '矿泉水', category: '饮料', aliases: ['water'], serving: '100克', calories: 0, protein: 0, fat: 0, carbs: 0, fiber: 0, sugar: 0, sodium: 3, potassium: 2, cholesterol: 0, calcium: 8, iron: 0, magnesium: 1, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, healthTip: '矿泉水补充水分，是最健康的饮料选择。', intakeTip: '每天1500-2000ml，少量多次。' },
+  { name: '豆浆（无糖）', category: '饮料', aliases: ['sugar-free soy milk'], serving: '100克', calories: 31, protein: 1.8, fat: 1.6, carbs: 1.1, fiber: 0.1, sugar: 0, sodium: 2, potassium: 93, cholesterol: 0, calcium: 10, iron: 0.5, magnesium: 5, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, healthTip: '无糖豆浆是健康的植物蛋白饮品。', intakeTip: '每天250-500ml。' },
+
+  { name: '薯片', category: '零食', aliases: ['potato chips'], serving: '100克', calories: 547, protein: 6.6, fat: 37.4, carbs: 48.7, fiber: 4.2, sugar: 0.5, sodium: 1480, potassium: 197, cholesterol: 0, calcium: 20, iron: 1.2, magnesium: 50, vitaminA: 0, vitaminC: 18, vitaminD: 0, vitaminB12: 0, healthTip: '薯片高脂肪高盐，是典型的高热量零食。', intakeTip: '尽量少吃，偶尔解馋不超过50g。' },
+  { name: '巧克力', category: '零食', aliases: ['chocolate', '黑巧克力'], serving: '100克', calories: 546, protein: 4.9, fat: 30, carbs: 61, fiber: 7, sugar: 47, sodium: 24, potassium: 250, cholesterol: 0, calcium: 56, iron: 8.2, magnesium: 176, vitaminA: 24, vitaminC: 0, vitaminD: 0, vitaminB12: 0, healthTip: '黑巧克力含黄烷醇，适量食用有益心血管。', intakeTip: '每天不超过30g，选择70%以上黑巧克力。' },
+  { name: '饼干', category: '零食', aliases: ['biscuit', '曲奇'], serving: '100克', calories: 435, protein: 7, fat: 14, carbs: 71, fiber: 2, sugar: 30, sodium: 400, potassium: 120, cholesterol: 0, calcium: 15, iron: 2.5, magnesium: 15, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, healthTip: '饼干高糖高脂肪，是能量密集型零食。', intakeTip: '尽量少吃，选择低糖低油类型。' },
+  { name: '冰淇淋', category: '零食', aliases: ['ice cream'], serving: '100克', calories: 207, protein: 3.5, fat: 7.5, carbs: 31, fiber: 0.7, sugar: 24, sodium: 80, potassium: 108, cholesterol: 45, calcium: 128, iron: 0.3, magnesium: 15, vitaminA: 166, vitaminC: 0.5, vitaminD: 0.1, vitaminB12: 0.6, healthTip: '冰淇淋高糖高脂，夏季适量食用。', intakeTip: '每周不超过2次，每次100g。' },
+  { name: '辣条', category: '零食', aliases: ['spicy strip'], serving: '100克', calories: 250, protein: 7, fat: 15, carbs: 22, fiber: 3, sugar: 2, sodium: 2000, potassium: 50, cholesterol: 0, calcium: 10, iron: 1, magnesium: 5, vitaminA: 0, vitaminC: 0, vitaminD: 0, vitaminB12: 0, healthTip: '辣条高盐高油，添加剂多，建议少吃。', intakeTip: '尽量少吃，每周不超过1次。' }
 ];
-
-module.exports = products;
