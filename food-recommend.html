@@ -88,9 +88,10 @@
     staple: {
       label: '安心主食',
       categories: [
-        { id: 'whole-grain', name: '全谷物', products: [
-          { name: '有机纯燕麦片', image: '🥣', price: '¥16.06', desc: '口感软糯，高蛋白高纤维，营养早餐首选。', tags: ['高蛋白', '高纤维', '低糖'], link: 'https://m.tb.cn/h.89tr8x1' },
-          { name: '糙米', image: '🍚', price: '¥13.21', desc: '保留胚芽营养，饱腹感比白米强3倍，富含B族维生素。', tags: ['高纤维', '低糖', '富含B族'], link: 'https://m.tb.cn/h.8kBwPpv' },
+        { id: 'rice', name: '米面粮油', products: [
+          { name: '五常大米', image: '🍚', price: '¥49.9', desc: '东北黑土地五常稻花香，蒸饭香糯不回生，日常家用首选。', tags: ['家常必备', '产地直供', '真空锁鲜'], link: '#' },
+          { name: '七色糙米', image: '🍙', price: '¥13.21', desc: '糙米+红米+黑米+紫米等七色搭配，煮杂粮饭营养全面，口感丰富。', tags: ['高纤维', '多谷物', '低脂'], link: 'https://m.tb.cn/h.8kBwPpv' },
+          { name: '山西小米', image: '🌾', price: '¥12.8', desc: '山西沁州黄小米，熬粥油亮浓稠，养胃易消化，适合全家老小。', tags: ['养胃', '易消化', '月子米'], link: '#' },
           { name: '全麦无盐挂面', image: '🍜', price: '¥13.2起', desc: '高纤维无盐配方，慢吸收碳水，适合家庭日常食用。', tags: ['高纤维', '无盐', '家庭装'], specs: {
             quantities: [
               { id: '5斤', label: '5斤大包', price: '¥13.21' },
@@ -116,69 +117,86 @@
             defaultQty: '5斤',
             defaultType: '全麦'
           } },
-          { name: '红薯', image: '🍠', desc: '天然甜不发胖，维生素A满满', tags: ['高纤维', '低脂', '富含维A'], button: '去尝尝这款' }
+          { name: '有机纯燕麦片', image: '🥣', price: '¥16.06', desc: '口感软糯，高蛋白高纤维，冲牛奶做早餐简单又营养。', tags: ['高蛋白', '高纤维', '低糖'], link: 'https://m.tb.cn/h.89tr8x1' },
+          { name: '自发馒头粉', image: '🍞', price: '¥9.9', desc: '不用发酵，直接蒸，早餐馒头省时省事，老人小孩都爱吃。', tags: ['便捷', '无需发酵', '家常'], link: '#' }
         ]},
-        { id: 'mixed-grain', name: '杂粮饭', products: [
-          { name: '七色糙米', image: '🍚', price: '¥13.21', desc: '七色谷物搭配，口感丰富，营养全面，日常健康主食。', tags: ['高纤维', '多谷物', '低脂'], link: 'https://m.tb.cn/h.8kBwPpv' },
-          { name: '三色米', image: '🍙', desc: '糙米+红米+黑米，一餐吃够多种营养', tags: ['高纤维', '低脂'], button: '去尝尝这款' },
-          { name: '藜麦', image: '🌾', desc: '完全蛋白食材，素食者的优质选择', tags: ['高蛋白', '低脂', '无麸质'], button: '去尝尝这款' }
-        ]},
-        { id: 'bean', name: '豆类主食', products: [
-          { name: '蒸南瓜', image: '🎃', desc: '天然清甜，减脂期主食完美替代', tags: ['低卡', '低脂', '富含维A'], button: '去尝尝这款' },
-          { name: '鹰嘴豆', image: '🫘', desc: '高蛋白低GI，饱腹感持续4小时', tags: ['高蛋白', '高纤维', '低脂'], button: '去尝尝这款' }
+        { id: 'dumpling', name: '面食点心', products: [
+          { name: '饺子皮', image: '🥟', price: '¥8.8', desc: '新鲜现做饺子皮，厚薄均匀，包饺子不破皮，方便省事。', tags: ['便捷', '手工口感', '家用'], link: '#' },
+          { name: '手擀面', image: '🍜', price: '¥11.8', desc: '机器仿手擀工艺，面条筋道有嚼头，煮出来爽滑不糊汤。', tags: ['筋道', '家常', '耐煮'], link: '#' },
+          { name: '奶香花卷', image: '🥖', price: '¥15.9', desc: '奶香小花卷，松软香甜，早晨热一热就好，比面包还方便。', tags: ['奶香', '即蒸', '早餐必备'], link: '#' },
+          { name: '葱油饼', image: '🫓', price: '¥19.9', desc: '冷冻半成品，平底锅煎5分钟就好，外酥里嫩，早餐下午茶都合适。', tags: ['半成品', '快手菜', '外酥里嫩'], link: '#' }
         ]}
       ]
     },
     snack: {
       label: '解馋零食',
       categories: [
-        { id: 'nut', name: '原味坚果', products: [
+        { id: 'nut', name: '坚果炒货', products: [
           { name: '原味巴旦木仁', image: '🌰', price: '¥38', desc: '颗粒饱满，配料表只有巴旦木，维E含量爆表，孕妇零食年货首选。', tags: ['低糖', '高维E', '无添加'], link: 'https://m.tb.cn/h.89F1g3d' },
-          { name: '低糖核桃', image: '🥜', desc: '每日3颗，补充Omega-3好脑子', tags: ['低糖', '高Omega-3'], button: '去尝尝这款' },
-          { name: '无添加腰果', image: '🌯', desc: '原味烘烤，零添加更健康', tags: ['无添加', '低糖'], button: '去尝尝这款' }
+          { name: '新疆薄皮核桃', image: '🥜', price: '¥49.9', desc: '薄皮手捏即开，核桃仁饱满，每日3颗，补脑又好吃。', tags: ['高Omega-3', '低糖', '手剥方便'], link: '#' },
+          { name: '原味花生', image: '🫘', price: '¥18.8', desc: '山东大花生，粒粒饱满，原味烘烤不加油，下酒下粥都好。', tags: ['低糖', '下酒', '无添加'], link: '#' },
+          { name: '恰恰瓜子', image: '🌻', price: '¥8.9', desc: '精选葵花籽，粒粒饱满，原味/五香可选，追剧唠嗑必备。', tags: ['原味', '五香', '追剧神器'], link: '#' }
         ]},
-        { id: 'biscuit', name: '无糖饼干', products: [
-          { name: '燕麦代餐饼', image: '🍪', desc: '高纤维配方，控糖期放心解馋', tags: ['低糖', '高纤维', '低脂'], button: '去尝尝这款' },
-          { name: '全麦消化饼', image: '🥠', desc: '真正全麦制作，非全麦粉冒充', tags: ['低糖', '高纤维'], button: '去尝尝这款' }
+        { id: 'biscuit', name: '饼干糕点', products: [
+          { name: '奥利奥原味饼干', image: '🍪', price: '¥15.9', desc: '经典黑白配，奶香浓郁，泡牛奶吃或者直接吃都好吃。', tags: ['经典', '奶香', '办公室零食'], link: '#' },
+          { name: '全麦消化饼', image: '🥠', price: '¥12.9', desc: '真正全麦制作，非全麦粉冒充，控糖期解馋首选。', tags: ['低糖', '高纤维', '粗粮'], link: '#' },
+          { name: '蛋黄派', image: '🍰', price: '¥22.8', desc: '松软蛋糕加流心蛋黄酱，一口爆浆，早餐下午茶都合适。', tags: ['流心', '松软', '下午茶'], link: '#' },
+          { name: '苏打饼干', image: '🥨', price: '¥9.9', desc: '咸香酥脆，低糖不油腻，胃酸多的时候吃两片很舒服。', tags: ['低糖', '养胃', '咸香'], link: '#' }
         ]},
-        { id: 'chip', name: '健康脆片', products: [
-          { name: '烤红薯片', image: '🍟', desc: '烘烤非油炸，低卡又香脆', tags: ['低卡', '低脂', '无油炸'], button: '去尝尝这款' },
-          { name: '海苔脆片', image: '🍙', desc: '解馋不长肉，还补充矿物质', tags: ['低卡', '低脂'], button: '去尝尝这款' }
+        { id: 'meat', name: '肉脯肉干', products: [
+          { name: '猪肉脯', image: '🥓', price: '¥39.9', desc: '精选猪后腿肉，手撕有嚼劲，甜咸适中，越嚼越香。', tags: ['有嚼劲', '甜咸', '追剧必备'], link: '#' },
+          { name: '牛肉干', image: '🥩', price: '¥59.9', desc: '内蒙古草原牛肉制作，原汁原味有嚼劲，高蛋白低脂肪。', tags: ['高蛋白', '低脂', '原味'], link: '#' },
+          { name: '火腿肠', image: '🌭', price: '¥19.9', desc: '精选猪肉淀粉少，开袋即食，泡面搭档，烧烤煎炒都可以。', tags: ['即食', '泡面搭档', '方便'], link: '#' },
+          { name: '卤蛋', image: '🥚', price: '¥1.5/个', desc: '五香味卤鸡蛋，蛋白Q弹蛋黄入味，早餐加餐都方便。', tags: ['五香', '即食', '早餐'], link: '#' }
         ]},
-        { id: 'chocolate', name: '黑巧系列', products: [
-          { name: '85%黑巧克力', image: '🍫', desc: '高可可含量，控糖期也能吃的甜品', tags: ['低糖', '高抗氧化'], button: '查看推荐理由' },
-          { name: '无糖可可豆', image: '🥥', desc: '零添加糖，纯粹的可可香', tags: ['无糖', '高抗氧化'], button: '查看推荐理由' }
+        { id: 'puffed', name: '膨化零食', products: [
+          { name: '薯片', image: '🍟', price: '¥6.9', desc: '脆薄爽口，原味/番茄/烧烤多口味可选，看电影追剧必备。', tags: ['脆薄', '多口味', '追剧'], link: '#' },
+          { name: '锅巴', image: '🍘', price: '¥9.9', desc: '大米锅巴，金黄酥脆，咸香可口，办公室垫肚子神器。', tags: ['酥脆', '咸香', '办公室'], link: '#' },
+          { name: '米饼', image: '🍙', price: '¥12.9', desc: '大米制成，非油炸更健康，口感酥脆，适合给小孩当零食。', tags: ['非油炸', '低卡', '儿童友好'], link: '#' }
         ]}
       ]
     },
     drink: {
       label: '轻盈饮品',
       categories: [
-        { id: 'tea', name: '健康茶饮', products: [
-          { name: '无糖绿茶', image: '🍵', desc: '含儿茶素，抗氧化又解腻', tags: ['无糖', '零热量', '抗氧化'], button: '去尝尝这款' },
-          { name: '洋甘菊茶', image: '🌼', desc: '舒缓助眠，睡前一杯好梦', tags: ['无咖啡因', '助眠'], button: '去尝尝这款' },
-          { name: '大麦茶', image: '🌾', desc: '解腻助消化，大餐后来一杯', tags: ['零热量', '助消化'], button: '去尝尝这款' }
+        { id: 'tea', name: '茶饮奶茶', products: [
+          { name: '立顿红茶', image: '🍵', price: '¥19.9', desc: '经典英式红茶，茶包冲泡3分钟即可，加牛奶就是奶茶。', tags: ['经典', '茶包', '奶茶基底'], link: '#' },
+          { name: '茉莉花茶', image: '🌼', price: '¥25.8', desc: '新鲜茉莉花窨制，香气清幽，入口回甘，夏天喝特别清爽。', tags: ['清香', '回甘', '解腻'], link: '#' },
+          { name: '大麦茶', image: '🌾', price: '¥15.9', desc: '烘焙大麦香气浓郁，解腻助消化，吃油腻后来一杯刚好。', tags: ['解腻', '助消化', '无咖啡因'], link: '#' },
+          { name: '奶茶粉', image: '🧋', price: '¥29.9', desc: '香芋/红豆/原味多口味，热水一冲就是一杯奶茶，比买的还划算。', tags: ['多口味', '即冲', '自制奶茶'], link: '#' }
         ]},
-        { id: 'milk', name: '乳品饮品', products: [
-          { name: '无糖酸奶', image: '🥛', desc: '含益生菌助消化，低糖不酸牙', tags: ['低糖', '高钙', '含益生菌'], button: '去尝尝这款' },
-          { name: '低脂牛奶', image: '🥤', desc: '补充优质蛋白和钙质', tags: ['低脂', '高蛋白', '高钙'], button: '去尝尝这款' },
-          { name: '燕麦奶', image: '🥣', desc: '植物奶替代，低卡无乳糖', tags: ['低卡', '无乳糖', '低脂'], button: '去尝尝这款' }
+        { id: 'milk', name: '乳品豆奶', products: [
+          { name: '伊利纯牛奶', image: '🥛', price: '¥69.9', desc: '甄选内蒙古黄金牧场，250ml*24盒整箱，日常早餐必备。', tags: ['整箱', '高蛋白', '高钙'], link: '#' },
+          { name: '无糖酸奶', image: '🥛', price: '¥19.9', desc: '含益生菌助消化，低糖不酸牙，配水果配麦片都合适。', tags: ['低糖', '益生菌', '助消化'], link: '#' },
+          { name: '无糖豆奶', image: '🥤', price: '¥59.9', desc: '东北非转基因大豆压榨，无糖添加，植物蛋白丰富。', tags: ['无糖', '植物蛋白', '无乳糖'], link: '#' },
+          { name: '钙奶饼干', image: '🍪', price: '¥14.9', desc: '高钙牛奶饼干，奶香浓郁，办公室下午茶或者配牛奶都好。', tags: ['高钙', '奶香', '下午茶'], link: '#' }
         ]},
-        { id: 'juice', name: '鲜榨果汁', products: [
-          { name: '鲜榨橙汁', image: '🍊', desc: '天然维C加油站，一杯满足每日所需', tags: ['高维C', '天然'], button: '查看推荐理由' },
-          { name: '蓝莓汁', image: '🫐', desc: '花青素之王，护眼抗氧化', tags: ['高抗氧化', '护眼'], button: '查看推荐理由' }
+        { id: 'coffee', name: '咖啡冲饮', products: [
+          { name: '速溶咖啡', image: '☕', price: '¥39.9', desc: '经典三合一，浓香四溢，加班熬夜来一杯，提神醒脑。', tags: ['三合一', '提神', '熬夜必备'], link: '#' },
+          { name: '挂耳咖啡', image: '☕', price: '¥49.9', desc: '新鲜烘焙咖啡豆磨制，手冲方便，比速溶香太多。', tags: ['现磨口感', '手冲', '新鲜烘焙'], link: '#' },
+          { name: '椰汁咖啡', image: '🥥', price: '¥29.9', desc: '椰香加咖啡香，低糖椰乳搭配浓缩咖啡，网红款在家就能做。', tags: ['椰香', '低糖', '网红款'], link: '#' }
         ]}
       ]
     },
     seasoning: {
       label: '低卡调味',
       categories: [
-        { id: 'sauce', name: '健康酱料', products: [
-          { name: '0脂油醋汁', image: '🥗', price: '¥15.9', desc: '0脂肪、低钠配方，拌沙拉或凉拌菜的完美搭档，控卡期必备。', tags: ['控卡', '轻食搭档'], link: 'https://example.com/affiliate/oil-vinegar' },
-          { name: '无糖番茄酱', image: '🍅', price: '¥12.8', desc: '用代糖替代白砂糖，保留番茄风味，搭配鸡胸肉或全麦面包都合适。', tags: ['低GI', '儿童友好'], link: 'https://example.com/affiliate/tomato-sauce' },
-          { name: '薄盐生抽', image: '🫙', price: '¥18.5', desc: '钠含量比普通生抽低30%以上，日常炒菜或蘸料都适合。', tags: ['减盐', '家庭必备'], link: 'https://example.com/affiliate/light-soy-sauce' },
-          { name: '魔芋辣酱', image: '🌶️', price: '¥16.9', desc: '以魔芋为基底，辣味足但热量极低，重口味人群解馋利器。', tags: ['高蛋白', '饱腹感强'], link: 'https://example.com/affiliate/konjac-chili' },
-          { name: '柠檬胡椒盐', image: '🍋', price: '¥14.5', desc: '天然柠檬粉+黑胡椒+海盐混合，无添加糖和味精，煎鱼或烤蔬菜首选。', tags: ['天然香料', '无添加'], link: 'https://example.com/affiliate/lemon-pepper' }
+        { id: 'sauce', name: '酱料蘸料', products: [
+          { name: '海天黄豆酱', image: '🫙', price: '¥9.9', desc: '酱香浓郁，炒菜拌饭蘸水饺都好用，厨房必备基础酱料。', tags: ['家常必备', '酱香', '多功能'], link: '#' },
+          { name: '老干妈', image: '🌶️', price: '¥10.9', desc: '香辣豆豉风味，拌面下饭炒菜都一绝，吃辣人群的最爱。', tags: ['香辣', '下饭神器', '经典'], link: '#' },
+          { name: '郫县豆瓣酱', image: '🥣', price: '¥12.8', desc: '四川郫县豆瓣酱，川菜灵魂，炒回锅肉麻婆豆腐必备。', tags: ['川菜', '灵魂酱料', '正宗'], link: '#' },
+          { name: '0脂油醋汁', image: '🥗', price: '¥15.9', desc: '0脂肪、低钠配方，拌沙拉拌凉菜都好，减脂期必备。', tags: ['0脂肪', '低钠', '减脂期'], link: 'https://example.com/affiliate/oil-vinegar' },
+          { name: '无糖番茄酱', image: '🍅', price: '¥12.8', desc: '代糖配方，保留番茄风味，配意面配炸鸡都好吃。', tags: ['低GI', '儿童友好', '代糖'], link: 'https://example.com/affiliate/tomato-sauce' }
+        ]},
+        { id: 'soy', name: '酱油醋盐', products: [
+          { name: '海天生抽', image: '🫙', price: '¥18.5', desc: '特级生抽，酿造工艺，炒菜提鲜蘸料调味都好用。', tags: ['提鲜', '酿造', '厨房必备'], link: '#' },
+          { name: '陈醋', image: '🍶', price: '¥15.9', desc: '山西老陈醋，酿造发酵，酸香醇厚，拌菜蘸料都好。', tags: ['酿造', '酸香', '家用'], link: '#' },
+          { name: '薄盐生抽', image: '🫙', price: '¥18.5', desc: '钠含量比普通生抽低30%以上，减盐人群首选。', tags: ['减盐', '低钠', '健康'], link: 'https://example.com/affiliate/light-soy-sauce' }
+        ]},
+        { id: 'hotpot', name: '火锅底料', products: [
+          { name: '四川麻辣火锅底料', image: '🌶️', price: '¥29.9', desc: '正宗四川味，麻辣鲜香，在家就能吃到火锅店的味道。', tags: ['麻辣', '正宗', '家庭聚餐'], link: '#' },
+          { name: '菌汤火锅底料', image: '🍄', price: '¥35.9', desc: '多种菌菇熬制，汤鲜味美不辣，不吃辣的人也能享受火锅。', tags: ['不辣', '鲜香', '老人小孩'], link: '#' },
+          { name: '番茄火锅底料', image: '🍅', price: '¥26.9', desc: '番茄熬制汤底，酸甜开胃，煮牛肉煮海鲜都好吃。', tags: ['酸甜', '开胃', '百搭'], link: '#' }
         ]}
       ]
     }
@@ -257,7 +275,7 @@
     if (p && p.link) {
       href = p.link;
     } else {
-      href = 'product-list.html?tab=' + encodeURIComponent(tabKey) + '&category=' + encodeURIComponent(catId);
+      href = '#';
     }
 
     if (p && p.price) {
@@ -266,13 +284,7 @@
       priceHtml = '';
     }
 
-    if (p && p.link) {
-      btnText = '去看看 →';
-    } else if (p && p.button) {
-      btnText = p.button;
-    } else {
-      btnText = '查看该类目 →';
-    }
+    btnText = '去看看 →';
 
     var tagsHtml = '';
     if (p && p.tags) {
