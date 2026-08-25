@@ -91,7 +91,31 @@
         { id: 'whole-grain', name: '全谷物', products: [
           { name: '有机纯燕麦片', image: '🥣', price: '¥16.06', desc: '口感软糯，高蛋白高纤维，营养早餐首选。', tags: ['高蛋白', '高纤维', '低糖'], link: 'https://m.tb.cn/h.89tr8x1' },
           { name: '糙米', image: '🍚', price: '¥13.21', desc: '保留胚芽营养，饱腹感比白米强3倍，富含B族维生素。', tags: ['高纤维', '低糖', '富含B族'], link: 'https://m.tb.cn/h.8kBwPpv' },
-          { name: '全麦面条', image: '🍜', desc: '慢吸收碳水，稳血糖不油腻', tags: ['高纤维', '低糖'], button: '去尝尝这款' },
+          { name: '全麦无盐挂面', image: '🍜', price: '¥13.2起', desc: '高纤维无盐配方，慢吸收碳水，适合家庭日常食用。', tags: ['高纤维', '无盐', '家庭装'], specs: {
+            quantities: [
+              { id: '5斤', label: '5斤大包', price: '¥13.21' },
+              { id: '10斤', label: '10斤家庭装', price: '¥24.9' }
+            ],
+            types: [
+              { id: '全麦', label: '全麦' },
+              { id: '荞麦', label: '荞麦' },
+              { id: '高粱', label: '高粱' }
+            ],
+            matrix: {
+              '5斤': {
+                '全麦': 'https://m.tb.cn/h.8l85Orr',
+                '荞麦': 'https://m.tb.cn/h.8kzHNlq',
+                '高粱': 'https://m.tb.cn/h.8l8SACf'
+              },
+              '10斤': {
+                '全麦': 'https://m.tb.cn/h.8QFbZwx',
+                '荞麦': 'https://m.tb.cn/h.8kzu6rv',
+                '高粱': 'https://m.tb.cn/h.8l8Rl5G'
+              }
+            },
+            defaultQty: '5斤',
+            defaultType: '全麦'
+          } },
           { name: '红薯', image: '🍠', desc: '天然甜不发胖，维生素A满满', tags: ['高纤维', '低脂', '富含维A'], button: '去尝尝这款' }
         ]},
         { id: 'mixed-grain', name: '杂粮饭', products: [
@@ -109,7 +133,7 @@
       label: '解馋零食',
       categories: [
         { id: 'nut', name: '原味坚果', products: [
-          { name: '原味巴旦木', image: '🌰', desc: '配料表只有巴旦木，维E含量爆表', tags: ['低糖', '高维E', '无添加'], button: '去尝尝这款' },
+          { name: '原味巴旦木仁', image: '🌰', price: '¥38', desc: '颗粒饱满，配料表只有巴旦木，维E含量爆表，孕妇零食年货首选。', tags: ['低糖', '高维E', '无添加'], link: 'https://m.tb.cn/h.89F1g3d' },
           { name: '低糖核桃', image: '🥜', desc: '每日3颗，补充Omega-3好脑子', tags: ['低糖', '高Omega-3'], button: '去尝尝这款' },
           { name: '无添加腰果', image: '🌯', desc: '原味烘烤，零添加更健康', tags: ['无添加', '低糖'], button: '去尝尝这款' }
         ]},
@@ -220,9 +244,14 @@
     html += '</div>';
 
     productArea.innerHTML = html;
+    initSpecCards();
   }
 
   function renderProductCard(p, tabKey, catId) {
+    if (p && p.specs) {
+      return renderSpecCard(p);
+    }
+
     var href, priceHtml, btnText;
 
     if (p && p.link) {
@@ -266,6 +295,119 @@
         '</div>' +
       '</div>' +
     '</a>';
+  }
+
+  function renderSpecCard(p) {
+    var specs = p.specs;
+    var tagsHtml = '';
+    if (p.tags) {
+      tagsHtml = p.tags.map(function(t) {
+        return '<span class="product-tag">' + t + '</span>';
+      }).join('');
+    }
+
+    var qtyHtml = '<div class="spec-row">' +
+      '<span class="spec-label">数量</span>' +
+      '<div class="spec-options">' +
+      specs.quantities.map(function(q) {
+        return '<button class="spec-option" data-group="qty" data-id="' + q.id + '" title="' + q.label + '">' +
+          q.label + (q.price ? ' · ' + q.price : '') +
+        '</button>';
+      }).join('') +
+      '</div>' +
+    '</div>';
+
+    var typeHtml = '<div class="spec-row">' +
+      '<span class="spec-label">种类</span>' +
+      '<div class="spec-options">' +
+      specs.types.map(function(t) {
+        return '<button class="spec-option" data-group="type" data-id="' + t.id + '" title="' + t.label + '">' +
+          t.label +
+        '</button>';
+      }).join('') +
+      '</div>' +
+    '</div>';
+
+    return '<div class="product-card spec-card" data-default-qty="' + specs.defaultQty + '" data-default-type="' + specs.defaultType + '">' +
+      '<div class="product-image">' +
+        '<span class="product-emoji">' + (p.image || '📦') + '</span>' +
+      '</div>' +
+      '<div class="product-info">' +
+        '<h3 class="product-name">' + (p.name || '未知商品') + '</h3>' +
+        '<p class="product-desc">' + (p.desc || '') + '</p>' +
+        '<div class="product-tags">' + tagsHtml + '</div>' +
+        qtyHtml +
+        typeHtml +
+        '<div class="product-price-row spec-price-row">' +
+          '<span class="product-price spec-price">' + (specs.quantities[0].price || '') + '</span>' +
+          '<button class="spec-buy-btn" data-link="' + specs.matrix[specs.defaultQty][specs.defaultType] + '">立即购买 →</button>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  }
+
+  function initSpecCards() {
+    document.querySelectorAll('.spec-card').forEach(function(card) {
+      var specs = null;
+      var productArea = card.closest('#productArea') || document.getElementById('productArea');
+      if (!productArea) return;
+      var tabKey = currentTab;
+      var catId = currentCategory;
+      var tab = recommendData[tabKey];
+      if (!tab) return;
+      var cat = tab.categories.find(function(c) { return c.id === catId; });
+      if (!cat) return;
+      var p = cat.products.find(function(pr) { return pr.specs && card.querySelector('.product-name').textContent === pr.name; });
+      if (!p) return;
+      specs = p.specs;
+
+      var state = {
+        qty: specs.defaultQty,
+        type: specs.defaultType
+      };
+
+      function updateUI() {
+        card.querySelectorAll('.spec-option').forEach(function(btn) {
+          var group = btn.dataset.group;
+          var id = btn.dataset.id;
+          btn.classList.toggle('active', group === 'qty' ? id === state.qty : id === state.type);
+        });
+        var currentQty = specs.quantities.find(function(q) { return q.id === state.qty; });
+        var priceEl = card.querySelector('.spec-price');
+        if (priceEl) {
+          priceEl.textContent = currentQty ? currentQty.price : '';
+        }
+        var buyBtn = card.querySelector('.spec-buy-btn');
+        var link = specs.matrix[state.qty] && specs.matrix[state.qty][state.type];
+        if (buyBtn && link) {
+          buyBtn.dataset.link = link;
+        }
+      }
+
+      card.addEventListener('click', function(e) {
+        var target = e.target;
+        while (target && target !== card) {
+          if (target.classList && target.classList.contains('spec-option')) {
+            var group = target.dataset.group;
+            var id = target.dataset.id;
+            if (group === 'qty') state.qty = id;
+            else if (group === 'type') state.type = id;
+            updateUI();
+            return;
+          }
+          if (target.classList && target.classList.contains('spec-buy-btn')) {
+            var link = target.dataset.link;
+            if (link) {
+              window.open(link, '_blank');
+            }
+            return;
+          }
+          target = target.parentNode;
+        }
+      });
+
+      updateUI();
+    });
   }
 
   function selectTab(tabKey) {

@@ -351,6 +351,66 @@
     border-color: #7cb342;
   }
 
+  /* Spec item styles */
+  .detail-spec-card {
+    cursor: default;
+  }
+
+  .detail-spec-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+
+  .detail-spec-label {
+    font-size: 0.78rem;
+    color: #888;
+    font-weight: 600;
+    padding-top: 4px;
+    min-width: 40px;
+  }
+
+  .detail-spec-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    flex: 1;
+  }
+
+  .detail-spec-opt {
+    padding: 4px 11px;
+    background: #f5f7f0;
+    border: 1px solid #e0e0e0;
+    border-radius: 14px;
+    font-size: 0.76rem;
+    color: #888;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    line-height: 1.3;
+  }
+
+  .detail-spec-opt:hover {
+    border-color: #7cb342;
+    color: #558b2f;
+  }
+
+  .detail-spec-opt.active {
+    background: #7cb342;
+    border-color: #7cb342;
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .detail-spec-price {
+    flex: 1;
+  }
+
+  .detail-spec-buy {
+    background: linear-gradient(135deg, #7cb342 0%, #558b2f 100%);
+  }
+
   @media (max-width: 600px) {
     .detail-product-grid {
       grid-template-columns: repeat(2, 1fr);
@@ -451,6 +511,31 @@
           desc: '保留胚芽和麸皮的完整谷物，富含膳食纤维和B族维生素，是控糖减脂期的理想主食。',
           items: [
             { brand: '', name: '有机纯燕麦片', desc: '口感软糯，高蛋白高纤维，营养早餐首选。', price: '¥16.06', unit: '/500g', image: '🥣', tags: ['高蛋白', '高纤维', '低糖'], tagColor: ['blue','green','green'], badge: 'hot', badgeText: '热销', link: 'https://m.tb.cn/h.89tr8x1' },
+            { brand: '', name: '全麦无盐挂面', desc: '高纤维无盐配方，慢吸收碳水，适合家庭日常食用。', price: '¥13.21起', unit: '', image: '🍜', tags: ['高纤维', '无盐', '家庭装'], tagColor: ['green','blue','orange'], badge: 'recommend', badgeText: '推荐', specs: {
+              quantities: [
+                { id: '5斤', label: '5斤大包', price: '¥13.21' },
+                { id: '10斤', label: '10斤家庭装', price: '¥24.9' }
+              ],
+              types: [
+                { id: '全麦', label: '全麦' },
+                { id: '荞麦', label: '荞麦' },
+                { id: '高粱', label: '高粱' }
+              ],
+              matrix: {
+                '5斤': {
+                  '全麦': 'https://m.tb.cn/h.8l85Orr',
+                  '荞麦': 'https://m.tb.cn/h.8kzHNlq',
+                  '高粱': 'https://m.tb.cn/h.8l8SACf'
+                },
+                '10斤': {
+                  '全麦': 'https://m.tb.cn/h.8QFbZwx',
+                  '荞麦': 'https://m.tb.cn/h.8kzu6rv',
+                  '高粱': 'https://m.tb.cn/h.8l8Rl5G'
+                }
+              },
+              defaultQty: '5斤',
+              defaultType: '全麦'
+            } },
             { brand: '谷绿', name: '有机全麦面条', desc: '采用加拿大硬红小麦石磨磨制，保留完整麸皮，蛋白质含量高达14%，嚼劲十足。', price: '¥12.9', unit: '/500g', image: '🍜', tags: ['高纤维', '低糖', '高蛋白'], tagColor: ['green','green','blue'], badge: 'hot', badgeText: '热销' },
             { brand: '磨匠', name: '手工荞麦面', desc: '陕北高原黑荞麦磨粉制作，0添加白面粉，控糖友好，适合糖尿病人群。', price: '¥18.5', unit: '/400g', image: '🍜', tags: ['低糖', '低脂', '无添加'], tagColor: ['green','green','blue'], badge: 'recommend', badgeText: '推荐' },
             { brand: '穗元', name: '糙米面条', desc: '糙米+全麦黄金比例，富含谷维素和膳食纤维，口感劲道，饱腹感持久。', price: '¥9.9', unit: '/500g', image: '🍝', tags: ['高纤维', '富含B族'], tagColor: ['green','orange'] },
@@ -488,7 +573,7 @@
           name: '原味坚果',
           desc: '无添加原味坚果，保留天然风味和营养，办公室和追剧必备健康零食。',
           items: [
-            { brand: '巴旦木庄园', name: '美国加州巴旦木', desc: '产地直采，物理烘烤不油炸，维生素E含量丰富，每日一小把。', price: '¥35.0', unit: '/500g', image: '🌰', tags: ['高维E', '低糖', '无添加'], tagColor: ['orange','green','green'], badge: 'hot', badgeText: '热销' },
+            { brand: '', name: '原味巴旦木仁', desc: '颗粒饱满，配料表只有巴旦木，维E含量爆表，孕妇零食年货首选。', price: '¥38', unit: '/400g', image: '🌰', tags: ['高维E', '低糖', '无添加'], tagColor: ['orange','green','green'], badge: 'hot', badgeText: '热销', link: 'https://m.tb.cn/h.89F1g3d' },
             { brand: '核桃村', name: '新疆阿克苏薄皮核桃', desc: '薄皮手捏即开，核桃仁饱满，Omega-3含量高，每日3颗补脑。', price: '¥49.9', unit: '/500g', image: '🥜', tags: ['高Omega-3', '低糖', '无添加'], tagColor: ['blue','green','green'] },
             { brand: '腰果庄园', name: '越南原味腰果', desc: 'A180超大颗粒，低温烘烤保留油脂香，零添加更健康。', price: '¥88.0', unit: '/500g', image: '🥥', tags: ['低糖', '无添加', '高能量'], tagColor: ['green','green','blue'], badge: 'recommend', badgeText: '推荐' },
             { brand: '坚果日记', name: '每日坚果30包', desc: '7种坚果果干科学配比，独立小包装，每日一包营养全。', price: '¥99.0', unit: '/750g(30包)', image: '🥜', tags: ['多种坚果', '便捷', '营养均衡'], tagColor: ['blue','green','purple'], badge: 'hot', badgeText: '热销' }
@@ -605,6 +690,10 @@
   }
 
   function renderProductCard(item, tabKey, categoryKey) {
+    if (item.specs) {
+      return renderSpecItem(item, tabKey, categoryKey);
+    }
+
     var badgeHtml = '';
     if (item.badge && item.badgeText) {
       badgeHtml = '<div class="detail-card-badge ' + item.badge + '">' + item.badgeText + '</div>';
@@ -644,6 +733,117 @@
         </div>
       </div>
     `;
+  }
+
+  function renderSpecItem(item, tabKey, categoryKey) {
+    var specs = item.specs;
+    var badgeHtml = '';
+    if (item.badge && item.badgeText) {
+      badgeHtml = '<div class="detail-card-badge ' + item.badge + '">' + item.badgeText + '</div>';
+    }
+
+    var tagsHtml = item.tags.map(function(t, i) {
+      return renderTag(t, item.tagColor ? item.tagColor[i] : 'green');
+    }).join('');
+
+    var qtyHtml = '<div class="detail-spec-row">' +
+      '<span class="detail-spec-label">数量</span>' +
+      '<div class="detail-spec-options">' +
+      specs.quantities.map(function(q) {
+        return '<button class="detail-spec-opt" data-group="qty" data-id="' + q.id + '">' +
+          q.label + (q.price ? ' · ' + q.price : '') +
+        '</button>';
+      }).join('') +
+      '</div>' +
+    '</div>';
+
+    var typeHtml = '<div class="detail-spec-row">' +
+      '<span class="detail-spec-label">种类</span>' +
+      '<div class="detail-spec-options">' +
+      specs.types.map(function(t) {
+        return '<button class="detail-spec-opt" data-group="type" data-id="' + t.id + '">' +
+          t.label +
+        '</button>';
+      }).join('') +
+      '</div>' +
+    '</div>';
+
+    return `
+      <div class="detail-card detail-spec-card" data-default-qty="${specs.defaultQty}" data-default-type="${specs.defaultType}">
+        <div class="detail-card-image">
+          ${badgeHtml}
+          <span class="detail-emoji">${item.image || '📦'}</span>
+        </div>
+        <div class="detail-card-info">
+          <div class="detail-brand">${item.brand || ''}</div>
+          <h3 class="detail-card-name">${item.name || '未知商品'}</h3>
+          <p class="detail-card-desc">${item.desc || ''}</p>
+          <div class="detail-card-tags">${tagsHtml}</div>
+          ${qtyHtml}
+          ${typeHtml}
+          <div class="detail-card-price">
+            <div class="detail-price detail-spec-price">${specs.quantities[0].price || ''}</div>
+            <button class="detail-link-btn detail-spec-buy" data-link="${specs.matrix[specs.defaultQty][specs.defaultType]}">立即购买 &rarr;</button>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function initSpecItems() {
+    document.querySelectorAll('.detail-spec-card').forEach(function(card) {
+      var items = Array.prototype.slice.call(card.parentElement.children);
+      var itemIndex = items.indexOf(card);
+      var tabKey = getQueryParam('tab') || 'staple';
+      var categoryKey = getQueryParam('category') || '';
+      var tab = productDatabase[tabKey];
+      if (!tab || !tab.categories[categoryKey]) return;
+      var item = tab.categories[categoryKey].items[itemIndex];
+      if (!item || !item.specs) return;
+
+      var specs = item.specs;
+      var state = { qty: specs.defaultQty, type: specs.defaultType };
+
+      function updateUI() {
+        card.querySelectorAll('.detail-spec-opt').forEach(function(btn) {
+          var group = btn.dataset.group;
+          var id = btn.dataset.id;
+          btn.classList.toggle('active', group === 'qty' ? id === state.qty : id === state.type);
+        });
+        var currentQty = specs.quantities.find(function(q) { return q.id === state.qty; });
+        var priceEl = card.querySelector('.detail-spec-price');
+        if (priceEl) {
+          priceEl.textContent = currentQty ? currentQty.price : '';
+        }
+        var buyBtn = card.querySelector('.detail-spec-buy');
+        var link = specs.matrix[state.qty] && specs.matrix[state.qty][state.type];
+        if (buyBtn && link) {
+          buyBtn.dataset.link = link;
+        }
+      }
+
+      card.addEventListener('click', function(e) {
+        var target = e.target;
+        while (target && target !== card) {
+          if (target.classList && target.classList.contains('detail-spec-opt')) {
+            var group = target.dataset.group;
+            var id = target.dataset.id;
+            if (group === 'qty') state.qty = id;
+            else if (group === 'type') state.type = id;
+            updateUI();
+            return;
+          }
+          if (target.classList && target.classList.contains('detail-spec-buy')) {
+            var link = target.dataset.link;
+            if (link) { window.open(link, '_blank'); }
+            return;
+          }
+          target = target.parentNode;
+        }
+      });
+
+      updateUI();
+    });
   }
 
   function renderDetail() {
@@ -722,6 +922,7 @@
   });
 
   renderDetail();
+  initSpecItems();
 
   var detailGrid = document.getElementById('detailProductGrid');
   if (detailGrid) {
