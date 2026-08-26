@@ -1,5 +1,10 @@
 User-agent: *
 Allow: /
-Disallow: /
+
+User-agent: MicroMessenger
+Allow: /
+
+User-agent: WeChat
+Allow: /
 
 Sitemap: https://greenm666.github.io/greenhome/sitemap.xml
