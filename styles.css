@@ -1292,6 +1292,16 @@ body {
   transform: translateX(4px);
 }
 
+.product-disclaimer {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed #e0e0e0;
+  opacity: 0.85;
+}
+
 /* Spec card (multi-spec product) */
 .spec-card {
   cursor: default;
